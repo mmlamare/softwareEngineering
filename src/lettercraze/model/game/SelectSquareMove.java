@@ -6,36 +6,47 @@ import lettercraze.model.board.Point;
 
 public class SelectSquareMove extends Move {
 	Point loc;
-	LinkedList<Point> initialSelected;
+	boolean isDeselection;
 
-	public SelectSquareMove(Point p) {
+	public SelectSquareMove(Game initial, Point p) {
+		this.initialState = initial;
 		this.loc = p;
+		this.isDeselection = initial.isSelected(p);
 	}
 
 	@SuppressWarnings("unchecked")
-	public void apply(Game g) {
-		initialSelected = g.selected;
-		g.selected = (LinkedList<Point>) g.selected.clone();
+	@Override
+	public Game doMove() {
+		Game result = (Game) initialState.clone();
 
-		if (!g.selected.isEmpty() && g.selected.peek().equals(loc)) {
-			g.selected.pop();
+		// Copy everything we might change (in this case, only the selected
+		// squares and the moves history)
+		result.selected = (LinkedList<Point>) (initialState.selected.clone());
+		result.pastMoves = (LinkedList<Move>) (initialState.pastMoves.clone());
+
+		if (isDeselection) {
+			result.selected.pop();
+			result.pastMoves.push(this);
 		} else {
-			g.selected.push(loc);
+			result.selected.push(loc);
+			result.pastMoves.push(this);
 		}
-	}
-
-	public void restore(Game g) {
-		g.selected = initialSelected;
+		return result;
 	}
 
 	@Override
-	public boolean isValid(Game g) {
-		if (g.gameOver()) return false;
-		if (g.isSelected(loc)) {
+	public Game undoMove() {
+		return this.initialState;
+	}
+
+	@Override
+	public boolean isValid() {
+		if (initialState.gameOver()) return false;
+		if (isDeselection) {
 			// check that it's the last square
-			return g.selected.peek().equals(loc);
+			return initialState.selected.element().equals(loc);
 		}
-		return g.selected.isEmpty() || 
-				g.selected.element().isAdjacent(loc);
+		return initialState.selected.isEmpty() || 
+				initialState.selected.element().isAdjacent(loc);
 	}
 }

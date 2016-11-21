@@ -21,10 +21,10 @@ public class SelectionController implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() instanceof BoardButton) {
 			BoardButton b = (BoardButton) ae.getSource();
-			SelectSquareMove move = new SelectSquareMove(b.getPoint());
-			if (move.isValid(m.getCurrentGame())) {
-				//m.currentGame = move.doMove();
-				m.getCurrentGame().applyMove(move);
+			SelectSquareMove move = new SelectSquareMove(m.getCurrentGame(),
+					b.getPoint());
+			if (move.isValid()) {
+				m.currentGame = move.doMove();
 			}
 			app.update();
 		}

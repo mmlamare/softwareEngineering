@@ -4,71 +4,60 @@ import java.util.LinkedList;
 
 import lettercraze.Resources;
 import lettercraze.model.Dictionary;
-import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 
 public class SubmitWordMove extends Move {
 	String word;
-	LinkedList<Point> initialSelection;
-	LinkedList<String> initialWords;
-	Board initialBoard;
-	int initialScore;
 
-	public SubmitWordMove() {}
-
-	@SuppressWarnings("unchecked")
-	public void apply(Game g) {
-		// Save restoreable values
-		initialSelection = g.selected;
-		initialWords = (LinkedList<String>) g.pastWords.clone();
-		initialBoard = (Board) g.getBoard().clone();
-		initialScore = g.getScore();
-
-		// Compute the selected word and clear out the selected squares
-		String word = "";
-		for (Point p : g.selected) {
-			char ch = g.getBoard().getLetter(p);
+	public SubmitWordMove(Game initial) {
+		this.initialState = initial;
+		word = "";
+		for (Point p : initial.selected) {
+			char ch = initial.getBoard().getLetter(p);
 			if (ch == 'q') {
 				word = "qu" + word;
 			} else {
 				word = ch + word;
 			}
-
-			g.getBoard().setSquare(p, Square.makeEmptySquare());
 		}
-		g.repopulateBoard();
-
-		// update the Game
-		g.score += g.scoreWord(word);
-		g.selected = new LinkedList<Point>();
-		g.pastWords.push(word);
 	}
 
-	public void restore(Game g) {
-		g.selected = initialSelection;
-		g.pastWords = initialWords;
-		g.board = initialBoard;
-		g.score = initialScore;
+	@SuppressWarnings("unchecked")
+	@Override
+	public Game doMove() {
+		Game result = (Game) initialState.clone();
+
+		// save the things we'll modify
+		result.board = (initialState.getBoard().clone());
+		result.pastWords= (LinkedList<String>) (initialState.pastWords.clone());
+		result.pastMoves = (LinkedList<Move>) (initialState.pastMoves.clone());
+
+		result.score += initialState.scoreWord(word);
+
+		for (Point p : result.selected) {
+			result.board.setSquare(p, Square.makeEmptySquare());
+		}
+		result.repopulateBoard();
+
+		result.pastWords.push(word);
+		result.selected = new LinkedList<Point>();
+		result.pastMoves.push(this);
+
+		return result;
 	}
 
 	@Override
-	public boolean isValid(Game g) {
-		if (g.gameOver()) return false;
+	public Game undoMove() {
+		return initialState;
+	}
 
-		String word = "";
-		for (Point p : g.selected) {
-			char ch = g.getBoard().getLetter(p);
-			if (ch == 'q') {
-				word = "qu" + word;
-			} else {
-				word = ch + word;
-			}
-		}
-
+	@Override
+	public boolean isValid() {
+		if (initialState.gameOver()) return false;
 		if (word.length() < 3) return false;
 
-		Dictionary d = g.level.words;
+		Dictionary d = initialState.level.words;
 		if (d == null) {
 			d = Resources.DICT;
 		}

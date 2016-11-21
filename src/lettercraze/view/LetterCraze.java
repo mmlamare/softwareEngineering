@@ -1,13 +1,8 @@
 package lettercraze.view;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import lettercraze.Resources;
 import lettercraze.controller.LevelSelectionController;
 import lettercraze.controller.LightningClockController;
 import lettercraze.controller.QuitLevelController;
@@ -23,7 +18,6 @@ public class LetterCraze extends JFrame {
 	public static final int WIDTH=600;
 	public static final int HEIGHT=400;
 	public static final int TICK_TIME=1000;
-	public static final int SPLASH_TIME=4000;
 
 	Model m;
 	GameView gameView;
@@ -37,23 +31,8 @@ public class LetterCraze extends JFrame {
 
 		this.addKeyListener(new SubmitController(m, this));
 		this.addWindowListener(new SaveStateController(m,this));
-	}
-	
-	public void run() {
-		this.showSplash();
 		this.setVisible(true);
-		LetterCraze self = this;
-		Timer splashTimer = new Timer(SPLASH_TIME, (ActionEvent ae) -> {
-			System.out.print("done: " + (this == self));
-			getContentPane().removeAll();
-			update();
-		});
-		splashTimer.setRepeats(false);
-		splashTimer.start();
-	}
-	
-	public void showSplash() {
-		this.add(new JLabel(new ImageIcon(Resources.SPLASH)));
+		this.update();
 	}
 
 	public void initializeGame() {
@@ -87,7 +66,7 @@ public class LetterCraze extends JFrame {
 		this.add(menuView);
 		this.revalidate();
 	}
-
+	
 	public void update() {
 		if (m.isInGame()) {
 			if(gameView == null) {
@@ -100,6 +79,7 @@ public class LetterCraze extends JFrame {
 			}
 			menuView.update();
 		}
+		
 		this.repaint();
 	}
 
