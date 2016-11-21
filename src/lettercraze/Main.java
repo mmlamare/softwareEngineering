@@ -14,7 +14,8 @@ public class Main {
 		}
 
 		Model m = new Model(Data.readScores());
-		new LetterCraze(m);
+		LetterCraze app = new LetterCraze(m);
+		app.run();
 	}
 	
 }

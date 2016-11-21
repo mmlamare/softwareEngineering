@@ -24,6 +24,9 @@ public class Resources {
 	// This is the number of statically loaded levels.
 	public static final int NUM_LEVELS=15;
 
+	// Splash image
+	public static Image SPLASH;
+
 	// Level button Icons
 	public static Image LB0;
 	public static Image LB1;
@@ -50,6 +53,8 @@ public class Resources {
 
 	// Load all static resources from the archive
 	public static void loadResources() {
+		SPLASH = loadImage("splash.png");
+
 		LB0 = loadImage("lb-0.png");
 		LB1 = loadImage("lb-1.png");
 		LB2 = loadImage("lb-2.png");

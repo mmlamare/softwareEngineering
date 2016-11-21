@@ -8,7 +8,7 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 
-public abstract class Game implements Cloneable {
+public abstract class Game {
 	Board board;
 	int levelID;
 	LinkedList<Point> selected;
@@ -35,16 +35,18 @@ public abstract class Game implements Cloneable {
 		if (pastMoves.isEmpty()) {
 			return;
 		}
-		Game endState = pastMoves.pop().undoMove();
-		this.board = endState.board;
-		this.selected = endState.selected;
-		this.score = endState.score;
-		this.pastWords = endState.pastWords;
+		Move m = pastMoves.pop();
+		m.restore(this);
 	}
 
 	public abstract boolean gameOver();
 	public abstract int scoreWord(String w);
 	public abstract Object clone();
+
+	public void applyMove(Move m) {
+		m.apply(this);
+		pastMoves.push(m);
+	}
 
 	public void repopulateBoard() {
 		board.floatLetters();
@@ -105,5 +107,4 @@ public abstract class Game implements Cloneable {
 	public LinkedList<String> getPastWords() {
 		return pastWords;
 	}
-	
 }

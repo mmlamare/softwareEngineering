@@ -27,10 +27,10 @@ public class SubmitController implements KeyListener {
 		if (! m.isInGame()) return;
 		// This is a submit word move
 		if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_ENTER) {
-			SubmitWordMove move = new SubmitWordMove(m.currentGame);
-			
-			if (move.isValid()) {
-				m.currentGame = move.doMove();
+			SubmitWordMove move = new SubmitWordMove();
+
+			if (move.isValid(m.getCurrentGame())) {
+				m.getCurrentGame().applyMove(move);
 				app.update();
 			}
 		}
@@ -38,7 +38,5 @@ public class SubmitController implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		e.consume();
 	}
-
 }
