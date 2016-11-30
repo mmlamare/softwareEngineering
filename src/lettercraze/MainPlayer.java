@@ -3,7 +3,7 @@ package lettercraze;
 import lettercraze.model.Model;
 import lettercraze.view.LetterCraze;
 
-public class Main {
+public class MainPlayer {
 
 	public static void main(String args[]) {
 		// Load static resources from within the JAR file

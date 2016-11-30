@@ -1,6 +1,7 @@
 package lettercraze.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -60,6 +61,7 @@ public class BoardView extends JPanel {
 						b.setBackground(Color.YELLOW);
 					else
 						b.setBackground(Color.WHITE);
+					b.setFont(new Font("Arial", Font.BOLD, 22));
 					char ch = g.getBoard().getLetter(p);
 					if (ch == 'q')
 						b.setText("qu");

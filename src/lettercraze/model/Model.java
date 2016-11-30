@@ -70,8 +70,12 @@ public class Model {
 	public void loadLevelByID(int id) {
 		Level l = null;
 		l = Resources.LEVELS[id];
-		this.inGame = true;
-		this.currentGame = l.loadLevel(id);
-		this.currentGame.initialize();
+		if (l == null) {
+			System.err.println("No level for ID: " + id);
+		} else {
+			this.inGame = true;
+			this.currentGame = l.loadLevel(id);
+			this.currentGame.initialize();
+		}
 	}
 }
