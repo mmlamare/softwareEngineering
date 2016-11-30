@@ -46,7 +46,8 @@ public class SelectSquareMove extends Move {
 			// check that it's the last square
 			return initialState.selected.element().equals(loc);
 		}
-		return initialState.selected.isEmpty() || 
-				initialState.selected.element().isAdjacent(loc);
+		return !initialState.board.isBlocked(loc) &&
+				(initialState.selected.isEmpty() || 
+						initialState.selected.element().isAdjacent(loc));
 	}
 }
