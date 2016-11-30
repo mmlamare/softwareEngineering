@@ -3,7 +3,7 @@ package lettercraze.controller;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import lettercraze.Data;
+import lettercraze.files.Data;
 import lettercraze.model.Model;
 import lettercraze.view.LetterCraze;
 

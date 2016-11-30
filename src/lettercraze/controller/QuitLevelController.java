@@ -3,7 +3,7 @@ package lettercraze.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import lettercraze.Resources;
+import lettercraze.files.Resources;
 import lettercraze.model.Model;
 import lettercraze.model.game.Game;
 import lettercraze.view.LetterCraze;

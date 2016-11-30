@@ -2,7 +2,7 @@ package lettercraze.model.game;
 
 import java.util.LinkedList;
 
-import lettercraze.Resources;
+import lettercraze.files.Resources;
 import lettercraze.model.Dictionary;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;

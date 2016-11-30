@@ -1,4 +1,4 @@
-package lettercraze;
+package lettercraze.files;
 
 import java.io.InputStream;
 

@@ -1,6 +1,6 @@
 package lettercraze.model;
 
-import lettercraze.Resources;
+import lettercraze.files.Resources;
 import lettercraze.model.game.Game;
 
 public class Model {

@@ -1,4 +1,4 @@
-package lettercraze;
+package lettercraze.files;
 
 import static lettercraze.model.LevelType.LIGHTNING;
 import static lettercraze.model.LevelType.PUZZLE;

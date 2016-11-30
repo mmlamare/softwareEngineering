@@ -1,5 +1,7 @@
 package lettercraze;
 
+import lettercraze.files.Data;
+import lettercraze.files.Resources;
 import lettercraze.model.Model;
 import lettercraze.view.LetterCraze;
 

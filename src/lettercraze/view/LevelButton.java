@@ -6,7 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import lettercraze.Resources;
+import lettercraze.files.Resources;
 
 @SuppressWarnings("serial")
 public class LevelButton extends JButton {
