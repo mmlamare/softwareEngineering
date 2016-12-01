@@ -9,6 +9,17 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
+import lettercraze.controller.AddWordController;
+import lettercraze.controller.DeleteWordController;
+import lettercraze.controller.LoadBoardController;
+import lettercraze.controller.PublishBoardController;
+import lettercraze.controller.QuitBoardController;
+import lettercraze.controller.ToggleController;
+//import lettercraze.model.Model;
+import lettercraze.model.ModelBuilder;
+import lettercraze.model.board.Board;
+import lettercraze.model.board.Point;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -20,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -30,12 +42,24 @@ public class BuilderView {
 	private static KeyAdapter textFilter;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	
+	public final static int BUTTON_SIZE = 32;
+	
+	private static ModelBuilder m;
+	
+	public BuilderView(ModelBuilder m)
+	{
+		this.m = m;
+		initBoard();
+	}
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args)
+	//public static void main(String[] args)
+	public void initBoard()
 	{
+		//m = mNew;
 		//This adapter will be assigned to any numerical inputs
 		textFilter = new KeyAdapter() {
 			   public void keyTyped(KeyEvent e) {
@@ -66,6 +90,28 @@ public class BuilderView {
 	public BuilderView() {
 		initialize();
 	}
+	
+	private JPanel addGameBoard(JFrame frame)
+	{
+		JPanel panel = new JPanel(); //Fix this contructor?
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel.setBounds(6, 6, 266, 266);
+		
+		panel.setLayout(new GridLayout(6,6));
+		//panel.m = m;
+		BoardButton squares[][] = new BoardButton[6][6];
+		for (int row = 0; row < Board.SIZE; ++row) {
+			for (int col=0; col < Board.SIZE; ++col) {
+				squares[row][col] = new BoardButton(new Point(row,col));
+				squares[row][col].setSize(BUTTON_SIZE, BUTTON_SIZE);
+				squares[row][col].setFocusable(false);
+				squares[row][col].addActionListener(new ToggleController(squares[row][col]));
+				panel.add(squares[row][col]);
+			}
+		}
+		
+		return panel;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -77,10 +123,15 @@ public class BuilderView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
+		//int intVals[] = new int[15];
+		//for (int i=0; i<15; i++){intVals[i]=i;}
+		/*BoardView panel = new BoardView(m); //Fix this contructor?
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBounds(6, 6, 266, 266);
-		frame.getContentPane().add(panel);
+		frame.getContentPane().add(panel);*/
+		
+		JPanel gamePanel = addGameBoard(frame);
+		frame.getContentPane().add(gamePanel);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -157,58 +208,30 @@ public class BuilderView {
 		
 		
 		JButton btnAddWord = new JButton("+ Add");
-		btnAddWord.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Adding word");
-				String word = JOptionPane.showInputDialog(frame, "Enter a word");
-				DefaultListModel listModel = (DefaultListModel) list.getModel();
-				listModel.add(listModel.getSize(), word);
-			}
-		});
+		btnAddWord.addActionListener(new AddWordController(frame, list));
+		
 		btnAddWord.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		btnAddWord.setBounds(22, 240, 56, 26);
 		panel_1.add(btnAddWord);
 		
 		JButton btnDelete = new JButton("- Delete");
-		btnDelete.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Deleting word");
-				DefaultListModel listModel = (DefaultListModel) list.getModel();
-				int selectedItem = list.getSelectedIndex();
-				if (selectedItem >= 0)
-				{
-					listModel.remove(selectedItem);
-				}
-			}
-		});
+		btnDelete.addActionListener(new DeleteWordController(frame, list));
 		btnDelete.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		btnDelete.setBounds(76, 240, 84, 26);
 		panel_1.add(btnDelete);
 		
 		JButton btnSave = new JButton("SAVE");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Saving Board...");
-			}
-		});
+		btnSave.addActionListener(new PublishBoardController(frame));
 		btnSave.setBounds(16, 277, 117, 29);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnLoad = new JButton("LOAD");
-		btnLoad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Loading Board...");
-			}
-		});
+		btnLoad.addActionListener(new LoadBoardController(frame));
 		btnLoad.setBounds(145, 277, 117, 29);
 		frame.getContentPane().add(btnLoad);
 		
 		JButton btnPublish = new JButton("QUIT");
-		btnPublish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Publishing Board...");
-			}
-		});
+		btnPublish.addActionListener(new QuitBoardController(frame));
 		btnPublish.setBounds(308, 277, 117, 29);
 		frame.getContentPane().add(btnPublish);
 	}

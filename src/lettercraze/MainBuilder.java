@@ -1,9 +1,14 @@
 package lettercraze;
 
+
+import java.util.concurrent.TimeUnit;
+
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
 import lettercraze.model.ModelBuilder;
+import lettercraze.view.BuilderView;
 import lettercraze.view.LetterCraze;
+import lettercraze.view.SplashScreenView;
 
 public class MainBuilder {
 
@@ -16,8 +21,23 @@ public class MainBuilder {
 			Data.createDataPath();
 		}
 		
+		String values[] = {"LetterCraze Builder", "Ruthenium", "Jacob", "Matt", "Jack", "Andrew", "Cam"};
+		SplashScreenView splash = new SplashScreenView(values);
+		
+		try
+		{
+			System.out.println("Sleeping for 5 seconds...");
+			TimeUnit.SECONDS.sleep(5);
+			splash.dispose();
+		}
+		catch (InterruptedException e)
+		{
+			System.out.println("Sleep interrupted: " + e.getMessage());
+		}
+		
+		
 		ModelBuilder m = new ModelBuilder();
-		//new Builder(m);
+		new BuilderView(m);
 	}
 
 }
