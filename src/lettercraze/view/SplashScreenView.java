@@ -39,6 +39,8 @@ public class SplashScreenView extends JFrame
 	{
 		JLabel field = new JLabel(str, SwingConstants.CENTER);
 		field.setFont(new Font("Arial", Font.BOLD, 22));
+		//field.setBackground(128, 128, 128, 128);
+		field.setOpaque(true);
 		
 		return field;
 	}

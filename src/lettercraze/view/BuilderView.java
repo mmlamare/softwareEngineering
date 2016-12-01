@@ -103,6 +103,7 @@ public class BuilderView {
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col=0; col < Board.SIZE; ++col) {
 				squares[row][col] = new BoardButton(new Point(row,col));
+				squares[row][col].setOpaque(true);
 				squares[row][col].setSize(BUTTON_SIZE, BUTTON_SIZE);
 				squares[row][col].setFocusable(false);
 				squares[row][col].addActionListener(new ToggleController(squares[row][col]));
