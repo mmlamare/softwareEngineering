@@ -10,6 +10,11 @@ import lettercraze.view.BuilderView;
 import lettercraze.view.LetterCraze;
 import lettercraze.view.SplashScreenView;
 
+/**
+ * The Main class that launches the builder view.
+ * It first begins by launching the splash screen for 5 seconds.
+ * After the splash screen closes the builder view will be launched immediately. 
+ */
 public class MainBuilder {
 
 	public static void main(String[] args) {
