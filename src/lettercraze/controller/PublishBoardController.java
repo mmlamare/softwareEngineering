@@ -5,10 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+/**
+ * This controller handles the Saving of a custom board in the builder app.
+ * @see BuilderView
+ */
 public class PublishBoardController implements ActionListener
 {
 	JFrame frame;
 	
+	/**
+	 * Initializer requires the frame that the builder window belongs to.
+	 * @param frame
+	 */
 	public PublishBoardController(JFrame frame)
 	{
 		this.frame = frame;

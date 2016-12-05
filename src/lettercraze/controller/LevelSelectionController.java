@@ -7,10 +7,20 @@ import lettercraze.model.Model;
 import lettercraze.view.LetterCraze;
 import lettercraze.view.LevelButton;
 
+/**
+ * This controller is used to handle the user selection of a level from the main menu 
+ * @see MenuView
+ */
 public class LevelSelectionController implements ActionListener {
 	Model m;
 	LetterCraze app;
 
+	/**
+	 * Initializer requires the model we are using and a reference to the root app.
+	 * 
+	 * @param m
+	 * @param app
+	 */
 	public LevelSelectionController(Model m, LetterCraze app) {
 		this.m = m;
 		this.app = app;

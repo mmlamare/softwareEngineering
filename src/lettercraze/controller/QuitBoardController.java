@@ -5,10 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+/**
+ * This controller handles the Exiting of a custom board in the builder app.
+ * @see BuilderView
+ */
 public class QuitBoardController implements ActionListener
 {
 	JFrame frame;
 	
+	/**
+	 * Initializer requires the frame that the builder window belongs to.
+	 * @param frame
+	 */
 	public QuitBoardController(JFrame frame)
 	{
 		this.frame = frame;

@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 
 /**
- * This ActionListener Removes the selected word from the wordbank in the windowbuilder
+ * This ActionListener Removes the selected word from the wordbank in the windowbuilder.
  * @see BuilderView
  */
 public class DeleteWordController implements ActionListener
@@ -17,7 +17,7 @@ public class DeleteWordController implements ActionListener
 	JList list;
 	
 	/**
-	 * Initializer requires the frame and the JList that the new word will be added to
+	 * Initializer requires the frame and the JList that the new word will be added to.
 	 * 
 	 * @param frame
 	 * @param l

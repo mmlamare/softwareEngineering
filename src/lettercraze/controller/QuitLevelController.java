@@ -8,6 +8,10 @@ import lettercraze.model.Model;
 import lettercraze.model.game.Game;
 import lettercraze.view.LetterCraze;
 
+/**
+ * This controller allows the user to exit a level when the exit button is clicked in GameView
+ * @see GameView
+ */
 public class QuitLevelController implements ActionListener {
 	Model m;
 	LetterCraze app;

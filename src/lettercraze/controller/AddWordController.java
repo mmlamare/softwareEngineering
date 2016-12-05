@@ -18,7 +18,7 @@ public class AddWordController implements ActionListener
 	JFrame frame;
 	
 	/**
-	 * Initializer requires the frame and the JList that the new word will be added to
+	 * Initializer requires the frame and the JList that the new word will be added to.
 	 * 
 	 * @param frame
 	 * @param l

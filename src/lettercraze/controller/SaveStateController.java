@@ -7,10 +7,19 @@ import lettercraze.files.Data;
 import lettercraze.model.Model;
 import lettercraze.view.LetterCraze;
 
+/**
+ * This class handles when the save/exit button is pressed in GameView
+ * @see GameView
+ */
 public class SaveStateController extends WindowAdapter {
 	Model m;
 	LetterCraze app;
 	
+	/**
+	 * Initializer requires Model and app that the GameView contains
+	 * @param m
+	 * @param app
+	 */
 	public SaveStateController(Model m, LetterCraze app) {
 		this.m = m;
 		this.app = app;
