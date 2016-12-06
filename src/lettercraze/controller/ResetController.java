@@ -18,7 +18,7 @@ public class ResetController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if (m.isInGame()) {
-			m.getCurrentGame().initialize();
+			m.getCurrentGame().reset();
 			app.update();
 		}
 	}
