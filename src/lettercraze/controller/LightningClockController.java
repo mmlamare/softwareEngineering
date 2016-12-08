@@ -3,6 +3,8 @@ package lettercraze.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import lettercraze.model.Model;
 import lettercraze.model.game.LightningGame;
 import lettercraze.view.LetterCraze;
@@ -25,6 +27,8 @@ public class LightningClockController implements ActionListener {
 				app.update();
 			} else {
 				((javax.swing.Timer) (e.getSource())).stop();
+				JOptionPane.showMessageDialog(app, "Time has run out",
+				        "Time's up!", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}

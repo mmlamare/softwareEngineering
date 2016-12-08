@@ -1,5 +1,6 @@
 package lettercraze.view;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -10,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import lettercraze.files.Resources;
 import lettercraze.model.Model;
@@ -28,6 +31,7 @@ public class GameView extends JPanel {
 	public JButton quitButton;
 	public JButton undoButton;
 	public JButton resetButton;
+	public JScrollPane wordsPane;
 	public JList<String> wordsPlayed;
 	public JLabel scoreLabel;
 	
@@ -37,8 +41,8 @@ public class GameView extends JPanel {
 		this.m = m;
 		
 		GridBagLayout gbl = new GridBagLayout();
-		gbl.columnWeights = new double[] {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
-		gbl.rowWeights = new double[] {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
+		gbl.columnWeights = new double[] {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
+		gbl.rowWeights = new double[] {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
 		this.setLayout(gbl);
 
 		boardView = new BoardView(m);
@@ -54,6 +58,9 @@ public class GameView extends JPanel {
 		resetButton.setFocusable(false);
 		wordsPlayed = new JList<String>();
 		wordsPlayed.setFocusable(false);
+		wordsPane = new JScrollPane(wordsPlayed);
+		wordsPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		wordsPane.setPreferredSize(new Dimension(0, 100));
 		scoreLabel = new JLabel();
 		scoreLabel.setText("Score: " + m.getCurrentGame().getScore());
 
@@ -61,7 +68,7 @@ public class GameView extends JPanel {
 		gc.fill = GridBagConstraints.BOTH;
 		gc.insets = new Insets(3, 3, 3, 3);
 		gc.gridheight = 1;
-		gc.gridwidth = 1;
+		gc.gridwidth = 2;
 		gc.weightx = 0.1;
 		gc.weighty = 0.1;
 		
@@ -77,12 +84,13 @@ public class GameView extends JPanel {
 
 		gc.gridy = 3;
 		gc.gridheight = 6;
-		this.add(wordsPlayed,gc);
+		this.add(wordsPane,gc);
 
 		gc.gridy = 9;
 		gc.gridheight = 1;
 		this.add(quitButton,gc);
 
+		gc.gridwidth = 1;
 		gc.gridx = 0;
 		this.add(scoreLabel,gc);
 		

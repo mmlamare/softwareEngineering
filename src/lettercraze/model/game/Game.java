@@ -97,6 +97,10 @@ public abstract class Game implements Cloneable {
 		this.score = 0;
 		this.repopulateBoard();
 	}
+	
+	public void reset() {
+		this.initialize();
+	}
 
 	public int getScore() {
 		return score;

@@ -15,6 +15,11 @@ public class LightningGame extends Game {
 		super.initialize();
 		timeRemaining = TOTAL_TIME;
 	}
+	
+	@Override
+	public void reset() {
+		super.initialize();
+	}
 
 	@Override
 	public boolean gameOver() {
