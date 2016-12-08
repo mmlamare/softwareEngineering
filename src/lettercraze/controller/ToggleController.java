@@ -1,5 +1,6 @@
 package lettercraze.controller;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,16 +27,19 @@ public class ToggleController implements ActionListener
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Toggling block, fix this!");
-		if (source.isEnabled())
+		System.out.println("Toggling block!");
+		
+		if (source.getBackground().equals(Color.BLACK))
 		{
-			source.setEnabled(false);
+			source.setBackground(null);
+			//source.setEnabled(false);
 		}
 		else
 		{
-			source.setEnabled(true);
+			source.setBackground(Color.BLACK);
+			//source.setEnabled(true);
 		}
-		System.out.println("Button x, y = " + source.getPoint().row + ", " + source.getPoint().col);
+		//source.setBorder(null);
 	}
 
 }

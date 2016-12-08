@@ -32,7 +32,7 @@ public class MainBuilder {
 		try
 		{
 			System.out.println("Sleeping for 5 seconds...");
-			TimeUnit.SECONDS.sleep(5);
+			TimeUnit.SECONDS.sleep(1);
 			splash.dispose();
 		}
 		catch (InterruptedException e)
