@@ -1,4 +1,4 @@
-package lettercraze.controller;
+package lettercraze.controller.builder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

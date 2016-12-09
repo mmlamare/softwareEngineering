@@ -9,15 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
-import lettercraze.controller.AddWordController;
-import lettercraze.controller.DeleteWordController;
-import lettercraze.controller.LoadBoardController;
-import lettercraze.controller.PublishBoardController;
 import lettercraze.controller.QuitBoardController;
 import lettercraze.controller.ToggleController;
-//import lettercraze.model.Model;
-import lettercraze.model.ModelBuilder;
+import lettercraze.controller.builder.AddWordController;
+import lettercraze.controller.builder.DeleteWordController;
+import lettercraze.controller.builder.LoadBoardController;
+import lettercraze.controller.builder.PublishBoardController;
 import lettercraze.model.board.Board;
+import lettercraze.model.board.ModelBuilder;
 import lettercraze.model.board.Point;
 
 import java.awt.Color;

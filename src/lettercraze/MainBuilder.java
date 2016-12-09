@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
-import lettercraze.model.ModelBuilder;
+import lettercraze.model.board.ModelBuilder;
 import lettercraze.view.BuilderView;
 import lettercraze.view.LetterCraze;
 import lettercraze.view.SplashScreenView;

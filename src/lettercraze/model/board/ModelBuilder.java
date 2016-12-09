@@ -1,7 +1,7 @@
-package lettercraze.model;
+package lettercraze.model.board;
 
-import lettercraze.model.board.Point;
-import lettercraze.model.board.Square;
+import lettercraze.model.Level;
+import lettercraze.model.LevelType;
 
 public class ModelBuilder {
 	Level l;
