@@ -14,8 +14,8 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 
-public class LevelLoader {
-	public static Level loadLevel(InputStream in) {
+public class LevelLoader implements Loader {
+	public Level load(InputStream in) {
 		Scanner sc = new Scanner(in);
 		Level result = new Level();
 

@@ -1,22 +1,10 @@
 package lettercraze.files;
 
-import static lettercraze.model.LevelType.LIGHTNING;
-import static lettercraze.model.LevelType.PUZZLE;
-import static lettercraze.model.LevelType.THEME;
-
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 import lettercraze.model.Dictionary;
 import lettercraze.model.Level;
-import lettercraze.model.board.Board;
-import lettercraze.model.board.Point;
-import lettercraze.model.board.Square;
 
 // This class handles loading all static resources from the JAR file. This
 // includes images, levels, and the dictionary. This class also contains the
@@ -63,51 +51,33 @@ public class Resources {
 
 		LEVELS = new Level[NUM_LEVELS];
 		for (int i = 0; i < NUM_LEVELS; ++i) {
-			LEVELS[i] = loadLevelByID(i);
+			LEVELS[i] = loadLevel("level" + i);
 		}
 		
 		DICT = loadDictionary("english.dict");
 	}
 
-	/// ALL LOADERS LIE BELOW
-
-	public static Dictionary loadDictionary(String resourceName) {
-		InputStream in = getStream(resourceName);
-		Scanner sc = new Scanner(in);
-		Dictionary result = new Dictionary();
-		while (sc.hasNextLine()) {
-			String w = sc.nextLine();
-			result.addWord(w);
-		}
-		sc.close();
-
-		return result;
-	}
-	public static Level loadLevelByID(int id) {
-		return loadLevel("level" + id);
-	}
-	public static Level loadLevel(String resourceName) {
+	public static Object loadResource(String resourceName, Loader l) {
 		InputStream in = getStream(resourceName);
 		if (in == null) {
-			System.err.println("Could not locate Level resource with name: " + resourceName);
+			System.err.println("Resources: Could not locate resource with name: " + resourceName);
 			return null;
 		}
-		Level result = LevelLoader.loadLevel(in);
+		Object result = l.load(in);
 		if (result == null) {
-			System.err.println("Invalid Level format: " + resourceName);
+			System.err.println("Resources: Invalid format for resource: " + resourceName);
 		}
 
 		return result;
 	}
-	public static Image loadImage(String resourceName)
-	{
-	    URL url = Thread.currentThread().getContextClassLoader()
-	    		.getResource(resourceName);
-	    if (url != null){
-	    	return Toolkit.getDefaultToolkit().getImage(url);
-	    } else {
-	    	System.err.println("Image Resource Not Found: " + resourceName);
-	    	return null;
-	    }
+
+	public static Dictionary loadDictionary(String resourceName) {
+		return (Dictionary) loadResource(resourceName, new DictionaryLoader());
+	}
+	public static Level loadLevel(String resourceName) {
+		return (Level) loadResource(resourceName, new LevelLoader());
+	}
+	public static Image loadImage(String resourceName) {
+		return (Image) loadResource(resourceName, new ImageLoader());
 	}
 }
