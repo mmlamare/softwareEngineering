@@ -188,23 +188,25 @@ public class BuilderView {
 		lblLevelType.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblLevelType);
 		
-		JRadioButton radioPuzzle = new JRadioButton("Puzzle");
-		radioPuzzle.setSelected(true);
-		radioPuzzle.setBounds(6, 115, 141, 20);
-		panel_1.add(radioPuzzle);
+		JRadioButton buttons[] = new JRadioButton[3];
+		buttons[0] = new JRadioButton("Puzzle");
+		buttons[0].setSelected(true);
+		buttons[0].setBounds(6, 115, 141, 20);
+		panel_1.add(buttons[0]);
 		
-		JRadioButton radioLightning = new JRadioButton("Lightning");
-		radioLightning.setBounds(6, 133, 141, 20);
-		panel_1.add(radioLightning);
+		buttons[1] = new JRadioButton("Lightning");
+		buttons[1].setBounds(6, 133, 141, 20);
+		panel_1.add(buttons[1]);
 		
-		JRadioButton radioTheme = new JRadioButton("Theme");
-		radioTheme.setBounds(6, 151, 141, 20);
-		panel_1.add(radioTheme);
+		buttons[2] = new JRadioButton("Theme");
+		buttons[2].setBounds(6, 151, 141, 20);
+		panel_1.add(buttons[2]);
 		
 		ButtonGroup gameModes = new ButtonGroup();
-		gameModes.add(radioPuzzle);
-		gameModes.add(radioLightning);
-		gameModes.add(radioTheme);
+		for (int i=0; i<buttons.length; i++)
+		{
+			gameModes.add(buttons[i]);
+		}
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 175, 148, 66);
@@ -230,7 +232,7 @@ public class BuilderView {
 		panel_1.add(btnDelete);
 		
 		JButton btnSave = new JButton("SAVE");
-		btnSave.addActionListener(new PublishBoardController(frame, squares));
+		btnSave.addActionListener(new PublishBoardController(frame, squares, buttons));
 		btnSave.setBounds(16, 277, 117, 29);
 		frame.getContentPane().add(btnSave);
 		
