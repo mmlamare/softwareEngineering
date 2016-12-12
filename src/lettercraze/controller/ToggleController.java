@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.UIManager;
+
 import lettercraze.view.BoardButton;
 
 /**
@@ -29,14 +32,16 @@ public class ToggleController implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Toggling block!");
 		
-		if (source.getBackground().equals(Color.BLACK))
+		if (source.getBackground().equals(Color.GRAY))
 		{
 			source.setBackground(null);
+			source.setBorder(UIManager.getBorder("Button.border"));
 			//source.setEnabled(false);
 		}
 		else
 		{
-			source.setBackground(Color.BLACK);
+			source.setBackground(Color.GRAY);
+			source.setBorder(null);
 			//source.setEnabled(true);
 		}
 		//source.setBorder(null);
