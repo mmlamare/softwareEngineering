@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import lettercraze.view.BoardButton;
+
 /**
  * This controller handles the Saving of a custom board in the builder app.
  * @see BuilderView
@@ -18,7 +20,7 @@ public class PublishBoardController implements ActionListener
 	 * Initializer requires the frame that the builder window belongs to.
 	 * @param frame
 	 */
-	public PublishBoardController(JFrame frame)
+	public PublishBoardController(JFrame frame, BoardButton squares[][])
 	{
 		this.frame = frame;
 	}
@@ -32,7 +34,7 @@ public class PublishBoardController implements ActionListener
 
 		showMessage(frame, "Board saved!");
 		//Exit game
-		exitGame();
+		//exitGame();
 	}
 	
 	private void showMessage(JFrame frame, String message)

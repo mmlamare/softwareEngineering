@@ -15,6 +15,7 @@ import lettercraze.controller.builder.DeleteWordController;
 import lettercraze.controller.builder.LoadBoardController;
 import lettercraze.controller.builder.PublishBoardController;
 import lettercraze.controller.builder.QuitBoardController;
+import lettercraze.controller.builder.RightClickController;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.ModelBuilder;
 import lettercraze.model.board.Point;
@@ -46,6 +47,8 @@ public class BuilderView {
 	public final static int BUTTON_SIZE = 32;
 	
 	private static ModelBuilder m;
+	
+	BoardButton squares[][];
 	
 	public BuilderView(ModelBuilder m)
 	{
@@ -99,7 +102,7 @@ public class BuilderView {
 		
 		panel.setLayout(new GridLayout(6,6));
 		//panel.m = m;
-		BoardButton squares[][] = new BoardButton[6][6];
+		squares = new BoardButton[6][6];
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col=0; col < Board.SIZE; ++col) {
 				squares[row][col] = new BoardButton(new Point(row,col));
@@ -107,6 +110,7 @@ public class BuilderView {
 				squares[row][col].setSize(BUTTON_SIZE, BUTTON_SIZE);
 				squares[row][col].setFocusable(false);
 				squares[row][col].addActionListener(new ToggleController(squares[row][col]));
+				squares[row][col].addMouseListener(new RightClickController(squares[row][col]));
 				panel.add(squares[row][col]);
 			}
 		}
@@ -226,12 +230,12 @@ public class BuilderView {
 		panel_1.add(btnDelete);
 		
 		JButton btnSave = new JButton("SAVE");
-		btnSave.addActionListener(new PublishBoardController(frame));
+		btnSave.addActionListener(new PublishBoardController(frame, squares));
 		btnSave.setBounds(16, 277, 117, 29);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnLoad = new JButton("LOAD");
-		btnLoad.addActionListener(new LoadBoardController(frame));
+		btnLoad.addActionListener(new LoadBoardController(frame, squares));
 		btnLoad.setBounds(145, 277, 117, 29);
 		frame.getContentPane().add(btnLoad);
 		

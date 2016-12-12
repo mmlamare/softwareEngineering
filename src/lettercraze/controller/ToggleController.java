@@ -29,19 +29,22 @@ public class ToggleController implements ActionListener
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e)
+	{
 		System.out.println("Toggling block!");
 		
 		if (source.getBackground().equals(Color.GRAY))
 		{
 			source.setBackground(null);
 			source.setBorder(UIManager.getBorder("Button.border"));
+			source.setForeground(Color.BLACK);
 			//source.setEnabled(false);
 		}
 		else
 		{
 			source.setBackground(Color.GRAY);
 			source.setBorder(null);
+			source.setForeground(new Color(80, 80, 80));
 			//source.setEnabled(true);
 		}
 		//source.setBorder(null);
