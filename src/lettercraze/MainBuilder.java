@@ -31,7 +31,7 @@ public class MainBuilder {
 		
 		try
 		{
-			System.out.println("Sleeping for 5 seconds...");
+			System.out.println("Sleeping for 5 seconds...");j
 			TimeUnit.SECONDS.sleep(5);
 			splash.dispose();
 		}

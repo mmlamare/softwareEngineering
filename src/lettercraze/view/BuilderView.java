@@ -154,34 +154,35 @@ public class BuilderView {
 		lblThreshholds.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblThreshholds);
 		
-		textField = new JTextField();
-		textField.setBounds(74, 22, 56, 26);
-		textField.setText("100");
-		textField.addKeyListener(textFilter);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		JTextField scores[] = new JTextField[3];
+		scores[0] = new JTextField();
+		scores[0].setBounds(74, 22, 56, 26);
+		scores[0].setText("100");
+		scores[0].addKeyListener(textFilter);
+		panel_1.add(scores[0]);
+		scores[0].setColumns(10);
 		
 		JLabel lblStar_1 = new JLabel("Star 2:");
 		lblStar_1.setBounds(22, 50, 40, 15);
 		panel_1.add(lblStar_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(74, 45, 56, 26);
-		textField_1.setText("200");
-		textField.addKeyListener(textFilter);
-		panel_1.add(textField_1);
-		textField_1.setColumns(10);
+		scores[1] = new JTextField();
+		scores[1].setBounds(74, 45, 56, 26);
+		scores[1].setText("200");
+		scores[1].addKeyListener(textFilter);
+		panel_1.add(scores[1]);
+		scores[1].setColumns(10);
 		
 		JLabel lblStar_2 = new JLabel("Star 3:");
 		lblStar_2.setBounds(22, 73, 40, 16);
 		panel_1.add(lblStar_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(74, 68, 56, 26);
-		textField_2.setText("300");
-		textField_2.setColumns(10);
-		textField.addKeyListener(textFilter);
-		panel_1.add(textField_2);
+		scores[2] = new JTextField();
+		scores[2].setBounds(74, 68, 56, 26);
+		scores[2].setText("300");
+		scores[2].setColumns(10);
+		scores[2].addKeyListener(textFilter);
+		panel_1.add(scores[2]);
 		
 		JLabel lblLevelType = new JLabel("Level Type");
 		lblLevelType.setBounds(6, 96, 148, 16);
@@ -214,7 +215,8 @@ public class BuilderView {
 		
 		//String[] data = {"one", "two", "three", "four"};
 		JList list = new JList();
-		list.setModel(new DefaultListModel());
+		DefaultListModel listModel = new DefaultListModel();
+		list.setModel(listModel);
 		list.setToolTipText("Words to add for Theme levels");
 		scrollPane.setViewportView(list);
 		
@@ -232,12 +234,12 @@ public class BuilderView {
 		panel_1.add(btnDelete);
 		
 		JButton btnSave = new JButton("SAVE");
-		btnSave.addActionListener(new PublishBoardController(frame, squares, buttons));
+		btnSave.addActionListener(new PublishBoardController(frame, squares, buttons, scores, listModel));
 		btnSave.setBounds(16, 277, 117, 29);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnLoad = new JButton("LOAD");
-		btnLoad.addActionListener(new LoadBoardController(frame, squares));
+		btnLoad.addActionListener(new LoadBoardController(frame, squares, buttons, scores, listModel));
 		btnLoad.setBounds(145, 277, 117, 29);
 		frame.getContentPane().add(btnLoad);
 		
