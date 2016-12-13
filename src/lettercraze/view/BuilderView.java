@@ -34,6 +34,11 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * This is the high level GUI object for the builder application
+ * @author Jack Pugmire
+ * @version 1.0
+ */
 public class BuilderView {
 
 	private JFrame frame;
@@ -42,10 +47,15 @@ public class BuilderView {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	
+	/**The static variable for the button size */
 	public final static int BUTTON_SIZE = 32;
 	
 	private static ModelBuilder m;
 	
+	/**
+	 * The constructor for the BuilderView
+	 * @param m The model
+	 */
 	public BuilderView(ModelBuilder m)
 	{
 		this.m = m;

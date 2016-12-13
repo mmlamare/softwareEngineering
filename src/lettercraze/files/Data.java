@@ -6,19 +6,37 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
+/**
+ * This is the class for reading and writing level files.
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 public class Data {
+	/** Holds the files extension data path. */
 	public static final String DATA_PATH = "/.lettercraze/";
+	/** Holds a generic extension for a score file */
 	public static final String SCORE_FILE = "scores.txt";
 
+	/**
+	 * @param name name of file without an extension
+	 * @return The full file name
+	 */
 	public static String pathToData(String name) {
 		return System.getProperty("user.home") + DATA_PATH + name;
 	}
-	// check if the data path exists
+	 
+	/**
+	 * check if the data path exists
+	 * @return T/F if the data path exists
+	 */
 	public static boolean dataPathExists() {
 		File f = new File(pathToData(""));
 		return f.isDirectory();
 	}
-	// create the data directory (or fail and complain)
+	
+	/**
+	 * create the data directory (or fail and complain)
+	 */
 	public static void createDataPath() {
 		File f = new File(pathToData(""));
 		if(!f.mkdir()) {
@@ -27,8 +45,11 @@ public class Data {
 		}
 	}
 
-	// Attempt to read scores. If the file is not found, assume 0 stars for
-	// every level.
+	/**
+	 * Attempt to read scores.
+	 * If the file is not found, assume 0 stars for every level.
+	 * @return list of scores
+	 */
 	public static int[] readScores() {
 		File f = new File(pathToData(SCORE_FILE));
 		int[] result = new int[Resources.NUM_LEVELS];
@@ -51,7 +72,10 @@ public class Data {
 		return result;
 	}
 	
-	// Attempt to write the scores
+	/**
+	 * Attempt to write the scores
+	 * @param scores The list of scores
+	 */
 	public static void writeScores(int[] scores) {
 		try {
 			System.out.println("writing file");

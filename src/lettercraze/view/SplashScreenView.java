@@ -10,18 +10,31 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+/**
+ * This is the GUI Boundary class for the splash screen
+ * @author Jack Pugmire
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class SplashScreenView extends JFrame
 {
 	JFrame frame;
 	String messages[];
 	
+	/**
+	 * Splash screen view constructor
+	 * @param newMessages The messages that will be displayed
+	 * on the splash screen.
+	 */
 	public SplashScreenView(String newMessages[])
 	{
 		messages = newMessages;
 		initialize();
 	}
 	
+	/**
+	 * Initializes the splash screen
+	 */
 	public void initialize() {
 		this.setLayout(new GridLayout(7, 1));
 		//this.setBackground(new Color(30, 180, 130));

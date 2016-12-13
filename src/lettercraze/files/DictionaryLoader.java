@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 import lettercraze.model.Dictionary;
 
+/**
+ * This class loads in the dictionary
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 public class DictionaryLoader implements Loader {
 	public Object load(InputStream in) {
 		Scanner sc = new Scanner(in);

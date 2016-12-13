@@ -4,10 +4,22 @@ import java.util.LinkedList;
 
 import lettercraze.model.board.Point;
 
+/**
+ * This class handles selection and de-selection of square at
+ * the entity level. 
+ * @author Jack Pugmire
+ * @version 1.0
+ */
 public class SelectSquareMove extends Move {
 	Point loc;
 	boolean isDeselection;
 
+	/**
+	 * The constructor for creating a SelectSquareMove Object
+	 * @param initial The initial state of the game
+	 * @param p The point that references the location of the
+	 * square that is to be selected.
+	 */
 	public SelectSquareMove(Game initial, Point p) {
 		this.initialState = initial;
 		this.loc = p;

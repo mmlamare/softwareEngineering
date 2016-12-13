@@ -8,16 +8,35 @@ import lettercraze.model.game.LightningGame;
 import lettercraze.model.game.PuzzleGame;
 import lettercraze.model.game.ThemeGame;
 
+/**
+ * Level is mostly a dumb data class, so I'd rather have the 
+ * fields be public than filling up space with pointless accessors
+ * @author Jack Pugmire
+ * @version 1.0
+ */
 public class Level {
-	// Level is mostly a dumb data class, so I'd rather have the fields be
-	// public than filling up space with pointless accessors
+	/**The initial board for the level */
 	public Board initBoard;
-	public int oneStar, twoStar, threeStar;
+	/**The score threshold to achieve 1 star */
+	public int oneStar;
+	/**The score threshold to achieve 2 stars */
+	public int twoStar;
+	/**The score threshold to achieve 3 stars */
+	public int threeStar;
+	/**The level's level type*/
 	public LevelType type;
+	/**The word limit. 0 for non puzzle levels. */
 	public int wordLimit = 0;
+	/**The loaded dictionary for the level */
 	public Dictionary words = null;
+	/**The name of the level */
 	public String name = "";
 
+	/**
+	 * This is the method for loading a level
+	 * @param id The identifier for what type of level it is
+	 * @return The game to be played
+	 */
 	public Game loadLevel(int id) {
 		Game result = null;
 		if (type == PUZZLE) {
@@ -30,6 +49,10 @@ public class Level {
 		return result;
 	}
 
+	/**
+	 * TODO
+	 * @param filename
+	 */
 	public void saveToFile(String filename) {
 		// TODO
 	}

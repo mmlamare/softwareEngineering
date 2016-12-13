@@ -13,16 +13,31 @@ import lettercraze.controller.SubmitController;
 import lettercraze.controller.UndoButtonController;
 import lettercraze.model.Model;
 
+/**
+ * This is the highest level GUI class for the entire game
+ * @author Jack Pugmire, Matthew Lamare
+ * @version 1.2
+ */
 @SuppressWarnings("serial")
 public class LetterCraze extends JFrame {
+	/** This static variable is the width of the window */
 	public static final int WIDTH=600;
+	/** This static variable is the height of the window */
 	public static final int HEIGHT=400;
+	/** 
+	 * This static variable number of ticks for the real
+	 * time clock
+	 * */
 	public static final int TICK_TIME=1000;
 
 	Model m;
 	GameView gameView;
 	MenuView menuView;
 
+	/**
+	 * This is the constructor for the LetterCraze class
+	 * @param m The model
+	 */
 	public LetterCraze(Model m) {
 		super();
 		this.m = m;
@@ -35,6 +50,9 @@ public class LetterCraze extends JFrame {
 		this.update();
 	}
 
+	/**
+	 * Initializes a game from the very beginning
+	 */
 	public void initializeGame() {
 		if (menuView != null) {
 			this.remove(menuView);
@@ -55,6 +73,9 @@ public class LetterCraze extends JFrame {
 		}
 	}
 	
+	/**
+	 * Initialize the level select menu GUIs
+	 */
 	public void initializeMenu() {
 		if (gameView != null) {
 			this.remove(gameView);
@@ -67,6 +88,9 @@ public class LetterCraze extends JFrame {
 		this.revalidate();
 	}
 	
+	/**
+	 * Refreshes the Gui's
+	 */
 	public void update() {
 		if (m.isInGame()) {
 			if(gameView == null) {
@@ -83,6 +107,9 @@ public class LetterCraze extends JFrame {
 		this.repaint();
 	}
 
+	/**
+	 * Initializes a game
+	 */
 	public void initialize() {
 		this.initializeMenu();
 		this.setVisible(true);

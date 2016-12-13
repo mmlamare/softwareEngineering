@@ -13,12 +13,24 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.game.Game;
 
+/**
+ * This is the GUI boundary class for the board.
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class BoardView extends JPanel {
+	
+	/**This static variable is the size of the buttons */
 	public final static int BUTTON_SIZE = 32;
+	
 	Model m;
 	BoardButton squares[][];
 	
+	/**
+	 * This is the constructor for BoardView
+	 * @param m The model object
+	 */
 	public BoardView(Model m) {
 		super();
 		this.setLayout(new GridLayout(6,6));
@@ -37,6 +49,10 @@ public class BoardView extends JPanel {
 		this.update();
 	}
 	
+	/**
+	 * This method ads an action listener to handle interaction
+	 * @param l The actionListener object
+	 */
 	public void addActionListener(ActionListener l) {
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col=0; col < Board.SIZE; ++col) {
@@ -45,6 +61,9 @@ public class BoardView extends JPanel {
 		}
 	}
 	
+	/**
+	 * This method updates the board part of the display.
+	 */
 	public void update() {
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col=0; col < Board.SIZE; ++col) {
