@@ -9,12 +9,12 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
-import lettercraze.controller.QuitBoardController;
 import lettercraze.controller.ToggleController;
 import lettercraze.controller.builder.AddWordController;
 import lettercraze.controller.builder.DeleteWordController;
 import lettercraze.controller.builder.LoadBoardController;
 import lettercraze.controller.builder.PublishBoardController;
+import lettercraze.controller.builder.QuitBoardController;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.ModelBuilder;
 import lettercraze.model.board.Point;
@@ -27,6 +27,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -193,18 +194,23 @@ public class BuilderView {
 		lblLevelType.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblLevelType);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Puzzle");
-		rdbtnNewRadioButton.setSelected(true);
-		rdbtnNewRadioButton.setBounds(6, 115, 141, 20);
-		panel_1.add(rdbtnNewRadioButton);
+		JRadioButton radioPuzzle = new JRadioButton("Puzzle");
+		radioPuzzle.setSelected(true);
+		radioPuzzle.setBounds(6, 115, 141, 20);
+		panel_1.add(radioPuzzle);
 		
-		JRadioButton rdbtnLightning = new JRadioButton("Lightning");
-		rdbtnLightning.setBounds(6, 133, 141, 20);
-		panel_1.add(rdbtnLightning);
+		JRadioButton radioLightning = new JRadioButton("Lightning");
+		radioLightning.setBounds(6, 133, 141, 20);
+		panel_1.add(radioLightning);
 		
-		JRadioButton rdbtnTheme = new JRadioButton("Theme");
-		rdbtnTheme.setBounds(6, 151, 141, 20);
-		panel_1.add(rdbtnTheme);
+		JRadioButton radioTheme = new JRadioButton("Theme");
+		radioTheme.setBounds(6, 151, 141, 20);
+		panel_1.add(radioTheme);
+		
+		ButtonGroup gameModes = new ButtonGroup();
+		gameModes.add(radioPuzzle);
+		gameModes.add(radioLightning);
+		gameModes.add(radioTheme);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 175, 148, 66);
@@ -215,7 +221,6 @@ public class BuilderView {
 		list.setModel(new DefaultListModel());
 		list.setToolTipText("Words to add for Theme levels");
 		scrollPane.setViewportView(list);
-		
 		
 		JButton btnAddWord = new JButton("+ Add");
 		btnAddWord.addActionListener(new AddWordController(frame, list));

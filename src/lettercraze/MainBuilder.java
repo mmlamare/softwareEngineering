@@ -30,18 +30,18 @@ public class MainBuilder {
 		}
 		
 		String values[] = {"LetterCraze Builder", "Ruthenium", "Jacob", "Matt", "Jack", "Andrew", "Cam"};
-		SplashScreenView splash = new SplashScreenView(values);
+		/*SplashScreenView splash = new SplashScreenView(values);
 		
 		try
 		{
 			System.out.println("Sleeping for 5 seconds...");
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(5);
 			splash.dispose();
 		}
 		catch (InterruptedException e)
 		{
 			System.out.println("Sleep interrupted: " + e.getMessage());
-		}
+		}*/
 		
 		
 		ModelBuilder m = new ModelBuilder();
