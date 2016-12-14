@@ -39,8 +39,8 @@ public class TestLightningClockController extends TestCase {
 		setUp();
 		LightningClockController lCC = new LightningClockController(m, app);
 		m.loadLevelByID(0);
-		//ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
-		//lCC.actionPerformed(ae);
+		ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
+		lCC.actionPerformed(ae);
 		assertNotSame("120", m.getCurrentGame().getInfoString());
 		tearDown();
 	}
@@ -49,8 +49,8 @@ public class TestLightningClockController extends TestCase {
 		setUp();
 		LightningClockController lCC = new LightningClockController(m, app);
 		m.loadLevelByID(1);
-		//ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
-		//lCC.actionPerformed(ae);
+		ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
+		lCC.actionPerformed(ae);
 		assertEquals(m.getCurrentGame().getInfoString(), "119");
 		tearDown();
 	}

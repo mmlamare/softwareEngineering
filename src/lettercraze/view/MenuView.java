@@ -92,4 +92,8 @@ public class MenuView extends JPanel {
 			buttons[i].setUnlocked(m.isUnlocked(i));
 		}
 	}
+	
+	public LevelButton getButton(int index) {
+		return buttons [index];		
+	}
 }

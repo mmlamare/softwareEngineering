@@ -38,8 +38,8 @@ public class TestLevelSelectionController extends TestCase {
 	public void testLockedLevel() {
 		setUp();
 		LevelSelectionController lscon = new LevelSelectionController(m,app);
-		//assertFalse(m.isUnlocked(mView.getButton(8).getLevelID()));
-		//ActionEvent ae = new ActionEvent(mView.getButton(8), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
+		assertFalse(m.isUnlocked(mView.getButton(8).getLevelID()));
+		ActionEvent ae = new ActionEvent(mView.getButton(8), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
 		assertFalse(m.isInGame());
 		tearDown();
 	}
@@ -47,9 +47,9 @@ public class TestLevelSelectionController extends TestCase {
 	public void testUnlockedLevel(){
 		setUp();
 		LevelSelectionController lscon = new LevelSelectionController(m,app);
-		//assertTrue(m.isUnlocked(mView.getButton(0).getLevelID()));
-		//ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
-		//lscon.actionPerformed(ae);
+		assertTrue(m.isUnlocked(mView.getButton(0).getLevelID()));
+		ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
+		lscon.actionPerformed(ae);
 		assertTrue(m.isInGame());
 		assertEquals(0,m.currentGame.getLevelID());
 	}
@@ -57,9 +57,9 @@ public class TestLevelSelectionController extends TestCase {
 	public void testBadLevelSource(){
 		setUp();
 		LevelSelectionController lscon = new LevelSelectionController(m,app);
-		//assertTrue(m.isUnlocked(mView.getButton(0).getLevelID()));
-		//ActionEvent ae = new ActionEvent(mView.getButton(14), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
-		//lscon.actionPerformed(ae);
+		assertTrue(m.isUnlocked(mView.getButton(0).getLevelID()));
+		ActionEvent ae = new ActionEvent(mView.getButton(14), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
+		lscon.actionPerformed(ae);
 		assertFalse(m.isInGame());	
 	}
 
