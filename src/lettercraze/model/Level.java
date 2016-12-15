@@ -61,6 +61,6 @@ public class Level {
 	}
 
 	public boolean hasWordLimit() {
-		return wordLimit == 0;
+		return wordLimit != 0;
 	}
 }
