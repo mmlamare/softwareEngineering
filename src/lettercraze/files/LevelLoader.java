@@ -14,7 +14,13 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 
+/**
+ * This class handles loading level files
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 public class LevelLoader implements Loader {
+	
 	public Level load(InputStream in) {
 		Scanner sc = new Scanner(in);
 		Level result = new Level();

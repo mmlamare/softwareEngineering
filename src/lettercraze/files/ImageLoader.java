@@ -5,6 +5,12 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+/**
+ * This Class Loads in Images for the graphics
+ * @author Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ *
+ */
 public class ImageLoader implements Loader {
 
 	@Override

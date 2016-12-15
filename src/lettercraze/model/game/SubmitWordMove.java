@@ -7,9 +7,19 @@ import lettercraze.model.Dictionary;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 
+/**
+ * This is the class for handling the submitting of a word at 
+ * the entity level.
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 public class SubmitWordMove extends Move {
 	String word;
 
+	/**
+	 * This is the constructor for SubmitWordMove
+	 * @param initial The initial Game object
+	 */
 	public SubmitWordMove(Game initial) {
 		this.initialState = initial;
 		word = "";

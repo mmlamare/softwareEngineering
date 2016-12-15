@@ -8,14 +8,30 @@ import javax.swing.JButton;
 
 import lettercraze.files.Resources;
 
+/**
+ * This is the GUI boundary object of the main menu button that
+ * the player selects to play that level if it is availible. If
+ * it is not unlocked, it will display a locked image, and will
+ * not respond to mouse inputs.
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class LevelButton extends JButton {
+	/**Static variable for the size of the button */
 	public final int SIZE = 84;
 
 	int levelID;
 	int stars;
 	boolean unlocked;
 
+	/**
+	 * Constructor for a level button
+	 * @param levelID The level number
+	 * @param stars The number of stars that have been previously
+	 * earned playing this level
+	 * @param unlocked The locked/unlocked status of the level
+	 */
 	public LevelButton(int levelID, int stars, boolean unlocked) {
 		super();
 		this.levelID = levelID;
@@ -27,6 +43,11 @@ public class LevelButton extends JButton {
 		this.setPreferredSize(new Dimension(SIZE,SIZE));
 	}
 
+	/**
+	 * The method for setting the visibility of the number of
+	 * stars earned for a level
+	 * @param stars The number of stars to display
+	 */
 	public void setStars(int stars) {
 		this.stars = stars;
 
@@ -45,14 +66,24 @@ public class LevelButton extends JButton {
 			img = Resources.LB3;
 			break;
 		}
+		//TODO default case
 		this.setIcon(new ImageIcon(img));
 	}
 
+	/**
+	 * Method to set a level as unlocked
+	 * @param u The boolean input: True -> Unlocked, 
+	 * False -> still locked
+	 */
 	public void setUnlocked(boolean u) {
 		this.unlocked = u;
 		this.setText(u ? "Lvl" + levelID : "locked");
 	}
 
+	/**
+	 * Level ID getter
+	 * @return The level number
+	 */
 	public int getLevelID() {
 		return levelID;
 	}

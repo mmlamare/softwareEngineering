@@ -18,23 +18,45 @@ import lettercraze.files.Resources;
 import lettercraze.model.Model;
 import lettercraze.model.game.Game;
 
+/**
+ * This is the high level GUI object for a Lettercraze game
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class GameView extends JPanel {
 	Model m;
 
+	
 	// The Game View is a convenient container, but only one will ever exist at
 	// a time and it will always be owned by LetterCraze. As a result, we make
 	// its components public to make our code neater.
+	/** The board GUI Object */
 	public BoardView boardView;
+	/** The infoBox GUI Object */
 	public JLabel infoBox;
+	/** 
+	 * The GUI Object for displaying the number of stars
+	 * achieved
+	 * */
 	public JLabel starDisplay;
+	/** The quit button GUI Object */
 	public JButton quitButton;
+	/** The undo button GUI Object */
 	public JButton undoButton;
+	/** The reset button GUI Object */
 	public JButton resetButton;
+	/** The played words pane GUI Object */
 	public JScrollPane wordsPane;
+	/** The words played list GUI Object */
 	public JList<String> wordsPlayed;
+	/** The score text GUI Object */
 	public JLabel scoreLabel;
 	
+	/**
+	 * The constructor for the gameView
+	 * @param m The model
+	 */
 	public GameView(Model m) {
 		super();
 		
@@ -107,6 +129,11 @@ public class GameView extends JPanel {
 		this.add(starDisplay, gc);
 	}
 	
+	/**
+	 * This method updates the number of stars in the display
+	 * when the user has earned more stars, or has reverted a
+	 * more, and lowered his score to loose a star.
+	 */
 	public void updateStarDisplay() {
 		int stars = m.currentGame.computeStars();
 		Image img = null;
@@ -126,6 +153,10 @@ public class GameView extends JPanel {
 		}
 		this.starDisplay.setIcon(new ImageIcon(img));
 	}
+	
+	/**
+	 * Refresh all of the Game GUI's 
+	 */
 	public void update() {
 		boardView.update();
 		this.updateStarDisplay();

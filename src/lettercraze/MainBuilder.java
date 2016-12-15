@@ -17,6 +17,9 @@ import lettercraze.view.SplashScreenView;
  */
 public class MainBuilder {
 
+	/**
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args) {
 		// Load static resources from within the JAR file
 		Resources.loadResources();

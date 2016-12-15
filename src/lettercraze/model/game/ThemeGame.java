@@ -4,8 +4,20 @@ import lettercraze.model.Level;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 
+/**
+ * The ThemeGame class for making Theme levels. Since it is a
+ * kind of game, it extends the Game abstract class. It overrides
+ * all the necessary inherited methods from the superclass.
+ * @authors Jack Pugmire, Matthew Lamare
+ * @version 1.0
+ */
 public class ThemeGame extends Game {
 
+	/**
+	 * This is the constructor for ThemeGame
+	 * @param l The Level object
+	 * @param id The level number
+	 */
 	public ThemeGame(Level l, int id) {
 		super(l,id);
 	}

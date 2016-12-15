@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 
 import lettercraze.model.Model;
 
+/**
+ * The high level GUI boundary object for the main menu.
+ * @author Jack Pugmire
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class MenuView extends JPanel {
 	Model m;
@@ -18,6 +23,11 @@ public class MenuView extends JPanel {
 
 	static final int NUM_LEVELS = 15;
 
+	/**
+	 * Constructor for MainView
+	 * @param m The model
+	 * @param app The high level application
+	 */
 	public MenuView(Model m, LetterCraze app) {
 		super();
 		this.m = m;
@@ -63,16 +73,27 @@ public class MenuView extends JPanel {
 		this.add(new JLabel("WELCOME TO LETTERCRAZE!"),gc);
 	}
 	
+	/**
+	 * Adds an action listener for interacting with the main menu
+	 * @param l The action listener
+	 */
 	public void addActionListener(ActionListener l) {
 		for (int i =0; i < NUM_LEVELS; ++i) {
 			buttons[i].addActionListener(l);
 		}
 	}
 	
+	/**
+	 * Refreshes the display
+	 */
 	public void update() {
 		for (int i = 0; i < NUM_LEVELS; ++i) {
 			buttons[i].setStars(m.getHighScore(i));
 			buttons[i].setUnlocked(m.isUnlocked(i));
 		}
+	}
+	
+	public LevelButton getButton(int index) {
+		return buttons [index];		
 	}
 }
