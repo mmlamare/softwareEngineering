@@ -53,8 +53,8 @@ public class SubmitController implements KeyListener {
 				}
 				// If the user has cleared the board, congratulate them
 				if (m.getCurrentGame().getBoard().isClear()) {
-					JOptionPane.showMessageDialog(app, "Woah",
-							"You've cleared the board!", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(app, "You've cleared the board!",
+							"Woah!", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}
