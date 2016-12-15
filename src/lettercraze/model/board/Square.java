@@ -4,7 +4,7 @@ import static lettercraze.model.board.SquareType.*;
 
 /**
  * The class is for the Square entities
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Square {

@@ -15,7 +15,7 @@ import lettercraze.model.game.Game;
 
 /**
  * This is the GUI boundary class for the board.
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 @SuppressWarnings("serial")

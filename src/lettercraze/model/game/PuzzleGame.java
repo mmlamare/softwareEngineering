@@ -7,7 +7,7 @@ import lettercraze.model.Level;
  * The PuzzleGame class for making puzzle levels. Since it is a
  * kind of game, it extends the Game abstract class. It overrides
  * all the necessary inherited methods from the superclass.
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 public class PuzzleGame extends Game {

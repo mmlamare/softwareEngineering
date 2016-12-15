@@ -11,7 +11,7 @@ import lettercraze.model.game.ThemeGame;
 /**
  * Level is mostly a dumb data class, so I'd rather have the 
  * fields be public than filling up space with pointless accessors
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 public class Level {

@@ -8,6 +8,7 @@ import lettercraze.view.LetterCraze;
 
 /**
  * This controller is used to handle when the reset button is pressed in GameView.
+ * @author Ruthenium
  * @see GameView
  */
 public class ResetController implements ActionListener {

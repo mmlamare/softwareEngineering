@@ -7,7 +7,7 @@ import lettercraze.model.Level;
  * so it extends the abstract Game class. It overrides the 
  * necessary methods for the specific implementation that 
  * lightning has. 
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class LightningGame extends Game {

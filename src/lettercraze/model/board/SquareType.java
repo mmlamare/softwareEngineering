@@ -2,7 +2,7 @@ package lettercraze.model.board;
 
 /**
  * An enumerated list of the three kinds of squares.
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 public enum SquareType {

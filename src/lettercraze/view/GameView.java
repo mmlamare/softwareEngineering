@@ -20,7 +20,7 @@ import lettercraze.model.game.Game;
 
 /**
  * This is the high level GUI object for a Lettercraze game
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 @SuppressWarnings("serial")

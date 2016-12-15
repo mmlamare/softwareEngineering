@@ -4,7 +4,7 @@ import lettercraze.files.Resources;
 import lettercraze.model.game.Game;
 
 /**
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Model {

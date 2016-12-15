@@ -21,6 +21,7 @@ import lettercraze.view.BuilderView;
 
 /**
  * This controller handles the Saving of a custom board in the builder app.
+ * @author Ruthenium
  * @see BuilderView
  */
 public class PublishBoardController implements ActionListener

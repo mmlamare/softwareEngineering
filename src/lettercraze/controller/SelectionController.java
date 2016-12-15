@@ -10,6 +10,7 @@ import lettercraze.view.LetterCraze;
 
 /**
  * This Controller handles when a square is pressed on the Game Board
+ * @author Ruthenium
  * @see GameView
  */
 public class SelectionController implements ActionListener {

@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 /**
  * Interface for various Loading classes
- * @author Jack Pugmire
+ * @author Ruthenium
  *
  */
 public interface Loader {

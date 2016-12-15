@@ -8,7 +8,7 @@ import lettercraze.view.LetterCraze;
 
 /**
  * This is the controller for the game's Undo Button. 
- * @author Jack
+ * @author Ruthenium
  * @version 1.0
  */
 public class UndoButtonController implements ActionListener {

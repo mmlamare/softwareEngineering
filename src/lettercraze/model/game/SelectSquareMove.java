@@ -7,7 +7,7 @@ import lettercraze.model.board.Point;
 /**
  * This class handles selection and de-selection of square at
  * the entity level. 
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 public class SelectSquareMove extends Move {

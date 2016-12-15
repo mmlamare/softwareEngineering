@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 /**
  * This Class Loads in Images for the graphics
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  *
  */

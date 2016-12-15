@@ -12,7 +12,7 @@ import lettercraze.model.Model;
 
 /**
  * The high level GUI boundary object for the main menu.
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 @SuppressWarnings("serial")

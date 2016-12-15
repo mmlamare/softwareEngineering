@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * This is the class for reading and writing level files.
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Data {
