@@ -32,7 +32,18 @@ public class PuzzleGame extends Game {
 		result *= (w.length() - 2);
 		return result;
 	}
-	
+
+	/**
+	 * TODO Don't know what this does? Not fully implemented?
+	 * @return "Puzzle"
+	 */
+	public String getInfoString() {
+		if (level.wordLimit != 0 ) {
+			return "Words left: " + (level.wordLimit - pastWords.size());
+		}
+		return "Unlimited words";
+	}
+
 	public Object clone() {
 		PuzzleGame result = new PuzzleGame(level, levelID);
 		result.score = this.score;

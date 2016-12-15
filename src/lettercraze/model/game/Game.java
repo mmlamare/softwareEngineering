@@ -82,7 +82,7 @@ public abstract class Game implements Cloneable {
 	 * @return The score of inputed word
 	 */
 	public abstract int scoreWord(String w);
-	
+
 	public abstract Object clone();
 
 	/**
@@ -124,13 +124,13 @@ public abstract class Game implements Cloneable {
 			return 0;
 		}
 	}
-	
+
 	/**
-	 * TODO Don't know what this does? Not fully implemented?
-	 * @return "Puzzle"
+	 * Gives the information string for the top corner of the view
+	 * @return empty string by default, but should be overridden by child classes
 	 */
 	public String getInfoString() {
-		return "Puzzle";
+		return "";
 	}
 
 	/**
@@ -146,7 +146,7 @@ public abstract class Game implements Cloneable {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Initialize a board at the beginning of a game.
 	 */
