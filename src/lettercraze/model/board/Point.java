@@ -3,7 +3,7 @@ package lettercraze.model.board;
 /**
  * This is the point class, that is an abstraction of the 
  * geometric location of square on the board
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Point {

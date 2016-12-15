@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  * This ActionListener is used to prompt the user to add a word in the window builder.
+ * @author Ruthenium
  * @see BuilderView
  */
 public class AddWordController implements ActionListener

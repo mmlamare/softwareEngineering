@@ -7,6 +7,11 @@ import javax.swing.JOptionPane;
 
 import lettercraze.view.BoardButton;
 
+/**
+ * This is the controller for right clicking to set a letter for building theme levels
+ * @author Ruthenium
+ *
+ */
 public class RightClickController implements MouseListener
 {
 	BoardButton source;

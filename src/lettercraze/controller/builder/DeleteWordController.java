@@ -9,6 +9,7 @@ import javax.swing.JList;
 
 /**
  * This ActionListener Removes the selected word from the wordbank in the windowbuilder.
+ * @author Ruthenium
  * @see BuilderView
  */
 public class DeleteWordController implements ActionListener

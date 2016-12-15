@@ -4,7 +4,7 @@ package lettercraze.model;
  * The Letter Model Class. 
  * Each Letter Object stores its score and frequency,
  * 
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Letter {

@@ -12,7 +12,7 @@ import lettercraze.model.board.Square;
  * This is the abstract game class. 
  * Puzzle, Lightning, and theme game level will be instanteated
  * from it.
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public abstract class Game implements Cloneable {

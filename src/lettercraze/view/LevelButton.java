@@ -13,7 +13,7 @@ import lettercraze.files.Resources;
  * the player selects to play that level if it is availible. If
  * it is not unlocked, it will display a locked image, and will
  * not respond to mouse inputs.
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 @SuppressWarnings("serial")

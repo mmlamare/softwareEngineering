@@ -9,6 +9,7 @@ import lettercraze.view.LetterCraze;
 
 /**
  * This class handles when the user has selected a word on the GameView and wants to submit it
+ * @author Ruthenium
  * @see GameView
  */
 public class SubmitController implements KeyListener {

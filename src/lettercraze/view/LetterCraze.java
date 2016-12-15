@@ -15,7 +15,7 @@ import lettercraze.model.Model;
 
 /**
  * This is the highest level GUI class for the entire game
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.2
  */
 @SuppressWarnings("serial")

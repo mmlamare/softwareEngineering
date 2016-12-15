@@ -38,7 +38,7 @@ import java.awt.event.ActionEvent;
 
 /**
  * This is the high level GUI object for the builder application
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 public class BuilderView {

@@ -7,7 +7,7 @@ import lettercraze.model.Dictionary;
 
 /**
  * This class loads in the dictionary
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class DictionaryLoader implements Loader {

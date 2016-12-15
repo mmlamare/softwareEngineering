@@ -6,7 +6,7 @@ import lettercraze.model.board.Point;
 
 /**
  * This is the Board Buttons' boundary GUI object
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 @SuppressWarnings("serial") //TODO Jack, is this OK?

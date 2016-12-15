@@ -13,7 +13,7 @@ import lettercraze.view.LetterCraze;
  * This is the controller class for the lightning level's 
  * count down clock
  * 
- * @authors Jack Pugmire, Matthew Lamare
+ * @authorRuthenium
  * @version 1.0
  */
 public class LightningClockController implements ActionListener {
