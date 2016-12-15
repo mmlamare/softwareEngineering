@@ -115,11 +115,11 @@ public class TestBuilder extends TestCase
 		new Thread(slowEnterThread).start();
 		saveButton.doClick();
 		
-		JButton loadButton = builderView.btnLoad;
+		/*JButton loadButton = builderView.btnLoad;
 
 		new Thread(downArrowThread).start();
 		new Thread(enterThread).start();
-		loadButton.doClick();
+		loadButton.doClick();*/
 		
 		JButton addWord = builderView.btnAddWord;
 		new Thread(letterThread).start();
