@@ -1,5 +1,7 @@
 package lettercraze.model;
 
+import java.util.Random;
+
 import lettercraze.files.Resources;
 import lettercraze.model.game.Game;
 
@@ -15,12 +17,25 @@ public class Model {
 	public Game currentGame = null;
 	int highScores[];
 	boolean unlocked[];
+	
+	/** The random number generator is maintained by the model in order to allow
+	 * consistent letter generation for testing. */
+	Random rng;
 
 	/**
-	 * Constructor
+	 * Constructor which uses the current time in milliseconds as the seed
 	 * @param highScores The previous high scores
 	 */
 	public Model(int highScores[]) {
+		this(highScores, (int)System.currentTimeMillis());
+	}
+
+	/**
+	 * Constructor
+	 * @param highScores High scores retrieved
+	 * @param seed The seed for the random number generator
+	 */
+	public Model(int highScores[], int seed) {
 		inGame = false;
 		this.highScores = highScores;
 		// to determine which levels are unlocked, we go up to the first one
@@ -37,8 +52,10 @@ public class Model {
 		for (; i < NUM_LEVELS; ++i) {
 			unlocked[i] = false;
 		}
+
+		rng = new Random(seed);
 	}
-	
+
 	/**
 	 * Getter for all the highScores field
 	 * @return The all the stored high scores
@@ -46,7 +63,7 @@ public class Model {
 	public int[] getHighScores() {
 		return highScores;
 	}
-	
+
 	/**
 	 * Returns a specific rank high score
 	 * @param id Specifies which high score to return
@@ -55,7 +72,7 @@ public class Model {
 	public int getHighScore(int id) {
 		return highScores[id];
 	}
-	
+
 	/**
 	 * Sets a new high score
 	 * @param id Array ID
@@ -64,7 +81,7 @@ public class Model {
 	public void setHighScore(int id, int val) {
 		highScores[id] = val;
 	}
-	
+
 	/**
 	 * Returns the unlocked/locked status of a level as T/F
 	 * @param id The Level ID
@@ -73,7 +90,7 @@ public class Model {
 	public boolean isUnlocked(int id) {
 		return unlocked[id];
 	}
-	
+
 	/**
 	 * Unlocks a level from inputed level id
 	 * @param id Level identification number
@@ -81,7 +98,7 @@ public class Model {
 	public void unlock(int id) {
 		unlocked[id] = true;
 	}
-	
+
 	/**
 	 * Returns the status of if the level is currently 
 	 * being played
@@ -91,7 +108,7 @@ public class Model {
 	public boolean isInGame() {
 		return inGame;
 	}
-	
+
 	/**
 	 * Returns the currently being played game object
 	 * @return Currently being played game object
@@ -99,11 +116,11 @@ public class Model {
 	public Game getCurrentGame() {
 		return currentGame;
 	}
-	
+
 	//public void startGame() {
 	//	inGame = true;
 	//}
-	
+
 	/**
 	 * Sets the necessary fields for signaling that the level
 	 * has been exited.
@@ -124,7 +141,7 @@ public class Model {
 			System.err.println("No level for ID: " + id);
 		} else {
 			this.inGame = true;
-			this.currentGame = l.loadLevel(id);
+			this.currentGame = l.loadLevel(id, rng);
 			this.currentGame.initialize();
 		}
 	}

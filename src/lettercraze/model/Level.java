@@ -1,5 +1,7 @@
 package lettercraze.model;
 
+import java.util.Random;
+
 import static lettercraze.model.LevelType.*;
 
 import lettercraze.model.board.Board;
@@ -35,16 +37,17 @@ public class Level {
 	/**
 	 * This is the method for loading a level
 	 * @param id The identifier for what type of level it is
+	 * @param rng The random number generator for the game objects
 	 * @return The game to be played
 	 */
-	public Game loadLevel(int id) {
+	public Game loadLevel(int id, Random rng) {
 		Game result = null;
 		if (type == PUZZLE) {
-			result = new PuzzleGame(this, id);
+			result = new PuzzleGame(this, id, rng);
 		} else if (type == LIGHTNING) {
-			result = new LightningGame(this, id);
+			result = new LightningGame(this, id, rng);
 		} else if (type == THEME) {
-			result = new ThemeGame(this, id);
+			result = new ThemeGame(this, id, rng);
 		}
 		return result;
 	}

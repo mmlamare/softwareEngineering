@@ -1,5 +1,7 @@
 package lettercraze.model;
 
+import java.util.Random;
+
 /**
  * The Letter Model Class. 
  * Each Letter Object stores its score and frequency,
@@ -36,7 +38,18 @@ public class Letter {
 	 * @return a random character
 	 */
 	public static char genChar() {
-		double mass = 100 * Math.random();
+		return genCharFromMass(100 * Math.random());
+	}
+	
+	/**
+	 * Generates a character using the provided random number generator
+	 * @return the random character
+	 */
+	public static char genChar(Random rng) {
+		return genCharFromMass(100 * rng.nextDouble());
+	}
+	
+	private static char genCharFromMass(double mass) {
 		float cumulative=0;
 		for (int i=0; i<FREQS.length; ++i) {
 			cumulative += FREQS[i];

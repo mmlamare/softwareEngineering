@@ -1,15 +1,11 @@
 package lettercraze.model.game;
 
-import java.util.concurrent.TimeUnit;
-
 import junit.framework.TestCase;
 import lettercraze.files.Data;
-import lettercraze.files.Resources;
 import lettercraze.model.Model;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.view.LetterCraze;
-import lettercraze.view.SplashScreenView;
 
 public class TestPuzzleGame extends TestCase {
 	Model m;
@@ -18,7 +14,7 @@ public class TestPuzzleGame extends TestCase {
 	@Override
 	public void setUp() {
 		// Load static resources from within the JAR file
-		Resources.loadResources();
+		//Resources.loadResources();
 		// Ensure that we have access to the game's data directory
 		if (!Data.dataPathExists()) {
 			Data.createDataPath();

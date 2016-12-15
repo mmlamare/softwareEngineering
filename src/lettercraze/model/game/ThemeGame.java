@@ -1,5 +1,7 @@
 package lettercraze.model.game;
 
+import java.util.Random;
+
 import lettercraze.model.Level;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
@@ -18,8 +20,8 @@ public class ThemeGame extends Game {
 	 * @param l The Level object
 	 * @param id The level number
 	 */
-	public ThemeGame(Level l, int id) {
-		super(l,id);
+	public ThemeGame(Level l, int id, Random rng) {
+		super(l,id,rng);
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class ThemeGame extends Game {
 	}
 
 	public Object clone() {
-		ThemeGame result = new ThemeGame(level, levelID);
+		ThemeGame result = new ThemeGame(level, levelID, rng);
 		result.score = this.score;
 		result.selected = this.selected;
 		result.board = this.board;

@@ -1,5 +1,7 @@
 package lettercraze.model.game;
 
+import java.util.Random;
+
 import lettercraze.model.Letter;
 import lettercraze.model.Level;
 
@@ -16,12 +18,12 @@ public class PuzzleGame extends Game {
 	 * @param l The Level
 	 * @param id The level number
 	 */
-	public PuzzleGame(Level l, int id) {
-		super(l, id);
+	public PuzzleGame(Level l, int id, Random rng) {
+		super(l, id, rng);
 	}
 	
 	public boolean gameOver() {
-		return level.wordLimit != 0 && pastWords.size() > level.wordLimit;
+		return level.wordLimit != 0 && pastWords.size() >= level.wordLimit;
 	}
 	
 	public int scoreWord(String w) {
@@ -45,7 +47,7 @@ public class PuzzleGame extends Game {
 	}
 
 	public Object clone() {
-		PuzzleGame result = new PuzzleGame(level, levelID);
+		PuzzleGame result = new PuzzleGame(level, levelID, rng);
 		result.score = this.score;
 		result.selected = this.selected;
 		result.board = this.board;

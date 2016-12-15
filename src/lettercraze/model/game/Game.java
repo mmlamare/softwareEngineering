@@ -1,6 +1,7 @@
 package lettercraze.model.game;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 import lettercraze.model.Letter;
 import lettercraze.model.Level;
@@ -23,15 +24,18 @@ public abstract class Game implements Cloneable {
 	LinkedList<Move> pastMoves;
 	Level level;
 	LinkedList<String> pastWords;
+	/** the rng for repopulating the board. same as the rng in the model */
+	Random rng;
 
 	/**
 	 * This is the Game constructor with the super parameters
 	 * @param l The Level
 	 * @param id The level ID number
 	 */
-	public Game(Level l, int id) {
+	public Game(Level l, int id, Random rng) {
 		this.level = l;
 		this.levelID = id;
+		this.rng = rng;
 		this.initialize();
 	}
 	
@@ -93,7 +97,7 @@ public abstract class Game implements Cloneable {
 		board.floatLetters();
 		fillEmptySquares();
 	}
-	
+
 	/**
 	 * Fills in the board's empty squares randomly
 	 */
@@ -103,7 +107,7 @@ public abstract class Game implements Cloneable {
 				if (board.isEmpty(new Point(row, col)))
 				{
 					board.setSquare(new Point(row, col),
-							Square.makeSquare(Letter.genChar()));
+							Square.makeSquare(Letter.genChar(this.rng)));
 				}
 			}
 		}
