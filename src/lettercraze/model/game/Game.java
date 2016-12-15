@@ -46,6 +46,14 @@ public abstract class Game implements Cloneable {
 	public int getLevelID() {
 		return levelID;
 	}
+	
+	/**
+	 * Get the level
+	 * @return the Game's level object
+	 */
+	public Level getLevel() {
+		return level;
+	}
 
 	/**
 	 * A getter for the board
