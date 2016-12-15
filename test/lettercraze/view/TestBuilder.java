@@ -109,11 +109,11 @@ public class TestBuilder extends TestCase
 		themeButton.doClick();
 		assertTrue(themeButton.isSelected());
 		
-		JButton saveButton = builderView.btnSave;
+		/*JButton saveButton = builderView.btnSave;
 		new Thread(letterThread).start();
 		new Thread(enterThread).start();
 		new Thread(slowEnterThread).start();
-		saveButton.doClick();
+		saveButton.doClick();*/
 		
 		/*JButton loadButton = builderView.btnLoad;
 
