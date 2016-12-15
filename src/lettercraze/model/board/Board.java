@@ -113,4 +113,15 @@ public class Board {
 	public boolean isLetter(Point p) {
 		return squares[p.row][p.col].isLetter();
 	}
+
+	public boolean isClear() {
+		for (int col=0; col<SIZE; ++col) {
+			for (int row=0; row<SIZE; ++row) {
+				if(squares[row][col].isLetter()) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }

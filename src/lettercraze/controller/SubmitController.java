@@ -45,10 +45,16 @@ public class SubmitController implements KeyListener {
 				m.currentGame = move.doMove();
 				app.update();
 				// If the user has run out of words, let them know
-				if (m.getCurrentGame().getPastWords().size() >=
-						m.getCurrentGame().getLevel().wordLimit) {
+				if (m.getCurrentGame().getLevel().hasWordLimit()
+						&& m.getCurrentGame().getPastWords().size() >=
+							m.getCurrentGame().getLevel().wordLimit) {
 					JOptionPane.showMessageDialog(app, "You've played all your words",
 							"Word Limit Reached", JOptionPane.INFORMATION_MESSAGE);
+				}
+				// If the user has cleared the board, congratulate them
+				if (m.getCurrentGame().getBoard().isClear()) {
+					JOptionPane.showMessageDialog(app, "Woah",
+							"You've cleared the board!", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}
