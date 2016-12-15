@@ -59,6 +59,10 @@ public abstract class Game implements Cloneable {
 	 * The method for undoing moves on the board
 	 */
 	public void undo() {
+		if (gameOver()) {
+			return;
+		}
+
 		if (pastMoves.isEmpty()) {
 			return;
 		}
