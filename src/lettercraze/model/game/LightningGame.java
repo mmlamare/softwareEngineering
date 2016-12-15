@@ -1,5 +1,7 @@
 package lettercraze.model.game;
 
+import java.util.Random;
+
 import lettercraze.model.Level;
 
 /**
@@ -7,7 +9,7 @@ import lettercraze.model.Level;
  * so it extends the abstract Game class. It overrides the 
  * necessary methods for the specific implementation that 
  * lightning has. 
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class LightningGame extends Game {
@@ -19,8 +21,8 @@ public class LightningGame extends Game {
 	 * @param l The level object
 	 * @param id The level number
 	 */
-	public LightningGame(Level l, int id) {
-		super(l, id);
+	public LightningGame(Level l, int id, Random rng) {
+		super(l, id, rng);
 	}
 	
 	@Override
@@ -58,11 +60,11 @@ public class LightningGame extends Game {
 
 	@Override
 	public String getInfoString() {
-		return "" + timeRemaining;
+		return "Lightning | " + timeRemaining + " s";
 	}
 
 	public Object clone() {
-		LightningGame result = new LightningGame(level, levelID);
+		LightningGame result = new LightningGame(level, levelID, rng);
 		result.score = this.score;
 		result.selected = this.selected;
 		result.board = this.board;

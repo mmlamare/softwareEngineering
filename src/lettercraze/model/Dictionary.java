@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * This is the class for storing and mutating the dictionary
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Dictionary {

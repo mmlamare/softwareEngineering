@@ -16,7 +16,7 @@ import lettercraze.model.board.Square;
 
 /**
  * This class handles loading level files
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class LevelLoader implements Loader {

@@ -9,6 +9,7 @@ import lettercraze.view.LetterCraze;
 
 /**
  * This class handles when the save/exit button is pressed in GameView
+ * @author Ruthenium
  * @see GameView
  */
 public class SaveStateController extends WindowAdapter {

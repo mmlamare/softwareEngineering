@@ -5,7 +5,7 @@ import lettercraze.model.LevelType;
 
 /**
  * The is the class for building the models.
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 public class ModelBuilder {

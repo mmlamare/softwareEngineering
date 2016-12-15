@@ -23,6 +23,7 @@ import lettercraze.view.GameView;
 
 /**
  * This controller handles the loading of board data for the game view.
+ * @author Ruthenium
  * @see GameView
  */
 public class LoadBoardController implements ActionListener

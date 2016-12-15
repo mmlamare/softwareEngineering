@@ -11,6 +11,7 @@ import lettercraze.view.BoardButton;
 
 /**
  * This controller handles the toggling of a blocks state in the builder View
+ * @author Ruthenium
  * @see BuilderView
  */
 public class ToggleController implements ActionListener

@@ -2,7 +2,7 @@ package lettercraze.model.board;
 
 /**
  * This is the board entity class.
- * @authors Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Board {
@@ -112,5 +112,16 @@ public class Board {
 	 */
 	public boolean isLetter(Point p) {
 		return squares[p.row][p.col].isLetter();
+	}
+
+	public boolean isClear() {
+		for (int col=0; col<SIZE; ++col) {
+			for (int row=0; row<SIZE; ++row) {
+				if(squares[row][col].isLetter()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
 
 /**
  * This is the GUI Boundary class for the splash screen
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
 @SuppressWarnings("serial")

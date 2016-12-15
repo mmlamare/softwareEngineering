@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  * This controller handles the Exiting of a custom board in the builder app.
+ * @author Ruthenium
  * @see BuilderView
  */
 public class QuitBoardController implements ActionListener

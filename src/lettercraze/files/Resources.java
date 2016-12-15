@@ -13,7 +13,7 @@ import lettercraze.model.Level;
  * This class also contains the code for loading levels and the dictionary,
  * which isn't terribly complex.
  * 
- * @author Jack Pugmire, Matthew Lamare
+ * @author Ruthenium
  * @version 1.0
  */
 public class Resources {

@@ -9,6 +9,7 @@ import lettercraze.view.LevelButton;
 
 /**
  * This controller is used to handle the user selection of a level from the main menu 
+ * @author Ruthenium
  * @see MenuView
  */
 public class LevelSelectionController implements ActionListener {
