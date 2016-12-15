@@ -73,4 +73,9 @@ public class SubmitWordMove extends Move {
 		}
 		return d.isWord(word);
 	}
+	
+	@Override
+	public boolean automagicUndo() {
+		return false;
+	}
 }

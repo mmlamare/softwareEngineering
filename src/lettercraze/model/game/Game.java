@@ -38,7 +38,7 @@ public abstract class Game implements Cloneable {
 		this.rng = rng;
 		this.initialize();
 	}
-	
+
 	/**
 	 * A getter for the level id number
 	 * @return level id number
@@ -46,7 +46,7 @@ public abstract class Game implements Cloneable {
 	public int getLevelID() {
 		return levelID;
 	}
-	
+
 	/**
 	 * A getter for the board
 	 * @return the board
@@ -63,6 +63,12 @@ public abstract class Game implements Cloneable {
 			return;
 		}
 		Game endState = pastMoves.pop().undoMove();
+		
+		// do automagic undos
+		while (!pastMoves.isEmpty() && pastMoves.peek().automagicUndo()) {
+			endState = pastMoves.pop().undoMove();
+		}
+		
 		this.board = endState.board;
 		this.selected = endState.selected;
 		this.score = endState.score;
@@ -76,7 +82,7 @@ public abstract class Game implements Cloneable {
 	 * @return T/F if the game is over
 	 */
 	public abstract boolean gameOver();
-	
+
 	/**
 	 * Returns the score of a particular word. In lightning mode,
 	 * all words are the same. In Puzzle and theme modes, the
@@ -162,7 +168,7 @@ public abstract class Game implements Cloneable {
 		this.score = 0;
 		this.repopulateBoard();
 	}
-	
+
 	/**
 	 * Resets a board by re-initializing it.
 	 */
@@ -185,5 +191,4 @@ public abstract class Game implements Cloneable {
 	public LinkedList<String> getPastWords() {
 		return pastWords;
 	}
-	
 }

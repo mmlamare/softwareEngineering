@@ -62,4 +62,9 @@ public class SelectSquareMove extends Move {
 				(initialState.selected.isEmpty() || 
 						initialState.selected.element().isAdjacent(loc));
 	}
+	
+	@Override
+	public boolean automagicUndo() {
+		return true;
+	}
 }
