@@ -38,16 +38,24 @@ import java.awt.event.ActionEvent;
 
 /**
  * This is the high level GUI object for the builder application
- * @author Jack Pugmire
+ * @author Ruthenium
  * @version 1.0
  */
-public class BuilderView {
-
-	private JFrame frame;
+public class BuilderView
+{
+	JFrame frame;
 	private JTextField textField;
 	private static KeyAdapter textFilter;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	
+	JButton btnQuit;
+	JRadioButton buttons[];
+	JButton btnLoad;
+	JButton btnSave;
+	JButton btnAddWord;
+	JButton btnDelete;
+	JList list;
 	
 	/**The static variable for the button size */
 	public final static int BUTTON_SIZE = 32;
@@ -206,7 +214,7 @@ public class BuilderView {
 		lblLevelType.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblLevelType);
 		
-		JRadioButton buttons[] = new JRadioButton[3];
+		buttons = new JRadioButton[3];
 		buttons[0] = new JRadioButton("Puzzle");
 		buttons[0].setSelected(true);
 		buttons[0].setBounds(6, 115, 141, 20);
@@ -218,6 +226,7 @@ public class BuilderView {
 		
 		buttons[2] = new JRadioButton("Theme");
 		buttons[2].setBounds(6, 151, 141, 20);
+		buttons[2].setName("theme");
 		panel_1.add(buttons[2]);
 		
 		ButtonGroup gameModes = new ButtonGroup();
@@ -231,39 +240,41 @@ public class BuilderView {
 		panel_1.add(scrollPane);
 		
 		//String[] data = {"one", "two", "three", "four"};
-		JList list = new JList();
+		list = new JList();
 		DefaultListModel listModel = new DefaultListModel();
 		list.setModel(listModel);
 		list.setToolTipText("Words to add for Theme levels");
 		scrollPane.setViewportView(list);
 		
-		JButton btnAddWord = new JButton("+ Add");
+		btnAddWord = new JButton("+ Add");
 		btnAddWord.addActionListener(new AddWordController(frame, list));
 		
 		btnAddWord.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		btnAddWord.setBounds(22, 240, 56, 26);
 		panel_1.add(btnAddWord);
 		
-		JButton btnDelete = new JButton("- Delete");
+		btnDelete = new JButton("- Delete");
 		btnDelete.addActionListener(new DeleteWordController(frame, list));
 		btnDelete.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		btnDelete.setBounds(76, 240, 84, 26);
 		panel_1.add(btnDelete);
 		
-		JButton btnSave = new JButton("SAVE");
+		btnSave = new JButton("SAVE");
 		btnSave.addActionListener(new PublishBoardController(frame, squares, buttons, scores, listModel));
+		btnSave.setName("save");
 		btnSave.setBounds(16, 277, 117, 29);
 		frame.getContentPane().add(btnSave);
 		
-		JButton btnLoad = new JButton("LOAD");
+		btnLoad = new JButton("LOAD");
 		btnLoad.addActionListener(new LoadBoardController(frame, squares, buttons, scores, listModel));
+		btnLoad.setName("load");
 		btnLoad.setBounds(145, 277, 117, 29);
 		frame.getContentPane().add(btnLoad);
 		
-		JButton btnPublish = new JButton("QUIT");
-		//btnPublish.
-		btnPublish.addActionListener(new QuitBoardController(frame));
-		btnPublish.setBounds(308, 277, 117, 29);
-		frame.getContentPane().add(btnPublish);
+		btnQuit = new JButton("QUIT");
+		btnQuit.addActionListener(new QuitBoardController(frame));
+		btnQuit.setName("quit");
+		btnQuit.setBounds(308, 277, 117, 29);
+		frame.getContentPane().add(btnQuit);
 	}
 }

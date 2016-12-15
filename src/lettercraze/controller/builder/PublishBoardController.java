@@ -50,8 +50,9 @@ public class PublishBoardController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		saveName = "board_state_" + getDate();
-		String fileName = "resources/" + saveName + ".lcs";
+		String saveName = JOptionPane.showInputDialog(frame, "Enter a save name (no need for file extensions)");
+		saveName.replaceAll(".txt", "");
+		String fileName = "resources/" + saveName;
 		String levelType = getLevelType();
 		System.out.println("Level type is: "+levelType);
 		System.out.println("Publishing Board...");
@@ -94,18 +95,7 @@ public class PublishBoardController implements ActionListener
 	{
 		JOptionPane.showMessageDialog(frame, message);
 	}
-
-	private void exitGame()
-	{
-		System.out.println("Closing board");
-		frame.dispose();
-	}
 	
-	private String getDate()
-	{
-		Date d = new Date();
-		return d.getMonth() + "-" + d.getDate() + "-" + (d.getYear() - 100);
-	}
 	
 	private String getLevelType()
 	{

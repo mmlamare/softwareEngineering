@@ -82,7 +82,7 @@ public class LoadBoardController implements ActionListener
             }
             catch (FileNotFoundException err)
             {
-            	System.err.println(err.getMessage());            
+            	System.err.println(err.getMessage());
             }
             catch(IOException err)
             {
@@ -154,16 +154,16 @@ public class LoadBoardController implements ActionListener
 	{
 		if (input == '.')
 		{
-			return randomLetter();
+			return ""; //randomLetter();
 		}
 		return new Character(input).toString();
 	}
 	
-	private String randomLetter()
+	/*private String randomLetter()
 	{
 		Random r = new Random();
 		return new Character((char)((Math.abs(r.nextInt() % 26)) + 97)).toString();
-	}
+	}*/
 	
 	private void disable(BoardButton b)
 	{
