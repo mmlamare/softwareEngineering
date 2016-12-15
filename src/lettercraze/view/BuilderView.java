@@ -95,6 +95,8 @@ public class BuilderView {
 				}
 			}
 		});
+		
+		initialize();
 	}
 
 	/**
@@ -259,6 +261,7 @@ public class BuilderView {
 		frame.getContentPane().add(btnLoad);
 		
 		JButton btnPublish = new JButton("QUIT");
+		//btnPublish.
 		btnPublish.addActionListener(new QuitBoardController(frame));
 		btnPublish.setBounds(308, 277, 117, 29);
 		frame.getContentPane().add(btnPublish);

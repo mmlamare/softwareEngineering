@@ -19,7 +19,6 @@ public class RightClickController implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
 		if (e.getButton() == MouseEvent.BUTTON3)
 		{
 			String input = getUserCharacter(source);
