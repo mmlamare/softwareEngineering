@@ -104,6 +104,11 @@ public class BuilderView {
 		initialize();
 	}
 	
+	/**
+	 * Helper function to create a JPanel with the all the board buttons 
+	 * @param frame
+	 * @return The new panel with the game board 
+	 */
 	private JPanel addGameBoard(JFrame frame)
 	{
 		JPanel panel = new JPanel(); //Fix this contructor?
