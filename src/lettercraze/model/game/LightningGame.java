@@ -58,7 +58,7 @@ public class LightningGame extends Game {
 
 	@Override
 	public String getInfoString() {
-		return "" + timeRemaining;
+		return "Lightning | " + timeRemaining + " s";
 	}
 
 	public Object clone() {

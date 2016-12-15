@@ -47,7 +47,7 @@ public class ThemeGame extends Game {
 	
 	@Override
 	public String getInfoString() {
-		return level.name;
+		return "Theme | " + level.name;
 	}
 
 	public Object clone() {

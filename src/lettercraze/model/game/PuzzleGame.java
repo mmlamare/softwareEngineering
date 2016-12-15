@@ -39,7 +39,7 @@ public class PuzzleGame extends Game {
 	 */
 	public String getInfoString() {
 		if (level.wordLimit != 0 ) {
-			return "Words left: " + (level.wordLimit - pastWords.size());
+			return "Puzzle | Words left: " + (level.wordLimit - pastWords.size());
 		}
 		return "Unlimited words";
 	}
