@@ -18,6 +18,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
+import lettercraze.files.Data;
 import lettercraze.view.BoardButton;
 import lettercraze.view.GameView;
 
@@ -42,8 +43,7 @@ public class LoadBoardController implements ActionListener
 	public LoadBoardController(JFrame frame, BoardButton squares[][], JRadioButton buttons[], JTextField scoreThreshholds[], DefaultListModel list)
 	{
 		this.frame = frame;
-		File currentDir = new File(System.getProperty("user.dir") + "/resources");
-		fc = new JFileChooser(currentDir);
+		fc = new JFileChooser(Data.getDataDir());
 		this.squares = squares;
 		this.buttons = buttons;
 		this.scores = scoreThreshholds;

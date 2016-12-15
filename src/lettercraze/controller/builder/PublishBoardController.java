@@ -7,15 +7,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
+import lettercraze.files.Data;
 import lettercraze.view.BoardButton;
 import lettercraze.view.BuilderView;
 
@@ -27,21 +27,19 @@ import lettercraze.view.BuilderView;
 public class PublishBoardController implements ActionListener
 {
 	JFrame frame;
-	//File currentDir;
 	String saveName;
 	BoardButton squares[][];
 	JRadioButton buttons[];
 	JTextField scores[];
-	ListModel customWords;
+	ListModel<String> customWords;
 	
 	/**
 	 * Initializer requires the frame that the builder window belongs to.
 	 * @param frame
 	 */
-	public PublishBoardController(JFrame frame, BoardButton squares[][], JRadioButton buttons[], JTextField scoreThreshholds[], ListModel list)
+	public PublishBoardController(JFrame frame, BoardButton squares[][], JRadioButton buttons[], JTextField scoreThreshholds[], ListModel<String> list)
 	{
 		this.frame = frame;
-		File currentDir = new File(System.getProperty("user.dir"));
 		this.squares = squares;
 		this.buttons = buttons;
 		this.scores = scoreThreshholds;
@@ -51,18 +49,18 @@ public class PublishBoardController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		String saveName = JOptionPane.showInputDialog(frame, "Enter a save name (no need for file extensions)");
-		saveName.replaceAll(".txt", "");
-		String fileName = "resources/" + saveName;
+		JFileChooser fc = new JFileChooser();
+		fc.setCurrentDirectory(Data.getDataDir());
+		fc.showSaveDialog(frame);
+		File saveFile = fc.getSelectedFile();
+
 		String levelType = getLevelType();
-		System.out.println("Level type is: "+levelType);
-		System.out.println("Publishing Board...");
-		
+
 		//Save all our stuff here given the gamepanel with all the squares
 		ArrayList<String> saveData = new ArrayList<String>();
 		saveData.add(levelType);
 		saveData.add(saveName);
-		
+
 		String line = "";
 		for (int row=0; row<squares.length; row++)
 		{
@@ -86,10 +84,8 @@ public class PublishBoardController implements ActionListener
 			}
 		}
 		
-		saveBoardData(fileName, saveData);
+		saveBoardData(saveFile, saveData);
 		showMessage(frame, "Board saved!");
-		//Exit game
-		//exitGame();
 	}
 	
 	private void showMessage(JFrame frame, String message)
@@ -121,11 +117,11 @@ public class PublishBoardController implements ActionListener
 		return str;
 	}
 	
-	private void saveBoardData(String saveName, ArrayList<String> saveData)
+	private void saveBoardData(File saveFile, ArrayList<String> saveData)
 	{
 		try
 		{
-		    PrintWriter writer = new PrintWriter(saveName, "UTF-8");
+		    PrintWriter writer = new PrintWriter(saveFile, "UTF-8");
 		    for (int i=0; i<saveData.size(); i++)
 		    {
 		    	writer.println(saveData.get(i));

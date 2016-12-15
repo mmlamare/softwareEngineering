@@ -24,6 +24,14 @@ public class Data {
 	public static String pathToData(String name) {
 		return System.getProperty("user.home") + DATA_PATH + name;
 	}
+	
+	/**
+	 * Get the data directory as a File
+	 * @return a File object pointing to the data directory
+	 */
+	public static File getDataDir() {
+		return new File(Data.pathToData(""));
+	}
 	 
 	/**
 	 * check if the data path exists
