@@ -1,15 +1,10 @@
 package lettercraze.controller.builder;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.UIManager;
-
 import lettercraze.model.BuilderModel;
 import lettercraze.model.board.Point;
-import lettercraze.view.BoardButton;
 import lettercraze.view.BuilderView;
 
 /**

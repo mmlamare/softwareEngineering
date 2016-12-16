@@ -5,17 +5,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
 
 import lettercraze.files.Data;
 import lettercraze.files.LevelWriter;
 import lettercraze.model.BuilderModel;
 import lettercraze.model.LevelType;
-import lettercraze.view.BoardButton;
 import lettercraze.view.BuilderView;
 
 /**

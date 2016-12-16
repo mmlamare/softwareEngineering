@@ -1,32 +1,19 @@
 package lettercraze.controller.builder;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Random;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
 
 import lettercraze.files.Data;
 import lettercraze.files.LevelLoader;
 import lettercraze.model.BuilderModel;
 import lettercraze.model.Level;
-import lettercraze.view.BoardButton;
 import lettercraze.view.BuilderView;
 import lettercraze.view.GameView;
 

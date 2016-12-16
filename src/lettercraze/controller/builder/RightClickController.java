@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import lettercraze.model.BuilderModel;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
-import lettercraze.view.BoardButton;
 import lettercraze.view.BuilderView;
 
 /**
