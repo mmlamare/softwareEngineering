@@ -10,7 +10,7 @@ import lettercraze.model.BuilderModel;
 import lettercraze.view.BuilderView;
 
 /**
- * Ensure that the value of a number field is always a number
+ * Update the score when the user changes focus away from a score text field
  * @author Ruthenium
  */
 public class ChangeScoreController implements FocusListener {
@@ -19,6 +19,12 @@ public class ChangeScoreController implements FocusListener {
 	int scoreIndex;
 	JTextField field;
 
+	/**
+	 * Create a new ChangeScoreController
+	 * @param m The builder model
+	 * @param app The builder view
+	 * @param scoreIndex 0, 1, or 2; The index of the score threshold text field
+	 */
 	public ChangeScoreController(BuilderModel m, BuilderView app, int scoreIndex) {
 		this.m = m;
 		this.app = app;
@@ -40,6 +46,10 @@ public class ChangeScoreController implements FocusListener {
 	@Override
 	public void focusGained(FocusEvent e) { }
 
+	/**
+	 * Update the score threshold when the user changes focus, ensuring that
+	 * the new value is valid.
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		String val = field.getText();

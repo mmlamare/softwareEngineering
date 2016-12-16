@@ -105,6 +105,7 @@ public abstract class Game implements Cloneable {
 	 */
 	public abstract int scoreWord(String w);
 
+	@Override
 	public abstract Object clone();
 
 	/**

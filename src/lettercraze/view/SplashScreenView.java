@@ -46,6 +46,11 @@ public class SplashScreenView extends JFrame
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Create a new JLabel with formatted text
+	 * @param str The string value of the label
+	 * @return The created JLabel
+	 */
 	private JLabel getTextField(String str)
 	{
 		JLabel field = new JLabel(str, SwingConstants.CENTER);

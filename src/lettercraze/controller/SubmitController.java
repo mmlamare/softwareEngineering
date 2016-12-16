@@ -35,6 +35,9 @@ public class SubmitController implements KeyListener {
 	}
 
 	@Override
+	/**
+	 * Submit the selected word and update the game
+	 */
 	public void keyReleased(KeyEvent e) {
 		if (! m.isInGame()) return;
 		// This is a submit word move

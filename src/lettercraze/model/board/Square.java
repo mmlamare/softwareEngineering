@@ -11,6 +11,7 @@ public class Square {
 	final SquareType type;
 	final char letter;
 	
+	// Create a square with specified values.
 	private Square(SquareType type, char letter) {
 		this.type = type;
 		this.letter = letter;

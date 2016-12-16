@@ -56,10 +56,18 @@ public class Dictionary {
 		}
 	}
 
+	/**
+	 * Get the raw ArrayList of words
+	 * @return The ArrayList
+	 */
 	public ArrayList<String> getList() {
 		return this.words;
 	}
 
+	/**
+	 * Remove a word from the dictionary
+	 * @param word the word to remove
+	 */
 	public void removeWord(String word) {
 		this.words.remove(word);
 	}

@@ -22,10 +22,12 @@ public class PuzzleGame extends Game {
 		super(l, id, rng);
 	}
 	
+	@Override
 	public boolean gameOver() {
 		return level.limit != 0 && pastWords.size() >= level.limit;
 	}
 	
+	@Override
 	public int scoreWord(String w) {
 		int result = 0;
 		for (char c : w.toCharArray()) {
@@ -35,10 +37,7 @@ public class PuzzleGame extends Game {
 		return result;
 	}
 
-	/**
-	 * TODO Don't know what this does? Not fully implemented?
-	 * @return "Puzzle"
-	 */
+	@Override
 	public String getInfoString() {
 		if (level.limit != 0 ) {
 			return "Puzzle | Words left: " + (level.limit - pastWords.size());
@@ -46,6 +45,7 @@ public class PuzzleGame extends Game {
 		return "Unlimited words";
 	}
 
+	@Override
 	public Object clone() {
 		PuzzleGame result = new PuzzleGame(level, levelID, rng);
 		result.score = this.score;

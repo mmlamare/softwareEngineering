@@ -23,7 +23,7 @@ public class LightningGame extends Game {
 	public LightningGame(Level l, int id, Random rng) {
 		super(l, id, rng);
 	}
-	
+
 	@Override
 	public void initialize() {
 		super.initialize();
@@ -52,6 +52,7 @@ public class LightningGame extends Game {
 		return 1;
 	}
 
+	@Override
 	public void undo() {
 		// do nothing
 		return;
@@ -62,6 +63,7 @@ public class LightningGame extends Game {
 		return "Lightning | " + timeRemaining + " s";
 	}
 
+	@Override
 	public Object clone() {
 		LightningGame result = new LightningGame(level, levelID, rng);
 		result.score = this.score;

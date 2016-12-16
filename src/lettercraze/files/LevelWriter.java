@@ -9,7 +9,18 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.Level;
 
+/**
+ * This class handles writing level files.
+ * @author Ruthenium
+ *
+ */
 public class LevelWriter {
+	/**
+	 * Write a level to a file
+	 * @param l The level to write
+	 * @param dest The file to which to write
+	 * @return True normally, false on failure
+	 */
 	public static boolean writeLevel(Level l, File dest) {
 		PrintWriter writer = null;
 		try {

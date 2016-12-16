@@ -24,7 +24,7 @@ public class Board {
 	}
 
 	/**
-	 * float letters up (mutates the board)
+	 * Float letters up to fill empty squares (mutates the board)
 	 */
 	public void floatLetters() {
 		// Go one column at a time, from top to bottom. If an empty square is 

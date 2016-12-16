@@ -48,7 +48,12 @@ public class Letter {
 	public static char genChar(Random rng) {
 		return genCharFromMass(100 * rng.nextDouble());
 	}
-	
+
+	/**
+	 * Generate a character from a probability mass
+	 * @param mass the probability mass
+	 * @return the character generated
+	 */
 	private static char genCharFromMass(double mass) {
 		float cumulative=0;
 		for (int i=0; i<FREQS.length; ++i) {
