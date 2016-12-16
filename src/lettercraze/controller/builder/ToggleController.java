@@ -23,8 +23,9 @@ public class ToggleController implements ActionListener {
 	Point loc;
 
 	/**
-	 * Initializer requires the source button
-	 * @param button
+	 * @param m The builder entity
+	 * @param app The Builder boundary
+	 * @param l This is the point on the grid Boundary the the player selected
 	 */
 	public ToggleController(BuilderModel m, BuilderView app, Point loc) {
 		this.m = m;
@@ -32,6 +33,12 @@ public class ToggleController implements ActionListener {
 		this.loc = loc;
 	}
 	
+	/**
+	 * This takes in the mouse click and changed the square's
+	 * status between selected/unselected
+	 * Then it refreshes the display.
+	 * @param e The action event object
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		m.toggleBlocked(loc);

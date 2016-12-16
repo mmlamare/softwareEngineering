@@ -23,10 +23,9 @@ public class DeleteWordController implements ActionListener
 	JList<String> list;
 	
 	/**
-	 * Initializer requires the frame and the JList that the new word will be added to.
-	 * 
-	 * @param frame
-	 * @param l
+	 * @param m The builder entity
+	 * @param app The Builder boundary
+	 * @param l The boundary's list of strings
 	 */
 	public DeleteWordController(BuilderModel m, BuilderView app, JList<String> list)
 	{
@@ -35,6 +34,12 @@ public class DeleteWordController implements ActionListener
 		this.list = list;
 	}
 	
+	/**
+	 * This gets the selected word from the boundary and
+	 * removes it from the entity
+	 * Then it refreshes the display.
+	 * @param e The action event object
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{

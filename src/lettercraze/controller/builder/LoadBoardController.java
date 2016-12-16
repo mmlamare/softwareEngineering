@@ -43,8 +43,9 @@ public class LoadBoardController implements ActionListener
 	JFileChooser fc;
 	
 	/**
-	 * Initializer requires the JFrame that the board belongs to.
-	 * @param frame
+	 * 
+	 * @param m The Builder Model
+	 * @param app The Builder View
 	 */
 	public LoadBoardController(BuilderModel m, BuilderView app)
 	{
@@ -52,6 +53,10 @@ public class LoadBoardController implements ActionListener
 		this.app = app;
 	}
 	
+	/**
+	 * Loads the File
+	 * @param
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		fc = new JFileChooser();
@@ -74,6 +79,10 @@ public class LoadBoardController implements ActionListener
 		}
 	}
 	
+	/**
+	 * Enacted whenever there is a problem with loading a file
+	 * @param f The file that was attempted to be loaded
+	 */
 	public void notifyFailed(File f) {
 		JOptionPane.showMessageDialog(app.getFrame(), 
 				"Failed to load file: " + f.getName(),
