@@ -50,6 +50,9 @@ public class LoadBoardController implements ActionListener
 		fc.setCurrentDirectory(Data.getDataDir());
 		fc.showOpenDialog(app.getFrame());
 		File saveFile = fc.getSelectedFile();
+		if (saveFile == null) { // user clicked 'cancel'
+			return;
+		}
 		
 		try {
 			InputStream in = new FileInputStream(saveFile);

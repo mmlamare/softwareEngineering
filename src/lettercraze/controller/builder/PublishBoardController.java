@@ -38,7 +38,10 @@ public class PublishBoardController implements ActionListener
 		fc.setCurrentDirectory(Data.getDataDir());
 		fc.showSaveDialog(app.getFrame());
 		File saveFile = fc.getSelectedFile();
-		
+		if (saveFile == null) { // user clicked 'cancel'
+			return;
+		}
+
 		// read the parameters from BuilderView into the model
 		String oneStar = app.getOneStarScore().getText();
 		String twoStar = app.getTwoStarScore().getText();
