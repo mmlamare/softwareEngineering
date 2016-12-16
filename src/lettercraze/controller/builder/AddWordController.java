@@ -16,10 +16,7 @@ import lettercraze.view.BuilderView;
  * @author Ruthenium
  * @see BuilderView
  */
-public class AddWordController implements ActionListener
-{
-	JList list;
-	JFrame frame;
+public class AddWordController implements ActionListener {
 	BuilderModel m;
 	BuilderView app;
 	
@@ -29,16 +26,14 @@ public class AddWordController implements ActionListener
 	 * @param frame
 	 * @param l
 	 */
-	public AddWordController(BuilderModel m, BuilderView app)
-	{
+	public AddWordController(BuilderModel m, BuilderView app) {
 		this.m = m;
 		this.app = app;
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		String word = JOptionPane.showInputDialog(frame, "Enter a word");
+	public void actionPerformed(ActionEvent e) {
+		String word = JOptionPane.showInputDialog(app, "Enter a word");
 		m.addWord(word);
 		app.update();
 	}

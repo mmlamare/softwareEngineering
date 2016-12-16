@@ -59,4 +59,8 @@ public class Dictionary {
 	public ArrayList<String> getList() {
 		return this.words;
 	}
+
+	public void removeWord(String word) {
+		this.words.remove(word);
+	}
 }

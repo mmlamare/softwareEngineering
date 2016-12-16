@@ -66,4 +66,8 @@ public class BuilderModel {
 		}
 		level.words.addWord(w);
 	}
+
+	public void removeWord(String w) {
+		level.words.removeWord(w);
+	}
 }

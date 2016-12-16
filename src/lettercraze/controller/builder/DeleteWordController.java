@@ -7,6 +7,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 
+import lettercraze.model.BuilderModel;
+import lettercraze.model.board.Point;
+import lettercraze.view.BuilderView;
+
 /**
  * This ActionListener Removes the selected word from the wordbank in the windowbuilder.
  * @author Ruthenium
@@ -14,8 +18,9 @@ import javax.swing.JList;
  */
 public class DeleteWordController implements ActionListener
 {
-	JFrame frame;
-	JList list;
+	BuilderModel m;
+	BuilderView app;
+	JList<String> list;
 	
 	/**
 	 * Initializer requires the frame and the JList that the new word will be added to.
@@ -23,22 +28,18 @@ public class DeleteWordController implements ActionListener
 	 * @param frame
 	 * @param l
 	 */
-	public DeleteWordController(JFrame frame, JList list)
+	public DeleteWordController(BuilderModel m, BuilderView app, JList<String> list)
 	{
-		this.frame = frame;
+		this.m = m;
+		this.app = app;
 		this.list = list;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		System.out.println("Deleting word");
-		DefaultListModel listModel = (DefaultListModel) list.getModel();
-		int selectedItem = list.getSelectedIndex();
-		if (selectedItem >= 0)
-		{
-			listModel.remove(selectedItem);
-		}
+		m.removeWord(list.getSelectedValue());
+		app.update();
 	}
 
 }

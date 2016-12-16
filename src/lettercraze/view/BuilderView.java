@@ -10,14 +10,16 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
-import lettercraze.controller.ToggleController;
 import lettercraze.controller.builder.AddWordController;
+import lettercraze.controller.builder.ChangeTypeController;
 import lettercraze.controller.builder.DeleteWordController;
 import lettercraze.controller.builder.LoadBoardController;
 import lettercraze.controller.builder.PublishBoardController;
 import lettercraze.controller.builder.QuitBoardController;
 import lettercraze.controller.builder.RightClickController;
+import lettercraze.controller.builder.ToggleController;
 import lettercraze.model.BuilderModel;
+import lettercraze.model.LevelType;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.ModelBuilder;
 import lettercraze.model.board.Point;
@@ -116,6 +118,7 @@ public class BuilderView
 	 */
 	public BuilderView() {
 		initialize();
+		this.update();
 	}
 	
 	/**
@@ -134,12 +137,13 @@ public class BuilderView
 		squares = new BoardButton[6][6];
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col=0; col < Board.SIZE; ++col) {
+				Point loc = new Point(row,col);
 				squares[row][col] = new BoardButton(new Point(row,col));
 				squares[row][col].setOpaque(true);
 				squares[row][col].setSize(BUTTON_SIZE, BUTTON_SIZE);
 				squares[row][col].setFocusable(false);
-				squares[row][col].addActionListener(new ToggleController(squares[row][col]));
-				squares[row][col].addMouseListener(new RightClickController(squares[row][col]));
+				squares[row][col].addActionListener(new ToggleController(m, this, loc));
+				squares[row][col].addMouseListener(new RightClickController(m, this, loc));
 				panel.add(squares[row][col]);
 			}
 		}
@@ -222,15 +226,17 @@ public class BuilderView
 		buttons[0] = new JRadioButton("Puzzle");
 		buttons[0].setSelected(true);
 		buttons[0].setBounds(6, 115, 141, 20);
+		buttons[0].addActionListener(new ChangeTypeController(m,this,LevelType.PUZZLE));
 		panel_1.add(buttons[0]);
 		
 		buttons[1] = new JRadioButton("Lightning");
 		buttons[1].setBounds(6, 133, 141, 20);
+		buttons[1].addActionListener(new ChangeTypeController(m,this,LevelType.LIGHTNING));
 		panel_1.add(buttons[1]);
 		
 		buttons[2] = new JRadioButton("Theme");
 		buttons[2].setBounds(6, 151, 141, 20);
-		buttons[2].setName("theme");
+		buttons[2].addActionListener(new ChangeTypeController(m,this,LevelType.THEME));
 		panel_1.add(buttons[2]);
 		
 		ButtonGroup gameModes = new ButtonGroup();
@@ -244,7 +250,7 @@ public class BuilderView
 		panel_1.add(scrollPane);
 		
 		//String[] data = {"one", "two", "three", "four"};
-		list = new JList();
+		list = new JList<String>();
 		DefaultListModel listModel = new DefaultListModel();
 		list.setModel(listModel);
 		list.setToolTipText("Words to add for Theme levels");
@@ -258,7 +264,7 @@ public class BuilderView
 		panel_1.add(btnAddWord);
 		
 		btnDelete = new JButton("- Delete");
-		btnDelete.addActionListener(new DeleteWordController(frame, list));
+		btnDelete.addActionListener(new DeleteWordController(m, this, list));
 		btnDelete.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		btnDelete.setBounds(76, 240, 84, 26);
 		panel_1.add(btnDelete);
@@ -305,7 +311,30 @@ public class BuilderView
 		case THEME:
 			nameLabel.setText("Theme Name:");
 		}
-		ArrayList<String> data = m.getLevel().words.getList();
-		list.setListData(data.toArray(new String[data.size()]));
+		if (m.getLevel().type == LevelType.THEME && m.getLevel().words != null) {
+			ArrayList<String> data = m.getLevel().words.getList();
+			list.setListData(data.toArray(new String[data.size()]));
+		}
+		
+		// set all the board buttons
+		for (int row = 0; row < Board.SIZE; ++row) {
+			for (int col = 0; col < Board.SIZE; ++col) {
+				BoardButton b = squares[row][col];
+				Point p = new Point(row, col);
+				if (m.getBoard().isEmpty(p)) {
+					b.setBackground(Color.WHITE);
+					b.setText("");
+				} else if (m.getBoard().isBlocked(p)) {
+					b.setBackground(Color.BLACK);
+					b.setText("");
+				} else {
+					char ch = m.getBoard().getLetter(p);
+					if (ch == 'q')
+						b.setText("qu");
+					else
+						b.setText("" + ch);
+				}
+			}
+		}
 	}
 }

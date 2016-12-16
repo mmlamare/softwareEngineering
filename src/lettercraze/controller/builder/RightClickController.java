@@ -5,7 +5,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
+import lettercraze.model.BuilderModel;
+import lettercraze.model.board.Point;
+import lettercraze.model.board.Square;
 import lettercraze.view.BoardButton;
+import lettercraze.view.BuilderView;
 
 /**
  * This is the controller for right clicking to set a letter for building theme levels
@@ -14,11 +18,14 @@ import lettercraze.view.BoardButton;
  */
 public class RightClickController implements MouseListener
 {
-	BoardButton source;
+	BuilderView app;
+	Point loc;
+	BuilderModel m;
 	
-	public RightClickController(BoardButton source)
-	{
-		this.source = source;
+	public RightClickController(BuilderModel m, BuilderView app, Point l) {
+		this.m = m;
+		this.app = app;
+		this.loc = l;
 	}
 	
 	@Override
@@ -26,10 +33,13 @@ public class RightClickController implements MouseListener
 	{
 		if (e.getButton() == MouseEvent.BUTTON3)
 		{
-			String input = getUserCharacter(source);
+			String input = getUserCharacter("Enter a character:");
+			while (input.length() != 1) {
+				input = getUserCharacter("Enter exactly one character.");
+			}
 			
-			//Point loc;
-			source.setText(input);
+			m.getBoard().setSquare(loc, Square.makeSquare(input.charAt(0)));
+			app.update();
 		}
 	}
 
@@ -57,12 +67,7 @@ public class RightClickController implements MouseListener
 
 	}
 	
-	private String getUserCharacter(BoardButton source)
-	{
-		String message = "Please enter the character this button should have\n";
-		message += "Please note only the first character will be used";
-		String input = JOptionPane.showInputDialog(message);
-		
-		return input.substring(0, 1);
+	private String getUserCharacter(String prompt) {
+		return JOptionPane.showInputDialog(prompt);
 	}
 }
