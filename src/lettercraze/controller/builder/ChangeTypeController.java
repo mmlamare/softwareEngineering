@@ -27,6 +27,9 @@ public class ChangeTypeController implements ActionListener{
 		this.m = m;
 		this.app = app;
 		this.t = t;
+		if (t != LevelType.THEME) {
+			m.getLevel().words = null;
+		}
 	}
 
 

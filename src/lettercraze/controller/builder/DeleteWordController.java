@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JList;
 
 import lettercraze.model.BuilderModel;
+import lettercraze.model.LevelType;
 import lettercraze.view.BuilderView;
 
 /**
@@ -40,8 +41,10 @@ public class DeleteWordController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		m.removeWord(list.getSelectedValue());
-		app.update();
+		if (m.getLevel().type == LevelType.THEME && list.getSelectedValue() != null) {
+			m.removeWord(list.getSelectedValue());
+			app.update();
+		}
 	}
 
 }
