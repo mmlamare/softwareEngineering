@@ -51,7 +51,7 @@ public class BuilderView
 	JButton btnQuit;
 	JRadioButton buttons[];
 	JButton btnLoad;
-	JButton btnSave;
+	private JButton btnSave;
 	JButton btnAddWord;
 	JButton btnDelete;
 	JButton prevButt;
@@ -253,11 +253,11 @@ public class BuilderView
 		btnDelete.setBounds(76, 240, 84, 26);
 		panel_1.add(btnDelete);
 		
-		btnSave = new JButton("SAVE");
-		btnSave.addActionListener(new PublishBoardController(m, this));
-		btnSave.setName("save");
-		btnSave.setBounds(16, 315, 117, 29);
-		frame.getContentPane().add(btnSave);
+		setBtnSave(new JButton("SAVE"));
+		getBtnSave().addActionListener(new PublishBoardController(m, this));
+		getBtnSave().setName("save");
+		getBtnSave().setBounds(16, 315, 117, 29);
+		frame.getContentPane().add(getBtnSave());
 		
 		btnLoad = new JButton("LOAD");
 		btnLoad.addActionListener(new LoadBoardController(m, this));
@@ -348,5 +348,13 @@ public class BuilderView
 			buttons[2].setSelected(true);
 			break;
 		}
+	}
+
+	public JButton getBtnSave() {
+		return btnSave;
+	}
+
+	public void setBtnSave(JButton btnSave) {
+		this.btnSave = btnSave;
 	}
 }
