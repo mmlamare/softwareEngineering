@@ -79,6 +79,10 @@ public class BuilderView
 		this.m = m;
 		initBoard();
 	}
+	
+	public JFrame getFrame() {
+		return frame;
+	}
 
 	/**
 	 * Launch the application.
@@ -276,13 +280,13 @@ public class BuilderView
 		frame.getContentPane().add(btnSave);
 		
 		btnLoad = new JButton("LOAD");
-		btnLoad.addActionListener(new LoadBoardController(frame, squares, buttons, scores, listModel));
+		btnLoad.addActionListener(new LoadBoardController(m, this));
 		btnLoad.setName("load");
 		btnLoad.setBounds(145, 315, 117, 29);
 		frame.getContentPane().add(btnLoad);
 		
 		btnQuit = new JButton("QUIT");
-		btnQuit.addActionListener(new QuitBoardController(frame));
+		btnQuit.addActionListener(new QuitBoardController(this));
 		btnQuit.setName("quit");
 		btnQuit.setBounds(308, 315, 117, 29);
 		frame.getContentPane().add(btnQuit);
