@@ -1,8 +1,6 @@
 package lettercraze.view;
 
-import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -22,7 +20,6 @@ import lettercraze.controller.builder.ToggleController;
 import lettercraze.model.BuilderModel;
 import lettercraze.model.LevelType;
 import lettercraze.model.board.Board;
-import lettercraze.model.board.ModelBuilder;
 import lettercraze.model.board.Point;
 
 import java.awt.Color;
@@ -31,15 +28,12 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  * This is the high level GUI object for the builder application

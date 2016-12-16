@@ -3,12 +3,9 @@ package lettercraze.controller.builder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
 import javax.swing.JList;
 
 import lettercraze.model.BuilderModel;
-import lettercraze.model.board.Point;
 import lettercraze.view.BuilderView;
 
 /**
