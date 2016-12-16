@@ -9,6 +9,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import lettercraze.controller.builder.AddWordController;
+import lettercraze.controller.builder.ChangeScoreController;
 import lettercraze.controller.builder.ChangeTypeController;
 import lettercraze.controller.builder.DeleteWordController;
 import lettercraze.controller.builder.LoadBoardController;
@@ -109,7 +110,6 @@ public class BuilderView
 		panel.setBounds(6, 6, 266, 266);
 		
 		panel.setLayout(new GridLayout(6,6));
-		//panel.m = m;
 		squares = new BoardButton[6][6];
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col=0; col < Board.SIZE; ++col) {
@@ -159,7 +159,7 @@ public class BuilderView
 		scores[0] = new JTextField();
 		scores[0].setBounds(74, 22, 56, 26);
 		scores[0].setText("100");
-		scores[0].addKeyListener(textFilter);
+		scores[0].addFocusListener(new ChangeScoreController(m, this, 0));
 		panel_1.add(scores[0]);
 		scores[0].setColumns(10);
 		
@@ -170,7 +170,7 @@ public class BuilderView
 		scores[1] = new JTextField();
 		scores[1].setBounds(74, 45, 56, 26);
 		scores[1].setText("200");
-		scores[1].addKeyListener(textFilter);
+		scores[1].addFocusListener(new ChangeScoreController(m, this, 1));
 		panel_1.add(scores[1]);
 		scores[1].setColumns(10);
 		
@@ -182,7 +182,7 @@ public class BuilderView
 		scores[2].setBounds(74, 68, 56, 26);
 		scores[2].setText("300");
 		scores[2].setColumns(10);
-		scores[2].addKeyListener(textFilter);
+		scores[2].addFocusListener(new ChangeScoreController(m, this, 2));
 		panel_1.add(scores[2]);
 		
 		JLabel lblLevelType = new JLabel("Level Type");
@@ -217,7 +217,6 @@ public class BuilderView
 		scrollPane.setBounds(6, 175, 148, 66);
 		panel_1.add(scrollPane);
 		
-		//String[] data = {"one", "two", "three", "four"};
 		list = new JList<String>();
 		list.setToolTipText("Words to add for Theme levels");
 		scrollPane.setViewportView(list);
