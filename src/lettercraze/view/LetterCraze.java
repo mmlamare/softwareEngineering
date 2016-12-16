@@ -11,6 +11,7 @@ import lettercraze.controller.SaveStateController;
 import lettercraze.controller.SelectionController;
 import lettercraze.controller.SubmitController;
 import lettercraze.controller.UndoButtonController;
+import lettercraze.model.Level;
 import lettercraze.model.Model;
 
 /**
@@ -33,6 +34,29 @@ public class LetterCraze extends JFrame {
 	Model m;
 	GameView gameView;
 	MenuView menuView;
+	boolean preview = false;
+
+	/** This constructor is used to create a preview window. It starts out in
+	 * the provided level and exits when the user leaves that level.
+	 */
+	private LetterCraze() {
+		
+	}
+	
+	public boolean isPreview() {
+		return preview;
+	}
+	
+	public static void previewLevel(Level l) {
+		LetterCraze preview = new LetterCraze();
+		preview.preview = true;
+		preview.m = new Model(null);
+		preview.m.loadLevel(l);
+		preview.setSize(WIDTH, HEIGHT);
+		preview.addKeyListener(new SubmitController(preview.m, preview));
+		preview.setVisible(true);
+		preview.update();
+	}
 
 	/**
 	 * This is the constructor for the LetterCraze class
@@ -64,6 +88,7 @@ public class LetterCraze extends JFrame {
 		gameView.undoButton.addActionListener(new UndoButtonController(m,this));
 		gameView.resetButton.addActionListener(new ResetController(m,this));
 		gameView.quitButton.addActionListener(new QuitLevelController(m,this));
+
 		this.add(gameView);
 		this.revalidate();
 
@@ -97,6 +122,11 @@ public class LetterCraze extends JFrame {
 				this.initializeGame();
 			}
 			this.gameView.update();
+		} else if (preview) {
+			// if we've exited the game in preview mode, then quit
+			this.setVisible(false);
+			gameView = null;
+			this.dispose();
 		} else {
 			if (menuView == null) {
 				initializeMenu();

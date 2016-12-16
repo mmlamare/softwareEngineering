@@ -32,7 +32,8 @@ public class QuitLevelController implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		Game g= m.getCurrentGame();
 		int id = g.getLevelID();
-		if (g.computeStars() > m.getHighScore(id))  {
+		// don't touch high scores if we're in preview mode
+		if (!app.isPreview() && g.computeStars() > m.getHighScore(id))  {
 			// first, update the new score:
 			m.setHighScore(id, g.computeStars());
 			// then, if there's a next level, make sure it's unlocked
