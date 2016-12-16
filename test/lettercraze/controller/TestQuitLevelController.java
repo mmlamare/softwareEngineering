@@ -45,4 +45,3 @@ public class TestQuitLevelController extends TestCase {
 		assertFalse(m.isInGame());
 	}
 }
-
