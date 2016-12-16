@@ -43,8 +43,6 @@ public class TestResetController extends TestCase {
 		gView = new GameView(m);	
 		assertTrue(m.getCurrentGame().getInfoString().contains("Puzzle"));
 		
-		PuzzleGame game= (PuzzleGame) m.getCurrentGame();
-		
 		Board bInitial = m.currentGame.getBoard();
 		
 		m.currentGame.scoreWord("hello");
