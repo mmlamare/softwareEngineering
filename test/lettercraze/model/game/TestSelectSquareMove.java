@@ -1,6 +1,7 @@
 package lettercraze.model.game;
 
 import junit.framework.TestCase;
+
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
 import lettercraze.model.Model;
@@ -37,7 +38,8 @@ public class TestSelectSquareMove extends TestCase {
 		for (int row = 0; row < Board.SIZE; ++row) {
 			for (int col = 0; col < Board.SIZE; ++col) {
 				SelectSquareMove ssm = new SelectSquareMove(m.getCurrentGame(), new Point(row, col));
-				/*assertTrue(m.getCurrentGame() ==*/ ssm.doMove();
+				ssm.doMove();
+				ssm.undoMove();
 				assertTrue(ssm.isValid());
 			}
 		}

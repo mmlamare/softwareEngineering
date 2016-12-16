@@ -35,18 +35,20 @@ public class LightningClockController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (m.isInGame() && m.getCurrentGame() instanceof LightningGame) {
-			LightningGame g = (LightningGame) m.getCurrentGame();
-			if (!g.gameOver()) {
-				g.decrementTime();
-				app.update();
+		if(e.getSource() instanceof javax.swing.Timer){
+			if (m.isInGame() && m.getCurrentGame() instanceof LightningGame) {
+				LightningGame g = (LightningGame) m.getCurrentGame();
+				if (!g.gameOver()) {
+					g.decrementTime();
+					app.update();
+				} else {
+					((javax.swing.Timer) (e.getSource())).stop();
+					JOptionPane.showMessageDialog(app, "Time has run out",
+							"Time's up!", JOptionPane.INFORMATION_MESSAGE);
+				}
 			} else {
 				((javax.swing.Timer) (e.getSource())).stop();
-				JOptionPane.showMessageDialog(app, "Time has run out",
-				        "Time's up!", JOptionPane.INFORMATION_MESSAGE);
 			}
-		} else {
-			((javax.swing.Timer) (e.getSource())).stop();
 		}
 	}
 
