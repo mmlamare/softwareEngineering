@@ -27,6 +27,7 @@ To initiate the builder, run the mainBuilder.java file
 The two main methods are in two main classes in the lettercraze package. There is one java project for everything. The program should work fine on Mac, Windows 10 and Linux.
 
 * Dependencies
+Through a collective oversight, most of the builder had to be redone, as it did not follow EBC
 
 * Database configuration:
 All the level files are stored in the resources folder. Note that they use base 0 indexing
@@ -41,7 +42,6 @@ Run the "Test" folder as JUnit tests. JUnit 3 was used.
 * Writing tests
 * Code review
 * Other guidelines:
-You probably know more than we do, so we're not going to give you instructions here.
 
 ### Who do I talk to? ###
 The developer's, via their WPI emails
