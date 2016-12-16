@@ -229,8 +229,6 @@ public class BuilderView
 		
 		//String[] data = {"one", "two", "three", "four"};
 		list = new JList<String>();
-		DefaultListModel listModel = new DefaultListModel();
-		list.setModel(listModel);
 		list.setToolTipText("Words to add for Theme levels");
 		scrollPane.setViewportView(list);
 		
