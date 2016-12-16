@@ -18,14 +18,16 @@ public class QuitBoardController implements ActionListener
 	BuilderView app;
 	
 	/**
-	 * Initializer requires the frame that the builder window belongs to.
-	 * @param frame
+	 * @param app The builder boundary GUI
 	 */
 	public QuitBoardController(BuilderView app)
 	{
 		this.app = app;
 	}
 	
+	/**
+	 * Quits the board without saving any unsaved changes
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -40,6 +42,12 @@ public class QuitBoardController implements ActionListener
 		}
 	}
 	
+	/**
+	 * Prompts the user to confirm quitting
+	 * @param message The message to show the user
+	 * @param title The title of the pop-up window
+	 * @return True if the user said yes
+	 */
 	private boolean promptUser(String message, String title)
 	{
 		int n = JOptionPane.showConfirmDialog(
@@ -48,6 +56,6 @@ public class QuitBoardController implements ActionListener
 			    title,
 			    JOptionPane.YES_NO_OPTION);
 		
-		return n == 0;
+		return n == JOptionPane.YES_OPTION;
 	}
 }
