@@ -9,6 +9,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import lettercraze.controller.builder.AddWordController;
+import lettercraze.controller.builder.ChangeMiscController;
 import lettercraze.controller.builder.ChangeScoreController;
 import lettercraze.controller.builder.ChangeTypeController;
 import lettercraze.controller.builder.DeleteWordController;
@@ -44,7 +45,6 @@ import java.awt.GridLayout;
 public class BuilderView
 {
 	JFrame frame;
-	private static KeyAdapter textFilter;
 	JLabel nameLabel;
 	JTextField nameField;
 	JTextField scores[] = new JTextField[3];
@@ -260,7 +260,7 @@ public class BuilderView
 		nameField.setBounds(160, 280, 100, 26);
 		nameField.setText("");
 		nameField.setColumns(10);
-		nameField.addKeyListener(textFilter);
+		nameField.addFocusListener(new ChangeMiscController(m, this));
 		frame.getContentPane().add(nameField);
 		
 		prevButt = new JButton("Preview");
@@ -306,14 +306,8 @@ public class BuilderView
 				}
 			}
 		}
-	}
-
-	/**
-	 *  Change the values of the text fields to match the loaded level. This
-	 *  normally is only invoked on a level load. Also changes the radio
-	 *  buttons.
-	 */
-	public void updateTextFields() {
+		
+		// Update text fields
 		this.scores[0].setText(Integer.toString(m.getLevel().oneStar));
 		this.scores[1].setText(Integer.toString(m.getLevel().twoStar));
 		this.scores[2].setText(Integer.toString(m.getLevel().threeStar));

@@ -59,7 +59,6 @@ public class LoadBoardController implements ActionListener
 			} else {
 				m.loadLevel(l);
 				app.update();
-				app.updateTextFields();
 			}
 		} catch (FileNotFoundException e1) {
 			notifyFailed(saveFile);

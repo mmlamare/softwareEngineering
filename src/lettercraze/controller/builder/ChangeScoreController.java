@@ -58,7 +58,6 @@ public class ChangeScoreController implements FocusListener {
 				break;
 			}
 			app.update();
-			app.updateTextFields();
 		} catch (NumberFormatException ex) {
 			JOptionPane.showMessageDialog(app.getFrame(),
 					"Score thresholds must be integers.",
@@ -78,7 +77,6 @@ public class ChangeScoreController implements FocusListener {
 				break;
 			}
 			app.update();
-			app.updateTextFields();
 		}
 	}
 
