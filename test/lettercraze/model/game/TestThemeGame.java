@@ -1,10 +1,8 @@
 package lettercraze.model.game;
 
-import java.util.Random;
-
 import junit.framework.TestCase;
+
 import lettercraze.files.Data;
-import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
@@ -18,18 +16,10 @@ public class TestThemeGame extends TestCase
 	@Override
 	public void setUp()
 	{
-		// Load static resources from within the JAR file
-		//Resources.loadResources();
-		// Ensure that we have access to the game's data directory
-		if (!Data.dataPathExists())
-		{
-			Data.createDataPath();
-		}
-
-		m = new Model(Data.readScores());
+		m = new Model(Data.readScores(), 2);
 		app = new LetterCraze(m);
 
-		m.loadLevelByID(5);
+		m.loadLevelByID(2);
 		app.update();
 	}
 
@@ -54,5 +44,9 @@ public class TestThemeGame extends TestCase
 				assertFalse(m.getCurrentGame().getBoard().isEmpty(new Point(row, col)));
 			}
 		}
+	}
+	
+	public void testGameOver(){
+		assertFalse(m.getCurrentGame().gameOver());
 	}
 }
