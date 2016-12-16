@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
 import lettercraze.model.Model;
-import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.view.LetterCraze;
 

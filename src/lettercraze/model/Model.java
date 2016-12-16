@@ -141,7 +141,9 @@ public class Model {
 		if (l == null) {
 			System.err.println("No level for ID: " + id);
 		} else {
-			loadLevel(l);
+			this.inGame = true;
+			this.currentGame = l.loadLevel(id, rng);
+			this.currentGame.initialize();
 		}
 	}
 	

@@ -40,7 +40,7 @@ public class TestBuilder extends TestCase
 			{
 				try
 				{
-					Thread.sleep(1500);
+					Thread.sleep(200);
 				} catch (Exception e){}
 				System.out.println("Made it");
 				r.keyPress(KeyEvent.VK_ENTER);
@@ -53,7 +53,7 @@ public class TestBuilder extends TestCase
 			{
 				try
 				{
-					Thread.sleep(2000);
+					Thread.sleep(200);
 				} catch (Exception e){}
 				r.keyPress(KeyEvent.VK_ENTER);
 				r.keyRelease(KeyEvent.VK_ENTER);
@@ -65,7 +65,7 @@ public class TestBuilder extends TestCase
 			{
 				try
 				{
-					Thread.sleep(1000);
+					Thread.sleep(200);
 				} catch (Exception e){}
 				r.keyPress(KeyEvent.VK_A);
 				r.keyRelease(KeyEvent.VK_A);
@@ -77,7 +77,7 @@ public class TestBuilder extends TestCase
 			{
 				try
 				{
-					Thread.sleep(1000);
+					Thread.sleep(200);
 				} catch (Exception e){}
 				r.keyPress(KeyEvent.VK_DOWN);
 				r.keyRelease(KeyEvent.VK_DOWN);
@@ -103,24 +103,12 @@ public class TestBuilder extends TestCase
 		themeButton.doClick();
 		assertTrue(themeButton.isSelected());
 
-		/*JButton saveButton = builderView.btnSave;
-		new Thread(letterThread).start();
-		new Thread(enterThread).start();
-		new Thread(slowEnterThread).start();
-		saveButton.doClick();*/
-
-		/*JButton loadButton = builderView.btnLoad;
-
-		new Thread(downArrowThread).start();
-		new Thread(enterThread).start();
-		loadButton.doClick();*/
-
 		JButton addWord = builderView.btnAddWord;
 		new Thread(letterThread).start();
 		new Thread(enterThread).start();
 		addWord.doClick();
 
-		JList list = builderView.list;
+		JList<String> list = builderView.list;
 		list.setSelectedIndex(0);
 
 		JButton removeWord = builderView.btnDelete;
@@ -132,10 +120,5 @@ public class TestBuilder extends TestCase
 		new Thread(letterThread).start();
 		new Thread(enterThread).start();
 		rcc.mouseClicked(me);
-
-		JButton quitButton = builderView.btnQuit;
-
-		//new Thread(enterThread).start();
-		//quitButton.doClick();
 	}
 }

@@ -35,7 +35,6 @@ public class TestResetController extends TestCase {
 	
 	//Tests the Puzzle level reset
 	public void testResetGameNonL(){
-		setUp();
 		ResetController rC = new ResetController(m,app);
 		
 		m.loadLevelByID(0);
@@ -50,8 +49,6 @@ public class TestResetController extends TestCase {
 		
 		m.currentGame.scoreWord("hello");
 		
-		System.out.println("Printing Score: " + m.currentGame.getScore());
-		
 		ActionEvent ae = new ActionEvent(gView.resetButton, java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
 	
 		
@@ -59,16 +56,11 @@ public class TestResetController extends TestCase {
 		Board bAfterReset = m.currentGame.getBoard();
 		assertNotSame(bInitial, bAfterReset);
 		assertTrue(m.isInGame());
-
-		System.out.println("Printing Score after reset:" + game.getScore());
-		
-		tearDown();
 	}
 	
 	
 	
 	public void testResetGameLightning(){
-		setUp();
 		ResetController rC = new ResetController(m, app);
 	
 		

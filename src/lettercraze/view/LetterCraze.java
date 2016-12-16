@@ -47,7 +47,7 @@ public class LetterCraze extends JFrame {
 		return preview;
 	}
 	
-	public static void previewLevel(Level l) {
+	public static LetterCraze previewLevel(Level l) {
 		LetterCraze preview = new LetterCraze();
 		preview.preview = true;
 		preview.m = new Model(null);
@@ -56,6 +56,7 @@ public class LetterCraze extends JFrame {
 		preview.addKeyListener(new SubmitController(preview.m, preview));
 		preview.setVisible(true);
 		preview.update();
+		return preview;
 	}
 
 	/**

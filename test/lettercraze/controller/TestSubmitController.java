@@ -5,17 +5,12 @@ import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractButton;
-
 import junit.framework.TestCase;
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
 import lettercraze.model.Model;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
-import lettercraze.model.board.SquareType;
-import lettercraze.view.BoardButton;
-import lettercraze.view.BoardView;
 import lettercraze.view.GameView;
 import lettercraze.view.LetterCraze;
 
@@ -51,8 +46,6 @@ public class TestSubmitController extends TestCase {
 	
 	//Tests the Puzzle level reset
 	public void testSubmitNothing(){
-		setUp();
-		SubmitController sC = new SubmitController(m,app);
 		
 		m.loadLevelByID(0);
 		assertTrue(m.isInGame());
@@ -66,8 +59,6 @@ public class TestSubmitController extends TestCase {
 	}
 	
 	public void testSubmitJustOne(){
-		setUp();
-		SubmitController sC = new SubmitController(m, app);
 		
 		Point p0 = new Point(0,0);
 
@@ -97,11 +88,6 @@ public class TestSubmitController extends TestCase {
 	
 	
 	public void testSubmitJustAnd(){
-		setUp();
-		SubmitController sC = new SubmitController(m, app);
-
-		
-		
 		m.loadLevelByID(0);
 		assertTrue(m.isInGame());
 		gView = new GameView(m);
@@ -111,7 +97,6 @@ public class TestSubmitController extends TestCase {
 		//Set
 		Square sq0 = Square.makeSquare('h');
 		Square sq1 = Square.makeSquare('e');
-		Square sq2 = Square.makeSquare('r');
 
 		Point p0 = new Point(0,0);
 		Point p1 = new Point(0,1);
@@ -167,8 +152,6 @@ public class TestSubmitController extends TestCase {
 		}
 		assertEquals(m.currentGame.getScore(), 5);
 		
-		
-		tearDown();
 	}
 
 	

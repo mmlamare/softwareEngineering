@@ -29,9 +29,7 @@ public class QuitBoardController implements ActionListener
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
-	{
-		System.out.println("Quitting Board without saving...");
-		
+	{	
 		boolean shouldExit = promptUser("Are you sure you want to quit?\nYour game may not be saved", "Do you really want to quit?");
 		
 		if (shouldExit)

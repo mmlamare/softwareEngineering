@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import junit.framework.TestCase;
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
-import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 import lettercraze.view.LetterCraze;
@@ -29,20 +28,21 @@ public class TestQuitLevelController extends TestCase {
 		gView = new GameView(m);				
 	}
 	
+	@Override
+	protected void tearDown() {
+		app.dispose();
+	}
+	
 	public void testQuitGame(){
-		setUp();
 		QuitLevelController qLC = new QuitLevelController(m,app);
 		assertTrue(m.isInGame());
 		ActionEvent ae = new ActionEvent(gView.quitButton, java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
 		for(int i=0; i<100;i++){
 			m.currentGame.scoreWord("test");
 		}
-		System.out.print("Here's our score hehexd");
-		System.out.println(m.currentGame.getScore());
 		
 		qLC.actionPerformed(ae);
 		assertFalse(m.isInGame());
-		
 	}
 }
 

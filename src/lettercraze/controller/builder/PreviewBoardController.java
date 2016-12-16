@@ -18,6 +18,7 @@ public class PreviewBoardController implements ActionListener {
 
 	BuilderModel m;
 	BuilderView app;
+	LetterCraze lastInstance = null;
 	
 	/**
 	 * Create a new preview board controller
@@ -49,7 +50,7 @@ public class PreviewBoardController implements ActionListener {
 			m.getLevel().limit = Integer.parseInt(miscField);
 		}
 
-		LetterCraze.previewLevel(m.getLevel());
+		this.lastInstance = LetterCraze.previewLevel(m.getLevel());
 	}
 
 }
