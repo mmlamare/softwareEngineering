@@ -48,7 +48,7 @@ public class RightClickController implements MouseListener
 		{
 			// Ensure we're in theme mode
 			if (m.getLevel().type == LevelType.THEME) {
-				String input = getUserCharacter("Enter a lowercase letter (just 'q' for 'qu'):");
+				String input = getUserCharacter("Enter a letter (just 'q' for 'qu'):");
 				if (input == null) { // the user clicked "cancel"
 					return;
 				}
@@ -56,9 +56,12 @@ public class RightClickController implements MouseListener
 				while (invalid) {
 					if (input.length() != 1) {
 						input = getUserCharacter("Enter exactly one character (just 'q' for 'qu').");
+						if (input == null) { // the user clicked "cancel"
+							return;
+						}
 						continue;
 					} else if (!Character.isLowerCase(input.charAt(0))) {
-						input = getUserCharacter("Enter a lowercase letter (just 'q' for 'qu'):");
+						input = input.toLowerCase();
 						continue;
 					}
 					invalid = false;
