@@ -13,6 +13,7 @@ import javax.swing.JRadioButton;
 
 import junit.framework.TestCase;
 import lettercraze.controller.builder.RightClickController;
+import lettercraze.model.BuilderModel;
 import lettercraze.model.board.ModelBuilder;
 
 public class TestBuilder extends TestCase
@@ -25,8 +26,7 @@ public class TestBuilder extends TestCase
 	Runnable downArrowThread;
 	Runnable slowEnterThread;
 	
-	protected void setUp() throws Exception
-	{
+	protected void setUp() throws Exception{
 		super.setUp();
 		
 		r = null;
@@ -36,9 +36,9 @@ public class TestBuilder extends TestCase
 		}
 		catch (Exception e)
 		{
-		}
+	}
 		
-		builderView = new BuilderView(new ModelBuilder());
+		builderView = new BuilderView(new BuilderModel());
 		
 		enterThread = new Runnable(){
 			public void run()
@@ -105,7 +105,7 @@ public class TestBuilder extends TestCase
 		BoardButton aButton = builderView.squares[0][0];
 		
 		aButton.doClick();
-		assertEquals(aButton.getBackground(), Color.GRAY);
+		assertEquals(aButton.getBackground(), Color.BLACK);
 		
 		JRadioButton themeButton = builderView.buttons[2];
 		
