@@ -22,12 +22,25 @@ public class RightClickController implements MouseListener
 	Point loc;
 	BuilderModel m;
 	
+	/**
+	 * 
+	 * @param m The builder entity
+	 * @param app The Builder boundary
+	 * @param l This is the point on the grid Boundary the the player selected
+	 */
 	public RightClickController(BuilderModel m, BuilderView app, Point l) {
 		this.m = m;
 		this.app = app;
 		this.loc = l;
 	}
 	
+	/**
+	 * This takes in the mouse click and changed the square's
+	 * status to having a hard coded letter. Then it prompts the 
+	 * User to enter a character. Character is displayed
+	 * Then it refreshes the display.
+	 * @param e The action event object
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
@@ -43,30 +56,31 @@ public class RightClickController implements MouseListener
 		}
 	}
 
+	/** Unused interface method */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
-
+	/** Unused interface method */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
-
+	/** Unused interface method */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
-
+	/** Unused interface method */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
-	
+	/** Unused interface method */
 	private String getUserCharacter(String prompt) {
 		return JOptionPane.showInputDialog(prompt);
 	}
