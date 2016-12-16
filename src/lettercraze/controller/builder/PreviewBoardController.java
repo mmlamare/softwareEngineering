@@ -8,17 +8,31 @@ import lettercraze.model.LevelType;
 import lettercraze.view.BuilderView;
 import lettercraze.view.LetterCraze;
 
+/**
+ * The controller responsible for launching a preview game when "Preview" is
+ * clicked.
+ * @author Ruthenium
+ *
+ */
 public class PreviewBoardController implements ActionListener {
 
 	BuilderModel m;
 	BuilderView app;
 	
+	/**
+	 * Create a new preview board controller
+	 * @param m The builder entity
+	 * @param app The builder view
+	 */
 	public PreviewBoardController(BuilderModel m, BuilderView app) {
 		this.m = m;
 		this.app = app;
 	}
 
 	@Override
+	/**
+	 * Launch a preview of the current level.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// read the parameters from BuilderView into the model
 		String oneStar = app.getOneStarScore().getText();

@@ -52,6 +52,7 @@ public class ThemeGame extends Game {
 		return "Theme | " + level.name;
 	}
 
+	@Override
 	public Object clone() {
 		ThemeGame result = new ThemeGame(level, levelID, rng);
 		result.score = this.score;

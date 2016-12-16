@@ -1,6 +1,5 @@
 package lettercraze.view;
 
-import java.awt.event.KeyAdapter;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -32,7 +31,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -46,7 +44,8 @@ public class BuilderView
 {
 	JFrame frame;
 	JLabel nameLabel;
-	JTextField nameField;
+	/** Function varies based on level type */
+	JTextField miscField;
 	JTextField scores[] = new JTextField[3];
 	
 	JButton btnQuit;
@@ -77,27 +76,47 @@ public class BuilderView
 		frame.setVisible(true);
 		this.update();
 	}
-	
+
+	/**
+	 * Getter for the App's JFrame
+	 * @return The JFrame
+	 */
 	public JFrame getFrame() {
 		return frame;
 	}
 	
+	/**
+	 * Getter for the one star text field
+	 * @return The one star text field
+	 */
 	public JTextField getOneStarScore() {
 		return scores[0];
 	}
 	
+	/**
+	 * Getter for the two star text field
+	 * @return The two star text field
+	 */
 	public JTextField getTwoStarScore() {
 		return scores[1];
 	}
 	
+	/**
+	 * Getter for the three star text field
+	 * @return The three star text field
+	 */
 	public JTextField getThreeStarScore() {
 		return scores[2];
 	}
 	
+	/**
+	 * Getter for the misc text field
+	 * @return The misc text field
+	 */
 	public JTextField getMiscTextField() {
-		return nameField;
+		return miscField;
 	}
-	
+
 	/**
 	 * Helper function to create a JPanel with the all the board buttons 
 	 * @param frame
@@ -105,7 +124,7 @@ public class BuilderView
 	 */
 	private JPanel addGameBoard(JFrame frame)
 	{
-		JPanel panel = new JPanel(); //Fix this contructor?
+		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBounds(6, 6, 266, 266);
 		
@@ -256,12 +275,12 @@ public class BuilderView
 		nameLabel.setBounds(22, 280, 160, 16);
 		frame.getContentPane().add(nameLabel);
 		
-		nameField = new JTextField();
-		nameField.setBounds(160, 280, 100, 26);
-		nameField.setText("");
-		nameField.setColumns(10);
-		nameField.addFocusListener(new ChangeMiscController(m, this));
-		frame.getContentPane().add(nameField);
+		miscField = new JTextField();
+		miscField.setBounds(160, 280, 100, 26);
+		miscField.setText("");
+		miscField.setColumns(10);
+		miscField.addFocusListener(new ChangeMiscController(m, this));
+		frame.getContentPane().add(miscField);
 		
 		prevButt = new JButton("Preview");
 		prevButt.addActionListener(new PreviewBoardController(m, this));
@@ -270,6 +289,9 @@ public class BuilderView
 		frame.getContentPane().add(prevButt);
 	}
 	
+	/**
+	 * Update all visual components to match the model.
+	 */
 	public void update() {
 		switch(m.getLevel().type) {
 		case PUZZLE:
@@ -314,15 +336,15 @@ public class BuilderView
 		
 		switch(m.getLevel().type) {
 		case PUZZLE:
-			nameField.setText(Integer.toString(m.getLevel().limit));
+			miscField.setText(Integer.toString(m.getLevel().limit));
 			buttons[0].setSelected(true);
 			break;
 		case LIGHTNING:
-			nameField.setText(Integer.toString(m.getLevel().limit));
+			miscField.setText(Integer.toString(m.getLevel().limit));
 			buttons[1].setSelected(true);
 			break;
 		case THEME:
-			nameField.setText(m.getLevel().name);
+			miscField.setText(m.getLevel().name);
 			buttons[2].setSelected(true);
 			break;
 		}

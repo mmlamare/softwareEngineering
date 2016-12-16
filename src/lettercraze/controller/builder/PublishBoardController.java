@@ -32,6 +32,9 @@ public class PublishBoardController implements ActionListener
 	}
 	
 	@Override
+	/**
+	 * Offer the user a dialog box to save the current Level
+	 */
 	public void actionPerformed(ActionEvent e)
 	{
 		JFileChooser fc = new JFileChooser();

@@ -28,7 +28,8 @@ public class Level {
 	/**The level's level type*/
 	public LevelType type;
 	/** The word limit for puzzle levels and the time limit in seconds for
-	 * lightning levels. Unimplemented for theme levels.*/
+	 * lightning levels. Unimplemented for theme levels. A word limit of 0
+	 * for a puzzle game means unlimited words are allowed. */
 	public int limit = 0;
 	/**The loaded dictionary for the level */
 	public Dictionary words = null;
@@ -53,7 +54,11 @@ public class Level {
 		return result;
 	}
 
+	/**
+	 * Tell if the level has a word limit or if it is unlimited.
+	 * @return
+	 */
 	public boolean hasWordLimit() {
-		return limit != 0;
+		return this.type == LevelType.PUZZLE && limit != 0;
 	}
 }

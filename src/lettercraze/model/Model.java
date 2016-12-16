@@ -6,6 +6,7 @@ import lettercraze.files.Resources;
 import lettercraze.model.game.Game;
 
 /**
+ * The main Entity class for the LetterCraze game
  * @author Ruthenium
  * @version 1.0
  */
@@ -121,10 +122,6 @@ public class Model {
 		return currentGame;
 	}
 
-	//public void startGame() {
-	//	inGame = true;
-	//}
-
 	/**
 	 * Sets the necessary fields for signaling that the level
 	 * has been exited.
@@ -150,7 +147,7 @@ public class Model {
 	
 	/**
 	 * Load a given Level
-	 * @param id The level number
+	 * @param l The level to load
 	 */
 	public void loadLevel(Level l) {
 		this.inGame = true;

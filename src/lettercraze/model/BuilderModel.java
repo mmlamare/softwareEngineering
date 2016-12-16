@@ -4,17 +4,32 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 
+/**
+ * The main entity class for the builder
+ * @author Ruthenium
+ *
+ */
 public class BuilderModel {
 	Level level;
 
+	/**
+	 * Create a new Builder with an empty level
+	 */
 	public BuilderModel() {
 		this.newLevel();
 	}
 	
+	/**
+	 * Load a level into the builder
+	 * @param l The level to load
+	 */
 	public void loadLevel(Level l) {
 		this.level = l;
 	}
 	
+	/**
+	 * Create a new level and load it
+	 */
 	public void newLevel() {
 		// initialize a puzzle level
 		this.level = new Level();
@@ -30,10 +45,18 @@ public class BuilderModel {
 		level.name = "";
 	}
 	
+	/**
+	 * Getter for the current level
+	 * @return The level
+	 */
 	public Level getLevel() {
 		return this.level;
 	}
 	
+	/**
+	 * Getter for the board
+	 * @return The board
+	 */
 	public Board getBoard() {
 		return this.level.initBoard;
 	}
@@ -60,6 +83,10 @@ public class BuilderModel {
 		getBoard().setSquare(p, Square.makeSquare(ch));
 	}
 	
+	/**
+	 * Add a word to the level's dictionary
+	 * @param w The word to add.
+	 */
 	public void addWord(String w) {
 		if (level.words == null) {
 			level.words = new Dictionary();
@@ -67,6 +94,10 @@ public class BuilderModel {
 		level.words.addWord(w);
 	}
 
+	/**
+	 * Remove a word from the level's dictionary (if it's there)
+	 * @param w The word to remove
+	 */
 	public void removeWord(String w) {
 		level.words.removeWord(w);
 	}

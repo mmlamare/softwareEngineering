@@ -26,6 +26,10 @@ public class SaveStateController extends WindowAdapter {
 		this.app = app;
 	}
 
+	@Override
+	/**
+	 * Save user scores on exit
+	 */
 	public void windowClosing (WindowEvent w) {
 		// Save the scores and exit
 		Data.writeScores(m.getHighScores());
