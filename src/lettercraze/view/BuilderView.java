@@ -34,6 +34,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 /**
  * This is the high level GUI object for the builder application
@@ -134,6 +135,7 @@ public class BuilderView
 			for (int col=0; col < Board.SIZE; ++col) {
 				Point loc = new Point(row,col);
 				squares[row][col] = new BoardButton(new Point(row,col));
+				squares[row][col].setMargin(new Insets(2,2,2,2));
 				squares[row][col].setOpaque(true);
 				squares[row][col].setSize(BUTTON_SIZE, BUTTON_SIZE);
 				squares[row][col].setFocusable(false);
