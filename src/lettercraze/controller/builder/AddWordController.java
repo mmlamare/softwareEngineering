@@ -37,9 +37,32 @@ public class AddWordController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Ensure that we're in theme mode
 		if (m.getLevel().type == LevelType.THEME) {
-			String word = JOptionPane.showInputDialog(app, "Enter a word");
+			String word = JOptionPane.showInputDialog("Enter a word");
+			if (word == null) { // user clicked 'cancel'
+				return;
+			}
+			while (wordInvalid(word)) {
+				word = JOptionPane.showInputDialog("Enter only lowercase letters");
+			}
 			m.addWord(word);
 			app.update();
 		}
+	}
+
+	/**
+	 * Tell if a word is invalid (namely if it's empty or contains invalid characters)
+	 * @param word The string to check
+	 * @return T/F
+	 */
+	boolean wordInvalid(String word) {
+		if (word.length() == 0) return true;
+
+		for (int i = 0; i < word.length(); ++i) {
+			if (!Character.isLowerCase(word.charAt(i))) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

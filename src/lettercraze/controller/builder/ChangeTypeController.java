@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 import lettercraze.model.BuilderModel;
 import lettercraze.model.LevelType;
+import lettercraze.model.board.Board;
+import lettercraze.model.board.Point;
+import lettercraze.model.board.Square;
 import lettercraze.view.BuilderView;
 
 /**
@@ -27,9 +30,6 @@ public class ChangeTypeController implements ActionListener{
 		this.m = m;
 		this.app = app;
 		this.t = t;
-		if (t != LevelType.THEME) {
-			m.getLevel().words = null;
-		}
 	}
 
 
@@ -41,6 +41,17 @@ public class ChangeTypeController implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		m.getLevel().type = t;
+		if (t != LevelType.THEME) {
+			m.getLevel().words = null;
+			for (int row = 0; row < Board.SIZE; ++row) {
+				for (int col = 0; col < Board.SIZE; ++col) {
+					Point p = new Point(row, col);
+					// Clear the board if we're not in theme mode
+					if (m.getBoard().isLetter(p))
+						m.getBoard().setSquare(p, Square.makeEmptySquare());
+				}
+			}
+		}
 		app.update();
 	}
 }
