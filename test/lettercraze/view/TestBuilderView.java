@@ -17,5 +17,6 @@ public class TestBuilderView extends TestCase {
 	}
 	public void testBuilderView(){
 		assertTrue(app.getFrame() instanceof JFrame);
+		
 	}
 }
