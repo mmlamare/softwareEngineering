@@ -6,10 +6,10 @@ import junit.framework.TestCase;
 import lettercraze.model.BuilderModel;
 
 public class TestBuilderView extends TestCase {
-	BuilderView app;
+	BuilderView app = new BuilderView(new BuilderModel());
 	
 	protected void setup(){
-		app = new BuilderView(new BuilderModel());
+		
 	}
 	
 	protected void teardown(){

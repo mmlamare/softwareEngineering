@@ -1,7 +1,6 @@
 package lettercraze.controller;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 
 import junit.framework.TestCase;
 import lettercraze.files.Data;
