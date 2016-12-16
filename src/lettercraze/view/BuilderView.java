@@ -14,6 +14,7 @@ import lettercraze.controller.builder.AddWordController;
 import lettercraze.controller.builder.ChangeTypeController;
 import lettercraze.controller.builder.DeleteWordController;
 import lettercraze.controller.builder.LoadBoardController;
+import lettercraze.controller.builder.PreviewBoardController;
 import lettercraze.controller.builder.PublishBoardController;
 import lettercraze.controller.builder.QuitBoardController;
 import lettercraze.controller.builder.RightClickController;
@@ -59,6 +60,7 @@ public class BuilderView
 	JButton btnSave;
 	JButton btnAddWord;
 	JButton btnDelete;
+	JButton prevButt;
 	JList<String> list;
 	
 	/**The static variable for the button size */
@@ -67,6 +69,7 @@ public class BuilderView
 	private BuilderModel m;
 	
 	BoardButton squares[][];
+	
 	
 	/**
 	 * The constructor for the BuilderView
@@ -136,16 +139,9 @@ public class BuilderView
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 451, 374);
+		frame.setBounds(100, 100, 460, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		//int intVals[] = new int[15];
-		//for (int i=0; i<15; i++){intVals[i]=i;}
-		/*BoardView panel = new BoardView(m); //Fix this contructor?
-		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel.setBounds(6, 6, 266, 266);
-		frame.getContentPane().add(panel);*/
 		
 		JPanel gamePanel = addGameBoard(frame);
 		frame.getContentPane().add(gamePanel);
@@ -236,7 +232,7 @@ public class BuilderView
 		btnAddWord.addActionListener(new AddWordController(m, this));
 		
 		btnAddWord.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		btnAddWord.setBounds(22, 240, 56, 26);
+		btnAddWord.setBounds(5, 240, 70, 26);
 		panel_1.add(btnAddWord);
 		
 		btnDelete = new JButton("- Delete");
@@ -268,18 +264,23 @@ public class BuilderView
 		frame.getContentPane().add(nameLabel);
 		
 		nameField = new JTextField();
-		nameField.setBounds(200, 280, 100, 26);
+		nameField.setBounds(160, 280, 100, 26);
 		nameField.setText("");
 		nameField.setColumns(10);
 		nameField.addKeyListener(textFilter);
 		frame.getContentPane().add(nameField);
 		
+		prevButt = new JButton("Preview");
+		prevButt.addActionListener(new PreviewBoardController(m, this));
+		prevButt.setName("Preview");
+		prevButt.setBounds(308, 280, 117, 29);
+		frame.getContentPane().add(prevButt);
 	}
 	
 	public void update() {
 		switch(m.getLevel().type) {
 		case PUZZLE:
-			nameLabel.setText("Word limit:");
+			nameLabel.setText("Moves limit:");
 			break;
 		case LIGHTNING:
 			nameLabel.setText("Time limit:");
