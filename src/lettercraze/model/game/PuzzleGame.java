@@ -23,7 +23,7 @@ public class PuzzleGame extends Game {
 	}
 	
 	public boolean gameOver() {
-		return level.wordLimit != 0 && pastWords.size() >= level.wordLimit;
+		return level.limit != 0 && pastWords.size() >= level.limit;
 	}
 	
 	public int scoreWord(String w) {
@@ -40,8 +40,8 @@ public class PuzzleGame extends Game {
 	 * @return "Puzzle"
 	 */
 	public String getInfoString() {
-		if (level.wordLimit != 0 ) {
-			return "Puzzle | Words left: " + (level.wordLimit - pastWords.size());
+		if (level.limit != 0 ) {
+			return "Puzzle | Words left: " + (level.limit - pastWords.size());
 		}
 		return "Unlimited words";
 	}

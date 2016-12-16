@@ -69,7 +69,7 @@ public class LevelLoader implements Loader {
 		result.threeStar = sc.nextInt();
 		
 		// followed by the word limit (use 0 for unlimited)
-		result.wordLimit = sc.nextInt();
+		result.limit = sc.nextInt();
 		
 		// if we're in a theme level, then the remaining lines are the words
 		if (result.type == THEME) {

@@ -49,7 +49,7 @@ public class LevelWriter {
 			writer.println(l.oneStar + " " + l.twoStar + " " + l.threeStar);
 
 			// write the max words
-			writer.println(l.wordLimit);
+			writer.println(l.limit);
 			
 			// if we're in a theme level, write the dictionary
 			if (l.type == LevelType.THEME) {

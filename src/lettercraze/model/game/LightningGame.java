@@ -14,7 +14,6 @@ import lettercraze.model.Level;
  */
 public class LightningGame extends Game {
 	int timeRemaining;
-	static final int TOTAL_TIME = 120;
 
 	/**
 	 * Construct for a lightning level
@@ -28,7 +27,7 @@ public class LightningGame extends Game {
 	@Override
 	public void initialize() {
 		super.initialize();
-		timeRemaining = TOTAL_TIME;
+		timeRemaining = this.level.limit;
 	}
 	
 	@Override
@@ -38,7 +37,7 @@ public class LightningGame extends Game {
 
 	@Override
 	public boolean gameOver() {
-		return timeRemaining <= 0 || (level.wordLimit != 0 && pastWords.size() > level.wordLimit);
+		return timeRemaining <= 0 || (level.limit != 0 && pastWords.size() > level.limit);
 	}
 	
 	/**

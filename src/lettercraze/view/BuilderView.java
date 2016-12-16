@@ -328,11 +328,11 @@ public class BuilderView
 		
 		switch(m.getLevel().type) {
 		case PUZZLE:
-			nameField.setText(Integer.toString(m.getLevel().wordLimit));
+			nameField.setText(Integer.toString(m.getLevel().limit));
 			buttons[0].setSelected(true);
 			break;
 		case LIGHTNING:
-			nameField.setText(Integer.toString(m.getLevel().wordLimit));
+			nameField.setText(Integer.toString(m.getLevel().limit));
 			buttons[1].setSelected(true);
 			break;
 		case THEME:

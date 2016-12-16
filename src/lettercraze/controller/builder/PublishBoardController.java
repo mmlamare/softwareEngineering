@@ -57,7 +57,7 @@ public class PublishBoardController implements ActionListener
 		if (m.getLevel().type == LevelType.THEME) {
 			m.getLevel().name = miscField;
 		} else {
-			m.getLevel().wordLimit = Integer.parseInt(miscField);
+			m.getLevel().limit = Integer.parseInt(miscField);
 		}
 
 		boolean success = LevelWriter.writeLevel(m.getLevel(), saveFile);
