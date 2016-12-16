@@ -1,12 +1,8 @@
 package lettercraze.controller.builder;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -16,6 +12,9 @@ import javax.swing.JTextField;
 import javax.swing.ListModel;
 
 import lettercraze.files.Data;
+import lettercraze.files.LevelWriter;
+import lettercraze.model.BuilderModel;
+import lettercraze.model.LevelType;
 import lettercraze.view.BoardButton;
 import lettercraze.view.BuilderView;
 
@@ -26,24 +25,16 @@ import lettercraze.view.BuilderView;
  */
 public class PublishBoardController implements ActionListener
 {
-	JFrame frame;
-	String saveName;
-	BoardButton squares[][];
-	JRadioButton buttons[];
-	JTextField scores[];
-	ListModel<String> customWords;
-	
+	BuilderModel m;
+	BuilderView app;
+
 	/**
 	 * Initializer requires the frame that the builder window belongs to.
 	 * @param frame
 	 */
-	public PublishBoardController(JFrame frame, BoardButton squares[][], JRadioButton buttons[], JTextField scoreThreshholds[], ListModel<String> list)
-	{
-		this.frame = frame;
-		this.squares = squares;
-		this.buttons = buttons;
-		this.scores = scoreThreshholds;
-		this.customWords = list;
+	public PublishBoardController(BuilderModel m, BuilderView app) {
+		this.m = m;
+		this.app = app;
 	}
 	
 	@Override
@@ -51,86 +42,27 @@ public class PublishBoardController implements ActionListener
 	{
 		JFileChooser fc = new JFileChooser();
 		fc.setCurrentDirectory(Data.getDataDir());
-		fc.showSaveDialog(frame);
+		fc.showSaveDialog(app.getFrame());
 		File saveFile = fc.getSelectedFile();
+		
+		// read the parameters from BuilderView into the model
+		String oneStar = app.getOneStarScore().getText();
+		String twoStar = app.getTwoStarScore().getText();
+		String threeStar = app.getThreeStarScore().getText();
+		String miscField = app.getMiscTextField().getText();
 
-		String levelType = getLevelType();
+		m.getLevel().oneStar = Integer.parseInt(oneStar);
+		m.getLevel().twoStar = Integer.parseInt(twoStar);
+		m.getLevel().threeStar = Integer.parseInt(threeStar);
+		if (m.getLevel().type == LevelType.THEME) {
+			m.getLevel().name = miscField;
+		} else {
+			m.getLevel().wordLimit = Integer.parseInt(miscField);
+		}
 
-		//Save all our stuff here given the gamepanel with all the squares
-		ArrayList<String> saveData = new ArrayList<String>();
-		saveData.add(levelType);
-		saveData.add(saveName);
+		boolean success = LevelWriter.writeLevel(m.getLevel(), saveFile);
+		if (!success) System.err.println("couldn't write file " + saveFile.getName());
 
-		String line = "";
-		for (int row=0; row<squares.length; row++)
-		{
-			for (int col = 0; col < squares[row].length; col++)
-			{
-				line += getValue(squares[row][col]);
-			}
-		}
-		
-		saveData.add(line);
-		
-		saveData.add(scores[0].getText() + " " + scores[1].getText() + " " + scores[2].getText());
-		saveData.add("0");
-		
-		if (levelType.equals("theme"))
-		{
-			//Add custom words
-			for (int i=0; i<customWords.getSize(); i++)
-			{
-				saveData.add(customWords.getElementAt(i).toString());
-			}
-		}
-		
-		saveBoardData(saveFile, saveData);
-		showMessage(frame, "Board saved!");
-	}
-	
-	private void showMessage(JFrame frame, String message)
-	{
-		JOptionPane.showMessageDialog(frame, message);
-	}
-	
-	
-	private String getLevelType()
-	{
-		if (buttons[0].isSelected()) return "puzzle";
-		if (buttons[1].isSelected()) return "lightning";
-		return "theme";
-	}
-	
-	private String getValue(BoardButton b)
-	{
-		if (b.getBackground().equals(Color.GRAY))
-		{
-			//The button is disabled
-			return "#";
-		}
-		
-		String str = b.getText();
-		if (str.length() == 0)
-		{
-			return ".";
-		}
-		return str;
-	}
-	
-	private void saveBoardData(File saveFile, ArrayList<String> saveData)
-	{
-		try
-		{
-		    PrintWriter writer = new PrintWriter(saveFile, "UTF-8");
-		    for (int i=0; i<saveData.size(); i++)
-		    {
-		    	writer.println(saveData.get(i));
-		    }
-		    writer.close();
-		}
-		catch (IOException e)
-		{
-			System.err.println(e.getMessage());
-		}
+		app.update();
 	}
 }

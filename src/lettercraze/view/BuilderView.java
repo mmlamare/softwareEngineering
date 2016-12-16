@@ -48,12 +48,10 @@ import java.awt.event.ActionEvent;
 public class BuilderView
 {
 	JFrame frame;
-	private JTextField textField;
 	private static KeyAdapter textFilter;
-	private JTextField textField_1;
-	private JTextField textField_2;
 	JLabel nameLabel;
 	JTextField nameField;
+	JTextField scores[] = new JTextField[3];
 	
 	JButton btnQuit;
 	JRadioButton buttons[];
@@ -66,7 +64,7 @@ public class BuilderView
 	/**The static variable for the button size */
 	public final static int BUTTON_SIZE = 32;
 	
-	private static BuilderModel m;
+	private BuilderModel m;
 	
 	BoardButton squares[][];
 	
@@ -77,52 +75,29 @@ public class BuilderView
 	public BuilderView(BuilderModel m)
 	{
 		this.m = m;
-		initBoard();
+		initialize();
+		frame.setVisible(true);
+		this.update();
 	}
 	
 	public JFrame getFrame() {
 		return frame;
 	}
-
-	/**
-	 * Launch the application.
-	 */
-	//public static void main(String[] args)
-	public void initBoard()
-	{
-		//m = mNew;
-		//This adapter will be assigned to any numerical inputs
-		textFilter = new KeyAdapter() {
-			   public void keyTyped(KeyEvent e) {
-			      char c = e.getKeyChar();
-			      if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-			         e.consume();  // ignore event unless its a letter
-			      }
-			   }
-			};
-			
-		//Default windowbuilder code
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run() {
-				try {
-					BuilderView window = new BuilderView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-		initialize();
+	
+	public JTextField getOneStarScore() {
+		return scores[0];
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public BuilderView() {
-		initialize();
-		this.update();
+	
+	public JTextField getTwoStarScore() {
+		return scores[1];
+	}
+	
+	public JTextField getThreeStarScore() {
+		return scores[2];
+	}
+	
+	public JTextField getMiscTextField() {
+		return nameField;
 	}
 	
 	/**
@@ -191,7 +166,6 @@ public class BuilderView
 		lblThreshholds.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblThreshholds);
 		
-		JTextField scores[] = new JTextField[3];
 		scores[0] = new JTextField();
 		scores[0].setBounds(74, 22, 56, 26);
 		scores[0].setText("100");
@@ -274,7 +248,7 @@ public class BuilderView
 		panel_1.add(btnDelete);
 		
 		btnSave = new JButton("SAVE");
-		btnSave.addActionListener(new PublishBoardController(frame, squares, buttons, scores, listModel));
+		btnSave.addActionListener(new PublishBoardController(m, this));
 		btnSave.setName("save");
 		btnSave.setBounds(16, 315, 117, 29);
 		frame.getContentPane().add(btnSave);
@@ -339,6 +313,32 @@ public class BuilderView
 						b.setText("" + ch);
 				}
 			}
+		}
+	}
+
+	/**
+	 *  Change the values of the text fields to match the loaded level. This
+	 *  normally is only invoked on a level load. Also changes the radio
+	 *  buttons.
+	 */
+	public void updateTextFields() {
+		this.scores[0].setText(Integer.toString(m.getLevel().oneStar));
+		this.scores[1].setText(Integer.toString(m.getLevel().twoStar));
+		this.scores[2].setText(Integer.toString(m.getLevel().threeStar));
+		
+		switch(m.getLevel().type) {
+		case PUZZLE:
+			nameField.setText(Integer.toString(m.getLevel().wordLimit));
+			buttons[0].setSelected(true);
+			break;
+		case LIGHTNING:
+			nameField.setText(Integer.toString(m.getLevel().wordLimit));
+			buttons[1].setSelected(true);
+			break;
+		case THEME:
+			nameField.setText(m.getLevel().name);
+			buttons[2].setSelected(true);
+			break;
 		}
 	}
 }

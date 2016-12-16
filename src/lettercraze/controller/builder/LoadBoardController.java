@@ -40,12 +40,7 @@ public class LoadBoardController implements ActionListener
 	BuilderModel m;
 	BuilderView app;
 
-	JFrame frame;
 	JFileChooser fc;
-	BoardButton squares[][];
-	JRadioButton buttons[];
-	JTextField scores[];
-	DefaultListModel customWords;
 	
 	/**
 	 * Initializer requires the JFrame that the board belongs to.
@@ -61,7 +56,7 @@ public class LoadBoardController implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		fc = new JFileChooser();
 		fc.setCurrentDirectory(Data.getDataDir());
-		fc.showOpenDialog(frame);
+		fc.showOpenDialog(app.getFrame());
 		File saveFile = fc.getSelectedFile();
 		
 		try {
@@ -72,6 +67,7 @@ public class LoadBoardController implements ActionListener
 			} else {
 				m.loadLevel(l);
 				app.update();
+				app.updateTextFields();
 			}
 		} catch (FileNotFoundException e1) {
 			notifyFailed(saveFile);

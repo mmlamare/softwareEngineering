@@ -10,7 +10,7 @@ import lettercraze.model.board.Point;
 import lettercraze.model.Level;
 
 public class LevelWriter {
-	public void writeLevel(Level l, File dest) {
+	public static boolean writeLevel(Level l, File dest) {
 		PrintWriter writer = null;
 		try {
 		    writer = new PrintWriter(dest, "UTF-8");
@@ -35,18 +35,19 @@ public class LevelWriter {
 				for (int col=0; col < Board.SIZE; ++col) {
 					Point p = new Point(row, col);
 					if (l.initBoard.isBlocked(p)) {
-						writer.print('.');
-					} else if (l.initBoard.isEmpty(p)) {
 						writer.print('#');
+					} else if (l.initBoard.isEmpty(p)) {
+						writer.print('.');
 					} else if (l.initBoard.isLetter(p)) {
 						writer.print(l.initBoard.getLetter(p));
 					}
 				}
 			}
+			writer.println();
 			
 			// write the level thresholds
 			writer.println(l.oneStar + " " + l.twoStar + " " + l.threeStar);
-			
+
 			// write the max words
 			writer.println(l.wordLimit);
 			
@@ -56,13 +57,12 @@ public class LevelWriter {
 					writer.println(s);
 				}
 			}
+			writer.close();
+			return true;
 
 		} catch (IOException e) {
 			System.err.println("Failed writing level.");
-		} finally {
-			if (writer != null) {
-				writer.close();
-			}
+			return false;
 		}
 	}
 }
