@@ -1,8 +1,11 @@
 package lettercraze.model.game;
 
+import java.util.Random;
+
 import junit.framework.TestCase;
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
+import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;

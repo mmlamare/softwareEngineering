@@ -1,14 +1,18 @@
 package lettercraze.view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
 
 import junit.framework.TestCase;
+import lettercraze.controller.builder.RightClickController;
 import lettercraze.model.board.ModelBuilder;
 
 public class TestBuilder extends TestCase
@@ -109,11 +113,11 @@ public class TestBuilder extends TestCase
 		themeButton.doClick();
 		assertTrue(themeButton.isSelected());
 		
-		JButton saveButton = builderView.btnSave;
+		/*JButton saveButton = builderView.btnSave;
 		new Thread(letterThread).start();
 		new Thread(enterThread).start();
 		new Thread(slowEnterThread).start();
-		saveButton.doClick();
+		saveButton.doClick();*/
 		
 		/*JButton loadButton = builderView.btnLoad;
 
@@ -131,6 +135,13 @@ public class TestBuilder extends TestCase
 		
 		JButton removeWord = builderView.btnDelete;
 		removeWord.doClick();
+		
+		MouseEvent me = new MouseEvent(aButton, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 10, 10, 1, false);
+		MouseListener rcc = aButton.getMouseListeners()[0];
+		
+		new Thread(letterThread).start();
+		new Thread(enterThread).start();
+		rcc.mouseClicked(me);
 		
 		JButton quitButton = builderView.btnQuit;
 		

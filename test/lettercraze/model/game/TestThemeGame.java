@@ -10,39 +10,47 @@ import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 import lettercraze.view.LetterCraze;
 
-public class TestPuzzleGame extends TestCase {
+public class TestThemeGame extends TestCase
+{
 	Model m;
 	LetterCraze app;
 
 	@Override
-	public void setUp() {
+	public void setUp()
+	{
 		// Load static resources from within the JAR file
 		//Resources.loadResources();
 		// Ensure that we have access to the game's data directory
-		if (!Data.dataPathExists()) {
+		if (!Data.dataPathExists())
+		{
 			Data.createDataPath();
 		}
 
 		m = new Model(Data.readScores());
 		app = new LetterCraze(m);
 
-		m.loadLevelByID(0);
+		m.loadLevelByID(5);
 		app.update();
 	}
 
 	@Override
-	public void tearDown() {
+	public void tearDown()
+	{
 		app.dispose();
 	}
 	
-	public void testInGame() {
+	public void testInGame()
+	{
 		assertTrue(m.isInGame());
 	}
 
-	public void testBoardContents() {
+	public void testBoardContents()
+	{
 		// Ensure that the board has no empty squares
-		for (int row = 0; row < Board.SIZE; ++row) {
-			for (int col = 0; col < Board.SIZE; ++col) {
+		for (int row = 0; row < Board.SIZE; ++row)
+		{
+			for (int col = 0; col < Board.SIZE; ++col)
+			{
 				assertFalse(m.getCurrentGame().getBoard().isEmpty(new Point(row, col)));
 			}
 		}
