@@ -28,6 +28,7 @@ public class RightClickController implements MouseListener
 		{
 			String input = getUserCharacter(source);
 			
+			//Point loc;
 			source.setText(input);
 		}
 	}

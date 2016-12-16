@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
+import lettercraze.model.BuilderModel;
 import lettercraze.model.board.ModelBuilder;
 import lettercraze.view.BuilderView;
 import lettercraze.view.LetterCraze;
@@ -45,7 +46,7 @@ public class MainBuilder {
 		}
 		
 		
-		ModelBuilder m = new ModelBuilder();
+		BuilderModel m = new BuilderModel();
 		new BuilderView(m);
 	}
 
