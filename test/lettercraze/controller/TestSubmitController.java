@@ -5,17 +5,12 @@ import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractButton;
-
 import junit.framework.TestCase;
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
 import lettercraze.model.Model;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
-import lettercraze.model.board.SquareType;
-import lettercraze.view.BoardButton;
-import lettercraze.view.BoardView;
 import lettercraze.view.GameView;
 import lettercraze.view.LetterCraze;
 
@@ -52,7 +47,7 @@ public class TestSubmitController extends TestCase {
 	//Tests the Puzzle level reset
 	public void testSubmitNothing(){
 		setUp();
-		SubmitController sC = new SubmitController(m,app);
+		//SubmitController sC = new SubmitController(m,app);
 		
 		m.loadLevelByID(0);
 		assertTrue(m.isInGame());
