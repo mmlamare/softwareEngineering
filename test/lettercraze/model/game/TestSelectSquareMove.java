@@ -34,9 +34,10 @@ public class TestSelectSquareMove extends TestCase {
 		app.dispose();
 	}
 	
+	//a 5x5 board
 	public void testSelectSquareMove(){
-		for (int row = 0; row < Board.SIZE; ++row) {
-			for (int col = 0; col < Board.SIZE; ++col) {
+		for (int row = 0; row < 5; ++row) {
+			for (int col = 0; col < 5; ++col) {
 				SelectSquareMove ssm = new SelectSquareMove(m.getCurrentGame(), new Point(row, col));
 				ssm.doMove();
 				ssm.undoMove();

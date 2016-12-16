@@ -48,7 +48,7 @@ public class TestLightningClockController extends TestCase {
 		m.loadLevelByID(1);
 		ActionEvent ae = new ActionEvent(mView.getButton(0), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
 		lCC.actionPerformed(ae);
-		assertEquals(m.getCurrentGame().getInfoString(), "119");
+		assertEquals(m.getCurrentGame().getInfoString(), "Lightning | 120 s");
 	}
 	
 }
