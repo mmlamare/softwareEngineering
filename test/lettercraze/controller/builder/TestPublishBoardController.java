@@ -8,8 +8,8 @@ import lettercraze.model.BuilderModel;
 import lettercraze.view.BuilderView;
 
 public class TestPublishBoardController extends TestCase {
-	protected BuilderModel m = new BuilderModel();
-	protected BuilderView app = new BuilderView(m);
+	BuilderModel m = new BuilderModel();
+	BuilderView app = new BuilderView(m);
 
 	public void testPublishBoardController(){
 		PublishBoardController cont = new PublishBoardController(m, app);

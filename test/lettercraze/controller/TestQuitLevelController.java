@@ -3,9 +3,9 @@ package lettercraze.controller;
 import java.awt.event.ActionEvent;
 
 import junit.framework.TestCase;
+
 import lettercraze.files.Data;
 import lettercraze.files.Resources;
-import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 import lettercraze.view.LetterCraze;

@@ -6,6 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JRadioButton;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 
 import lettercraze.controller.builder.AddWordController;
 import lettercraze.controller.builder.ChangeMiscController;
@@ -18,20 +26,13 @@ import lettercraze.controller.builder.PublishBoardController;
 import lettercraze.controller.builder.QuitBoardController;
 import lettercraze.controller.builder.RightClickController;
 import lettercraze.controller.builder.ToggleController;
+
 import lettercraze.model.BuilderModel;
 import lettercraze.model.LevelType;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.Point;
 
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JRadioButton;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;

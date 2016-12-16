@@ -120,7 +120,7 @@ public class TestBuilder extends TestCase
 		new Thread(enterThread).start();
 		addWord.doClick();
 
-		JList list = builderView.list;
+		JList<String> list = builderView.list;
 		list.setSelectedIndex(0);
 
 		JButton removeWord = builderView.btnDelete;
@@ -133,7 +133,7 @@ public class TestBuilder extends TestCase
 		new Thread(enterThread).start();
 		rcc.mouseClicked(me);
 
-		JButton quitButton = builderView.btnQuit;
+		//JButton quitButton = builderView.btnQuit;
 
 		//new Thread(enterThread).start();
 		//quitButton.doClick();

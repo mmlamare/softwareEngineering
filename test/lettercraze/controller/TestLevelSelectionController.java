@@ -37,9 +37,9 @@ public class TestLevelSelectionController extends TestCase {
 	//Because all levels are unlocked, the first assert must be true
 	public void testLockedLevel() {
 		setUp();
-		LevelSelectionController lscon = new LevelSelectionController(m,app);
+		//LevelSelectionController lscon = new LevelSelectionController(m,app);
 		assertTrue(m.isUnlocked(mView.getButton(8).getLevelID()));
-		ActionEvent ae = new ActionEvent(mView.getButton(8), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
+		//ActionEvent ae = new ActionEvent(mView.getButton(8), java.awt.event.ActionEvent.ACTION_PERFORMED, "HOWDY PARTNER");
 		assertFalse(m.isInGame());
 		tearDown();
 	}
