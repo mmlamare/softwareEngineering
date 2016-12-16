@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import lettercraze.model.BuilderModel;
+import lettercraze.model.LevelType;
 import lettercraze.view.BuilderView;
 
 /**
@@ -34,8 +35,11 @@ public class AddWordController implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String word = JOptionPane.showInputDialog(app, "Enter a word");
-		m.addWord(word);
-		app.update();
+		// Ensure that we're in theme mode
+		if (m.getLevel().type == LevelType.THEME) {
+			String word = JOptionPane.showInputDialog(app, "Enter a word");
+			m.addWord(word);
+			app.update();
+		}
 	}
 }

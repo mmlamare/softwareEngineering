@@ -219,8 +219,6 @@ public class BuilderView
 		
 		//String[] data = {"one", "two", "three", "four"};
 		list = new JList<String>();
-		DefaultListModel<String> listModel = new DefaultListModel<String>();
-		list.setModel(listModel);
 		list.setToolTipText("Words to add for Theme levels");
 		scrollPane.setViewportView(list);
 		
@@ -323,11 +321,11 @@ public class BuilderView
 		
 		switch(m.getLevel().type) {
 		case PUZZLE:
-			nameField.setText(Integer.toString(m.getLevel().wordLimit));
+			nameField.setText(Integer.toString(m.getLevel().limit));
 			buttons[0].setSelected(true);
 			break;
 		case LIGHTNING:
-			nameField.setText(Integer.toString(m.getLevel().wordLimit));
+			nameField.setText(Integer.toString(m.getLevel().limit));
 			buttons[1].setSelected(true);
 			break;
 		case THEME:

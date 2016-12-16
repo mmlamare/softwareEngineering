@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 import lettercraze.model.BuilderModel;
+import lettercraze.model.LevelType;
 import lettercraze.model.board.Point;
 import lettercraze.model.board.Square;
 import lettercraze.view.BuilderView;
@@ -45,13 +46,16 @@ public class RightClickController implements MouseListener
 	{
 		if (e.getButton() == MouseEvent.BUTTON3)
 		{
-			String input = getUserCharacter("Enter a character:");
-			while (input.length() != 1) {
-				input = getUserCharacter("Enter exactly one character.");
+			// Ensure we're in theme mode
+			if (m.getLevel().type == LevelType.THEME) {
+				String input = getUserCharacter("Enter a character:");
+				while (input.length() != 1) {
+					input = getUserCharacter("Enter exactly one character.");
+				}
+
+				m.getBoard().setSquare(loc, Square.makeSquare(input.charAt(0)));
+				app.update();
 			}
-			
-			m.getBoard().setSquare(loc, Square.makeSquare(input.charAt(0)));
-			app.update();
 		}
 	}
 

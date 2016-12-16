@@ -27,8 +27,9 @@ public class Level {
 	public int threeStar;
 	/**The level's level type*/
 	public LevelType type;
-	/**The word limit. 0 for non puzzle levels. */
-	public int wordLimit = 0;
+	/** The word limit for puzzle levels and the time limit in seconds for
+	 * lightning levels. Unimplemented for theme levels.*/
+	public int limit = 0;
 	/**The loaded dictionary for the level */
 	public Dictionary words = null;
 	/**The name of the level */
@@ -53,6 +54,6 @@ public class Level {
 	}
 
 	public boolean hasWordLimit() {
-		return wordLimit != 0;
+		return limit != 0;
 	}
 }

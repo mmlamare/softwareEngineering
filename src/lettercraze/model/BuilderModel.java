@@ -25,7 +25,7 @@ public class BuilderModel {
 		level.twoStar = 200;
 		level.threeStar = 300;
 		level.type = LevelType.PUZZLE;
-		level.wordLimit = 10;
+		level.limit = 10;
 		level.words = null;
 		level.name = "";
 	}

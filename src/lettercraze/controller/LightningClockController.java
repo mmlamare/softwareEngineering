@@ -45,6 +45,8 @@ public class LightningClockController implements ActionListener {
 				JOptionPane.showMessageDialog(app, "Time has run out",
 				        "Time's up!", JOptionPane.INFORMATION_MESSAGE);
 			}
+		} else {
+			((javax.swing.Timer) (e.getSource())).stop();
 		}
 	}
 

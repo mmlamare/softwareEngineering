@@ -47,7 +47,7 @@ public class SubmitController implements KeyListener {
 				// If the user has run out of words, let them know
 				if (m.getCurrentGame().getLevel().hasWordLimit()
 						&& m.getCurrentGame().getPastWords().size() >=
-							m.getCurrentGame().getLevel().wordLimit) {
+							m.getCurrentGame().getLevel().limit) {
 					JOptionPane.showMessageDialog(app, "You've played all your words",
 							"Word Limit Reached", JOptionPane.INFORMATION_MESSAGE);
 				}

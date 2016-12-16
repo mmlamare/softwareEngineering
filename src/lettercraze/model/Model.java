@@ -38,6 +38,12 @@ public class Model {
 	public Model(int highScores[], int seed) {
 		inGame = false;
 		this.highScores = highScores;
+
+		rng = new Random(seed);
+		// since the game is sometimes run in preview mode with no high scores,
+		// check if highScores is null and return if it is.
+		if (highScores == null) return;
+
 		// to determine which levels are unlocked, we go up to the first one
 		// with no stars and unlock that and everything before it, then lock
 		// everything after
@@ -52,8 +58,6 @@ public class Model {
 		for (; i < NUM_LEVELS; ++i) {
 			unlocked[i] = false;
 		}
-
-		rng = new Random(seed);
 	}
 
 	/**
@@ -140,9 +144,17 @@ public class Model {
 		if (l == null) {
 			System.err.println("No level for ID: " + id);
 		} else {
-			this.inGame = true;
-			this.currentGame = l.loadLevel(id, rng);
-			this.currentGame.initialize();
+			loadLevel(l);
 		}
+	}
+	
+	/**
+	 * Load a given Level
+	 * @param id The level number
+	 */
+	public void loadLevel(Level l) {
+		this.inGame = true;
+		this.currentGame = l.loadLevel(0, rng);
+		this.currentGame.initialize();
 	}
 }
