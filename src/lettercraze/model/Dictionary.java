@@ -55,4 +55,8 @@ public class Dictionary {
 			this.words.add(s);
 		}
 	}
+
+	public ArrayList<String> getList() {
+		return this.words;
+	}
 }

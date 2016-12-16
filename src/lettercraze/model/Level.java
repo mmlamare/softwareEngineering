@@ -52,14 +52,6 @@ public class Level {
 		return result;
 	}
 
-	/**
-	 * TODO
-	 * @param filename
-	 */
-	public void saveToFile(String filename) {
-		// TODO
-	}
-
 	public boolean hasWordLimit() {
 		return wordLimit != 0;
 	}

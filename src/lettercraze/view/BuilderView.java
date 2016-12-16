@@ -3,6 +3,7 @@ package lettercraze.view;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +17,7 @@ import lettercraze.controller.builder.LoadBoardController;
 import lettercraze.controller.builder.PublishBoardController;
 import lettercraze.controller.builder.QuitBoardController;
 import lettercraze.controller.builder.RightClickController;
+import lettercraze.model.BuilderModel;
 import lettercraze.model.board.Board;
 import lettercraze.model.board.ModelBuilder;
 import lettercraze.model.board.Point;
@@ -48,6 +50,8 @@ public class BuilderView
 	private static KeyAdapter textFilter;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	JLabel nameLabel;
+	JTextField nameField;
 	
 	JButton btnQuit;
 	JRadioButton buttons[];
@@ -55,12 +59,12 @@ public class BuilderView
 	JButton btnSave;
 	JButton btnAddWord;
 	JButton btnDelete;
-	JList list;
+	JList<String> list;
 	
 	/**The static variable for the button size */
 	public final static int BUTTON_SIZE = 32;
 	
-	private static ModelBuilder m;
+	private static BuilderModel m;
 	
 	BoardButton squares[][];
 	
@@ -68,7 +72,7 @@ public class BuilderView
 	 * The constructor for the BuilderView
 	 * @param m The model
 	 */
-	public BuilderView(ModelBuilder m)
+	public BuilderView(BuilderModel m)
 	{
 		this.m = m;
 		initBoard();
@@ -149,7 +153,7 @@ public class BuilderView
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 451, 334);
+		frame.setBounds(100, 100, 451, 374);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -170,7 +174,7 @@ public class BuilderView
 		panel_1.setLayout(null);
 		
 		JLabel lblStar = new JLabel("Star 1:");
-		lblStar.setBounds(22, 27, 40, 16);
+		lblStar.setBounds(12, 27, 60, 16);
 		panel_1.add(lblStar);
 		
 		JLabel lblThreshholds = new JLabel("Thresholds");
@@ -188,7 +192,7 @@ public class BuilderView
 		scores[0].setColumns(10);
 		
 		JLabel lblStar_1 = new JLabel("Star 2:");
-		lblStar_1.setBounds(22, 50, 40, 15);
+		lblStar_1.setBounds(12, 50, 60, 15);
 		panel_1.add(lblStar_1);
 		
 		scores[1] = new JTextField();
@@ -199,7 +203,7 @@ public class BuilderView
 		scores[1].setColumns(10);
 		
 		JLabel lblStar_2 = new JLabel("Star 3:");
-		lblStar_2.setBounds(22, 73, 40, 16);
+		lblStar_2.setBounds(12, 73, 60, 16);
 		panel_1.add(lblStar_2);
 		
 		scores[2] = new JTextField();
@@ -247,7 +251,7 @@ public class BuilderView
 		scrollPane.setViewportView(list);
 		
 		btnAddWord = new JButton("+ Add");
-		btnAddWord.addActionListener(new AddWordController(frame, list));
+		btnAddWord.addActionListener(new AddWordController(m, this));
 		
 		btnAddWord.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		btnAddWord.setBounds(22, 240, 56, 26);
@@ -262,19 +266,46 @@ public class BuilderView
 		btnSave = new JButton("SAVE");
 		btnSave.addActionListener(new PublishBoardController(frame, squares, buttons, scores, listModel));
 		btnSave.setName("save");
-		btnSave.setBounds(16, 277, 117, 29);
+		btnSave.setBounds(16, 315, 117, 29);
 		frame.getContentPane().add(btnSave);
 		
 		btnLoad = new JButton("LOAD");
 		btnLoad.addActionListener(new LoadBoardController(frame, squares, buttons, scores, listModel));
 		btnLoad.setName("load");
-		btnLoad.setBounds(145, 277, 117, 29);
+		btnLoad.setBounds(145, 315, 117, 29);
 		frame.getContentPane().add(btnLoad);
 		
 		btnQuit = new JButton("QUIT");
 		btnQuit.addActionListener(new QuitBoardController(frame));
 		btnQuit.setName("quit");
-		btnQuit.setBounds(308, 277, 117, 29);
+		btnQuit.setBounds(308, 315, 117, 29);
 		frame.getContentPane().add(btnQuit);
+		
+		nameLabel = new JLabel("Theme Name:");
+		nameLabel.setBounds(22, 280, 160, 16);
+		frame.getContentPane().add(nameLabel);
+		
+		nameField = new JTextField();
+		nameField.setBounds(200, 280, 100, 26);
+		nameField.setText("");
+		nameField.setColumns(10);
+		nameField.addKeyListener(textFilter);
+		frame.getContentPane().add(nameField);
+		
+	}
+	
+	public void update() {
+		switch(m.getLevel().type) {
+		case PUZZLE:
+			nameLabel.setText("Word limit:");
+			break;
+		case LIGHTNING:
+			nameLabel.setText("Time limit:");
+			break;
+		case THEME:
+			nameLabel.setText("Theme Name:");
+		}
+		ArrayList<String> data = m.getLevel().words.getList();
+		list.setListData(data.toArray(new String[data.size()]));
 	}
 }
